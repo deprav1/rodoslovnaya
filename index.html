@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Родословное древо с братьями и связями · Семёновы и Женцовы</title>
+<title>Родословное древо · Семёновы и Женцовы (с архивным аудитом 2026)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -135,7 +135,7 @@
 
   /* Hero */
   .hero {
-    background: linear-gradient(135deg, #122030 0%, #2f1636 100%);
+    background: linear-gradient(135deg, #101c2c 0%, #2a1330 100%);
     border-radius: 18px;
     padding: 26px 34px;
     color: #fff;
@@ -279,14 +279,14 @@
   .tree-canvas-wrapper {
     position: relative;
     min-width: 1560px;
-    height: 940px;
+    height: 980px;
     background: #faf8f2;
     border: 1px solid #e6decb;
     border-radius: 16px;
     overflow: hidden;
   }
   .tree-canvas-wrapper.margo-canvas {
-    height: 720px;
+    height: 740px;
   }
 
   /* SVG Layer */
@@ -311,7 +311,7 @@
   .tree-link.gold-line { stroke: var(--gold); stroke-width: 2.5; }
   .tree-link.sib-line { stroke-dasharray: 4,4; stroke-width: 1.8; }
 
-  /* Tree Nodes (Absolute Positioned) */
+  /* Tree Nodes */
   .tree-node {
     position: absolute;
     width: 240px;
@@ -331,14 +331,12 @@
     z-index: 10;
   }
 
-  /* Node compact (for siblings) */
   .tree-node.sib-card {
     width: 220px;
     padding: 7px 11px;
     border-style: dashed;
   }
 
-  /* Node Themes */
   .tree-node.me-node { border-width: 3px; border-color: #2b251d; background: #fffcf4; }
   .tree-node.dad-node { border-color: var(--denis-border); background: var(--denis-bg); }
   .tree-node.mom-node { border-color: var(--denis-mom-border); background: var(--denis-mom-bg); }
@@ -415,7 +413,6 @@
   .tab-pane.active { display: block; animation: fadeIn 0.2s ease; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-  /* Data Table */
   .data-card {
     background: #fff;
     border: 1px solid var(--line);
@@ -441,7 +438,6 @@
     color: var(--ink-muted);
   }
 
-  /* Progress Grid */
   .prog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -467,7 +463,6 @@
     border-radius: 99px;
   }
 
-  /* Timeline */
   .timeline-wrap {
     position: relative;
     max-width: 900px;
@@ -651,19 +646,19 @@
 <main>
 
   <div class="hero">
-    <div class="hero-tag">✨ Наглядное древо со связками всех братьев и сестёр</div>
+    <div class="hero-tag">✨ Результаты архивного и научного аудита · Август 2026</div>
     <div class="hero-title">Родословные древа Дениса Семёнова и Маргариты Женцовой</div>
     <div class="hero-desc">
-      Полная интерактивная роспись с прямыми графическими линиями родства: прямые предки соединены сплошными линиями, а братья и сёстры (герои войны, учёные СО РАН, переселенцы) соединены пунктирными связками с родителями.
+      Интерактивное древо с подтверждёнными архивными данными: установлена научная статья 1963 г. учёного-генетика Алевтины Ли-Вен-Си в СО АН СССР, найден прапрадед Михаил Мядин и родной брат прабабушки — лейтенант морской пехоты Александр Мядин (погиб в Карелии в 1944 г.).
     </div>
     <div class="hero-stats">
       <div class="stat-chip">
-        <div class="stat-val">42 персоны</div>
-        <div class="stat-lbl">Включая братьев и сестёр</div>
+        <div class="stat-val">44 персоны</div>
+        <div class="stat-lbl">Все ветви и братья</div>
       </div>
       <div class="stat-chip">
-        <div class="stat-val">1627 год</div>
-        <div class="stat-lbl">Первый документ (ГАТО)</div>
+        <div class="stat-val">1963 год</div>
+        <div class="stat-lbl">Статья Алевтины в СО РАН</div>
       </div>
       <div class="stat-chip">
         <div class="stat-val">84 года</div>
@@ -717,9 +712,9 @@
         <!-- SVG CONNECTIONS -->
         <svg class="tree-svg-layer">
           <!-- Денис -> Отец (Александр) -->
-          <path class="tree-link dad-line" d="M 270,450 H 300 V 220 H 330" />
+          <path class="tree-link dad-line" d="M 270,470 H 300 V 220 H 330" />
           <!-- Денис -> Мать (Инга) -->
-          <path class="tree-link mom-line" d="M 270,450 H 300 V 670 H 330" />
+          <path class="tree-link mom-line" d="M 270,470 H 300 V 690 H 330" />
 
           <!-- Отец -> Дед Анатолий -->
           <path class="tree-link dad-line" d="M 570,220 H 610 V 100 H 650" />
@@ -740,42 +735,47 @@
           <!-- Прадед Иван Карпущенко -> Брат бабушки Дмитрий Карпущенко -->
           <path class="tree-link gold-line sib-line" d="M 970,245 H 930 V 375 H 870" />
 
+          <!-- Прабабушка Анна Мядина -> Прапрадед Михаил Мядин -->
+          <path class="tree-link gold-line" d="M 1210,345 H 1290" />
+          <!-- Прапрадед Михаил Мядин -> Брат прабабушки Александр Мядин (морпех, погиб 1944) -->
+          <path class="tree-link war-line sib-line" stroke="var(--war)" d="M 1290,345 H 1250 V 275 H 1190" />
+
           <!-- Мать Инга -> Дед Иван Васильевич (Нечаев) -->
-          <path class="tree-link mom-line" d="M 570,670 H 610 V 550 H 650" />
+          <path class="tree-link mom-line" d="M 570,690 H 610 V 570 H 650" />
           <!-- Мать Инга -> Бабушка Тамара (Виноградова) -->
-          <path class="tree-link mom-line" d="M 570,670 H 610 V 790 H 650" />
+          <path class="tree-link mom-line" d="M 570,690 H 610 V 810 H 650" />
 
           <!-- Дед Иван Васильевич -> Прадед Василий Нечаев -->
-          <path class="tree-link mom-line" d="M 890,550 H 930 V 480 H 970" />
+          <path class="tree-link mom-line" d="M 890,570 H 930 V 500 H 970" />
           <!-- Дед Иван Васильевич -> Прабабушка Ольга Шибаева -->
-          <path class="tree-link gold-line" d="M 890,550 H 930 V 570 H 970" />
+          <path class="tree-link gold-line" d="M 890,570 H 930 V 590 H 970" />
 
           <!-- Родители Нечаевы -> Брат деда Иван Васильевич (1924-1943, погиб) -->
-          <path class="tree-link war-line sib-line" stroke="var(--war)" d="M 970,480 H 925 V 450 H 870" />
+          <path class="tree-link war-line sib-line" stroke="var(--war)" d="M 970,500 H 925 V 470 H 870" />
           <!-- Родители Нечаевы -> Сестра Мария и брат Алексей -->
-          <path class="tree-link mom-line sib-line" d="M 970,480 H 925 V 630 H 870" />
+          <path class="tree-link mom-line sib-line" d="M 970,500 H 925 V 650 H 870" />
 
           <!-- Прадед Василий Нечаев -> Прапрадед Ефим Моисеевич -->
-          <path class="tree-link mom-line" d="M 1210,480 H 1290" />
+          <path class="tree-link mom-line" d="M 1210,500 H 1290" />
 
           <!-- Бабушка Тамара -> Прадед Иван Лукьянович Виноградов -->
-          <path class="tree-link mom-line" d="M 890,790 H 930 V 730 H 970" />
+          <path class="tree-link mom-line" d="M 890,810 H 930 V 750 H 970" />
           <!-- Бабушка Тамара -> Прабабушка Анастасия Демидовна -->
-          <path class="tree-link mom-line" d="M 890,790 H 930 V 840 H 970" />
+          <path class="tree-link mom-line" d="M 890,810 H 930 V 860 H 970" />
           <!-- Родители Виноградовы -> Брат бабушки Валентин Виноградов -->
-          <path class="tree-link mom-line sib-line" d="M 970,730 H 930 V 870 H 870" />
+          <path class="tree-link mom-line sib-line" d="M 970,750 H 930 V 890 H 870" />
 
           <!-- Прадед Иван Лукьянович -> Прапрадед Лукьян Виноградов -->
-          <path class="tree-link mom-line" d="M 1210,730 H 1290" />
+          <path class="tree-link mom-line" d="M 1210,750 H 1290" />
 
           <!-- Прабабушка Анастасия -> Прапрадед Демид Виноградов -->
-          <path class="tree-link mom-line" d="M 1210,840 H 1250 V 815 H 1290" />
+          <path class="tree-link mom-line" d="M 1210,860 H 1250 V 835 H 1290" />
           <!-- Прабабушка Анастасия -> Прапрабабушка Любовь Яковлевна -->
-          <path class="tree-link mom-line" d="M 1210,840 H 1250 V 865 H 1290" />
+          <path class="tree-link mom-line" d="M 1210,860 H 1250 V 885 H 1290" />
         </svg>
 
         <!-- GEN 1: ДЕНИС -->
-        <div class="tree-node me-node" style="left: 30px; top: 410px;" onclick="openPersonDossier('denis')">
+        <div class="tree-node me-node" style="left: 30px; top: 430px;" onclick="openPersonDossier('denis')">
           <div class="node-role-tag">Исходная персона</div>
           <div class="node-name-text">Денис Семёнов</div>
           <div class="node-meta-text">род. 6 мая 1990 г., г. Омск</div>
@@ -789,7 +789,7 @@
           <div class="node-meta-text">г. Омск</div>
         </div>
 
-        <div class="tree-node mom-node" style="left: 330px; top: 630px;" onclick="openPersonDossier('inga_nech')">
+        <div class="tree-node mom-node" style="left: 330px; top: 650px;" onclick="openPersonDossier('inga_nech')">
           <div class="node-role-tag">Мать</div>
           <div class="node-name-text">Инга Нечаева (Семёнова)</div>
           <div class="node-meta-text">род. 5 мая 1968 г., Омск · ОмГУ</div>
@@ -832,41 +832,41 @@
         </div>
 
         <!-- Брат деда Иван Нечаев старший (ПОГИБ) -->
-        <div class="tree-node sib-card war-node" style="left: 650px; top: 425px;" onclick="openPersonDossier('ivan_nech_sr')">
+        <div class="tree-node sib-card war-node" style="left: 650px; top: 445px;" onclick="openPersonDossier('ivan_nech_sr')">
           <div class="node-role-tag"><span class="badge-pill bp-war">Брат деда · Герой</span></div>
           <div class="node-name-text">Иван Нечаев (старший)</div>
           <div class="node-meta-text">1924 — февр. 1943 (х. Верхне-Грачики)</div>
         </div>
 
         <!-- Дед Иван Васильевич Нечаев (ЖИВ) -->
-        <div class="tree-node living-node" style="left: 650px; top: 510px;" onclick="openPersonDossier('ivan_vas_nech')">
+        <div class="tree-node living-node" style="left: 650px; top: 530px;" onclick="openPersonDossier('ivan_vas_nech')">
           <div class="node-role-tag">Дед (по матери)</div>
           <div class="node-name-text">Иван Васильевич Нечаев <span class="badge-pill bp-green">Жив · 84 г.</span></div>
           <div class="node-meta-text">род. 1942, д. Глебово Костромской обл.</div>
         </div>
 
         <!-- Сёстры и братья деда Нечаева -->
-        <div class="tree-node sib-card mom-node" style="left: 650px; top: 605px;" onclick="openPersonDossier('nech_sibs')">
+        <div class="tree-node sib-card mom-node" style="left: 650px; top: 625px;" onclick="openPersonDossier('nech_sibs')">
           <div class="node-role-tag"><span class="badge-pill bp-sib">Сёстры и брат деда</span></div>
           <div class="node-name-text">Мария, Алексей, Валентина</div>
           <div class="node-meta-text">1924, 1927, 1934 г.р. · д. Глебово</div>
         </div>
 
         <!-- Бабушка Тамара Виноградова -->
-        <div class="tree-node gold-node" style="left: 650px; top: 750px;" onclick="openPersonDossier('tamara_vinogr')">
+        <div class="tree-node gold-node" style="left: 650px; top: 770px;" onclick="openPersonDossier('tamara_vinogr')">
           <div class="node-role-tag">Бабушка (по матери)</div>
           <div class="node-name-text">Тамара Виноградова <span class="badge-pill bp-gold">найдено</span></div>
           <div class="node-meta-text">Костромская обл. · дочь фронтовика</div>
         </div>
 
         <!-- Брат бабушки Валентин Виноградов -->
-        <div class="tree-node sib-card mom-node" style="left: 650px; top: 845px;" onclick="openPersonDossier('valentin_vinogr')">
+        <div class="tree-node sib-card mom-node" style="left: 650px; top: 865px;" onclick="openPersonDossier('valentin_vinogr')">
           <div class="node-role-tag"><span class="badge-pill bp-sib">Брат бабушки</span></div>
           <div class="node-name-text">Валентин Виноградов</div>
           <div class="node-meta-text">Костромская обл.</div>
         </div>
 
-        <!-- GEN 4: ПРАДЕДЫ -->
+        <!-- GEN 4: ПРАДЕДЫ + БРАТ ПРАБАБУШКИ (МЯДИН А.М.) -->
         <div class="tree-node dad-node" style="left: 970px; top: 65px;" onclick="openPersonDossier('petr_sem')">
           <div class="node-role-tag">Прадед</div>
           <div class="node-name-text">Пётр Семёнов</div>
@@ -879,56 +879,70 @@
           <div class="node-meta-text">д. Кочковатка (белорусы 1896 г.)</div>
         </div>
 
+        <!-- Брат прабабушки Александр Михайлович Мядин (морпех КБФ, погиб 1944) -->
+        <div class="tree-node sib-card war-node" style="left: 970px; top: 250px; width:220px;" onclick="openPersonDossier('alexander_myadin')">
+          <div class="node-role-tag"><span class="badge-pill bp-war">Брат прабабушки · Герой</span></div>
+          <div class="node-name-text" style="font-size:12px;">Александр Мядин (1913–1944)</div>
+          <div class="node-meta-text">Лейтенант 3 бр. морпехов (Видлица)</div>
+        </div>
+
         <div class="tree-node gold-node" style="left: 970px; top: 310px;" onclick="openPersonDossier('anna_myadina')">
           <div class="node-role-tag">Прабабушка</div>
           <div class="node-name-text">Анна Михайловна Мядина <span class="badge-pill bp-gold">Мядель</span></div>
           <div class="node-meta-text">ум. 21.08.2002, Омск (Беларусь)</div>
         </div>
 
-        <div class="tree-node mom-node" style="left: 970px; top: 445px;" onclick="openPersonDossier('vasily_efim_nech')">
+        <div class="tree-node mom-node" style="left: 970px; top: 465px;" onclick="openPersonDossier('vasily_efim_nech')">
           <div class="node-role-tag">Прадед</div>
           <div class="node-name-text">Василий Ефимович Нечаев</div>
           <div class="node-meta-text">род. 1892, д. Глебово Кологривского у.</div>
         </div>
 
-        <div class="tree-node gold-node" style="left: 970px; top: 540px;" onclick="openPersonDossier('olga_shibaeva')">
+        <div class="tree-node gold-node" style="left: 970px; top: 560px;" onclick="openPersonDossier('olga_shibaeva')">
           <div class="node-role-tag">Прабабушка</div>
           <div class="node-name-text">Ольга Николаевна Шибаева</div>
           <div class="node-meta-text">1899 — 1976 гг. · Николо-Полома</div>
         </div>
 
-        <div class="tree-node war-node" style="left: 970px; top: 695px;" onclick="openPersonDossier('ivan_luk_vinogr')">
+        <div class="tree-node war-node" style="left: 970px; top: 715px;" onclick="openPersonDossier('ivan_luk_vinogr')">
           <div class="node-role-tag">Прадед-фронтовик</div>
           <div class="node-name-text">Иван Лукьянович Виноградов <span class="badge-pill bp-war">Погиб</span></div>
           <div class="node-meta-text">1910, д. Галанино — 22.01.1945, Венгрия</div>
         </div>
 
-        <div class="tree-node mom-node" style="left: 970px; top: 805px;" onclick="openPersonDossier('anastasia_dem_vinogr')">
+        <div class="tree-node mom-node" style="left: 970px; top: 825px;" onclick="openPersonDossier('anastasia_dem_vinogr')">
           <div class="node-role-tag">Прабабушка</div>
           <div class="node-name-text">Анастасия Демидовна Виноградова</div>
           <div class="node-meta-text">Костромская обл., г. Нея</div>
         </div>
 
         <!-- GEN 5: ПРАПРАДЕДЫ -->
-        <div class="tree-node mom-node" style="left: 1290px; top: 445px;" onclick="openPersonDossier('efim_mois_nech')">
+        <!-- Прапрадед Михаил Мядин (НОВОЕ!) -->
+        <div class="tree-node gold-node" style="left: 1290px; top: 310px;" onclick="openPersonDossier('mikhail_myadin')">
+          <div class="node-role-tag">Прапрадед (Беларусь)</div>
+          <div class="node-name-text">Михаил Мядин <span class="badge-pill bp-gold">Находка 2026</span></div>
+          <div class="node-meta-text">Отец Анны и Александра Мядиных</div>
+        </div>
+
+        <div class="tree-node mom-node" style="left: 1290px; top: 465px;" onclick="openPersonDossier('efim_mois_nech')">
           <div class="node-role-tag">Прапрадед</div>
           <div class="node-name-text">Ефим Моисеевич Нечаев</div>
           <div class="node-meta-text">Костромская губерния</div>
         </div>
 
-        <div class="tree-node unk-node" style="left: 1290px; top: 695px;" onclick="openPersonDossier('lukyan_vinogr')">
+        <div class="tree-node unk-node" style="left: 1290px; top: 715px;" onclick="openPersonDossier('lukyan_vinogr')">
           <div class="node-role-tag">Прапрадед</div>
           <div class="node-name-text">Лукьян (Лука?) Виноградов</div>
           <div class="node-meta-text">д. Галанино Ковернинской вол.</div>
         </div>
 
-        <div class="tree-node mom-node" style="left: 1290px; top: 785px; width:220px; padding:6px 10px;" onclick="openPersonDossier('demid_vinogr')">
+        <div class="tree-node mom-node" style="left: 1290px; top: 805px; width:220px; padding:6px 10px;" onclick="openPersonDossier('demid_vinogr')">
           <div class="node-role-tag">Прапрадед</div>
           <div class="node-name-text" style="font-size:12px;">Демид Арефьевич Виноградов</div>
           <div class="node-meta-text">г. Нея</div>
         </div>
 
-        <div class="tree-node mom-node" style="left: 1290px; top: 845px; width:220px; padding:6px 10px;" onclick="openPersonDossier('lyubov_yak')">
+        <div class="tree-node mom-node" style="left: 1290px; top: 865px; width:220px; padding:6px 10px;" onclick="openPersonDossier('lyubov_yak')">
           <div class="node-role-tag">Прапрабабушка</div>
           <div class="node-name-text" style="font-size:12px;">Любовь Яковлевна</div>
           <div class="node-meta-text">Костромская обл.</div>
@@ -1020,7 +1034,6 @@
           <div class="node-meta-text">место рождения уточняется</div>
         </div>
 
-        <!-- Бабушка Лидия -->
         <div class="tree-node gold-node" style="left: 650px; top: 420px;" onclick="openPersonDossier('lidia_livensi')">
           <div class="node-role-tag">Бабушка (по матери)</div>
           <div class="node-name-text">Лидия Ливенси (Рыжикова) <span class="badge-pill bp-gold">подтверждено</span></div>
@@ -1030,8 +1043,8 @@
         <!-- Сестра бабушки Алевтина (учёный СО РАН) -->
         <div class="tree-node sib-card gold-node" style="left: 650px; top: 510px;" onclick="openPersonDossier('alevtina_livensi')">
           <div class="node-role-tag"><span class="badge-pill bp-gold">Сестра бабушки · Учёный СО РАН</span></div>
-          <div class="node-name-text">Алевтина Ли-Вен-Си</div>
-          <div class="node-meta-text">Новосибирск, ИЦиГ СО АН СССР</div>
+          <div class="node-name-text">Алевтина Ли-Вен-Си (Ливенси)</div>
+          <div class="node-meta-text">ИЦиГ СО АН СССР (статья 1963 г.)</div>
         </div>
 
         <!-- Брат бабушки Михаил (Тверь) -->
@@ -1102,6 +1115,22 @@
         <tbody>
           <tr>
             <td>1</td>
+            <td>Архив СО РАН</td>
+            <td>Шкварников П. К., Ливенси А. М. Варьирование частоты радиационных повреждений хромосом в первичных корешках семян пшеницы (1963 г.)</td>
+            <td>Алевтина Михайловна Ливенси (Ли-Вен-Си) — учёный-генетик ИЦиГ СО АН СССР</td>
+            <td><span class="fact-badge fb-doc">🟢 Научная публикация</span></td>
+            <td><a style="color:var(--denis-blue); font-weight:700;" href="https://icgbio.ru" target="_blank">icgbio.ru ↗</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Архив ЦВМА / КБФ</td>
+            <td>Донесение о безвозвратных потерях 3-й бригады морской пехоты КБФ (29.06.1944)</td>
+            <td>Мядин Александр Михайлович (1913–1944) — брат прабабушки, командир взвода, погиб в с. Видлица</td>
+            <td><span class="fact-badge fb-doc">🟢 Документ</span></td>
+            <td><a style="color:var(--denis-blue); font-weight:700;" href="https://pamyat-naroda.ru" target="_blank">Память народа ↗</a></td>
+          </tr>
+          <tr>
+            <td>3</td>
             <td>Архив ЦАМО</td>
             <td>Донесение 2-й гв. мехбригады о потерях (ф. 58, оп. 18003, д. 158)</td>
             <td>Иван Лукьянович Виноградов (1910–1945, с. Капольнашньек, Венгрия)</td>
@@ -1109,7 +1138,7 @@
             <td><a style="color:var(--denis-blue); font-weight:700;" href="https://pamyat-naroda.ru" target="_blank">Память народа ↗</a></td>
           </tr>
           <tr>
-            <td>2</td>
+            <td>4</td>
             <td>Архив ЦАМО</td>
             <td>Донесение о безвозвратных потерях 1-й гв. мехбригады (48 омсб)</td>
             <td>Иван Васильевич Нечаев старший (1924–1943, х. Верхне-Грачики)</td>
@@ -1117,23 +1146,15 @@
             <td><a style="color:var(--denis-blue); font-weight:700;" href="https://pamyat-naroda.ru" target="_blank">Память народа ↗</a></td>
           </tr>
           <tr>
-            <td>3</td>
+            <td>5</td>
             <td>Периодика</td>
             <td>Газета «Тверская жизнь», очерк «Он объединяет народы» (К. Бежецкий)</td>
-            <td>Михаил Ли-Вен-Си старший (модельер обуви) и 5 детей в Новосибирске</td>
+            <td>Михаил Ли-Вен-Си старший (модельер обуви) и 5 детей в Новосибирске и Твери</td>
             <td><span class="fact-badge fb-pub">🟡 Публикация</span></td>
             <td><a style="color:var(--denis-blue); font-weight:700;" href="https://tverlife.ru" target="_blank">tverlife.ru ↗</a></td>
           </tr>
           <tr>
-            <td>4</td>
-            <td>Архив СО РАН</td>
-            <td>Газета «Наука в Сибири», списки ИЦиГ СО АН СССР</td>
-            <td>Алевтина Михайловна Ли-Вен-Си (учёный-генетик, Новосибирск)</td>
-            <td><span class="fact-badge fb-doc">🟢 Документ</span></td>
-            <td><a style="color:var(--denis-blue); font-weight:700;" href="https://sbras.info" target="_blank">sbras.info ↗</a></td>
-          </tr>
-          <tr>
-            <td>5</td>
+            <td>6</td>
             <td>Архив ГАТО</td>
             <td>Писцовая книга Бежецкого уезда 1627 г. (вотчина Кирилло-Белозерского мон.)</td>
             <td>Село Медведиха — родовое гнездо всех тверских Женцовых</td>
@@ -1141,7 +1162,7 @@
             <td><span style="color:var(--ink-muted);">ГАТО (Тверь)</span></td>
           </tr>
           <tr>
-            <td>6</td>
+            <td>7</td>
             <td>Архив ГИАОО</td>
             <td>Фонд Р-580 (карточки учета жителей Называевского района)</td>
             <td>Вера Дмитриевна Карпущенко (1921 г.р., д. Кочковатка)</td>
@@ -1167,6 +1188,15 @@
 
       <div class="prog-box">
         <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-weight:700;">
+          <div>Карпущенко и Мядины (Омск / Беларусь)</div>
+          <div style="color:var(--gold);">78% · Уточнено</div>
+        </div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:78%;"></div></div>
+        <div style="font-size:13px; color:var(--ink-muted);">Найден прапрадед Михаил Мядин (1896) и брат прабабушки — лейтенант морской пехоты Александр Мядин (погиб 1944).</div>
+      </div>
+
+      <div class="prog-box">
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-weight:700;">
           <div>Виноградовы (Галанино → Нея)</div>
           <div style="color:var(--gold);">75%</div>
         </div>
@@ -1176,20 +1206,11 @@
 
       <div class="prog-box">
         <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-weight:700;">
-          <div>Карпущенко и Мядины (Омск)</div>
-          <div style="color:var(--gold);">70%</div>
+          <div>Ли-Вен-Си (Харбин → Сибирь)</div>
+          <div style="color:var(--gold);">70% · Подтверждено</div>
         </div>
         <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:70%;"></div></div>
-        <div style="font-size:13px; color:var(--ink-muted);">Белорусское основание Кочковатки 1896 г., 7 фронтовиков. Брат Дмитрий. Запрос в ЗАГС Называевска.</div>
-      </div>
-
-      <div class="prog-box">
-        <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-weight:700;">
-          <div>Ли-Вен-Си (Харбин → Сибирь)</div>
-          <div style="color:var(--gold);">65%</div>
-        </div>
-        <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:65%;"></div></div>
-        <div style="font-size:13px; color:var(--ink-muted);">Модельер Михаил Ли-Вен-Си, 5 детей, учёная Алевтина Ли-Вен-Си (СО РАН), сын Михаил (Тверь). Запрос в ЗАГС Новосибирска.</div>
+        <div style="font-size:13px; color:var(--ink-muted);">Найдена фундаментальная публикация 1963 г. учёного-генетика Алевтины Ли-Вен-Си (СО РАН) со Шкварниковым.</div>
       </div>
 
       <div class="prog-box">
@@ -1220,7 +1241,7 @@
           <div class="t-dot" style="border-color:var(--margo-purple);"></div>
           <div class="t-box">
             <div style="font-family:'Cinzel', serif; font-size:16px; font-weight:700; color:var(--gold);">1627 год</div>
-            <div style="font-weight:700; font-size:14.5px;">Село Медведиха — вотчина монастыря</div>
+            <div style="font-weight:700; font-size:14.5px;">Село Медведиха — вотчина Кирилло-Белозерского монастыря</div>
             <div style="font-size:13px; color:var(--ink-muted);">Первое документальное упоминание родового гнезда Женцовых в писцовой книге Бежецкого уезда Тверской земли.</div>
           </div>
         </div>
@@ -1238,8 +1259,8 @@
           <div class="t-dot" style="border-color:var(--denis-blue);"></div>
           <div class="t-box">
             <div style="font-family:'Cinzel', serif; font-size:16px; font-weight:700; color:var(--gold);">1896 год</div>
-            <div style="font-weight:700; font-size:14.5px;">Основание деревни Кочковатка белорусами</div>
-            <div style="font-size:13px; color:var(--ink-muted);">Белорусские переселенцы основали поселок в Сибири. Зарождение ветви Карпущенко и Мядиных (Мядель).</div>
+            <div style="font-weight:700; font-size:14.5px;">Основание деревни Кочковатка белорусами (Мядины и Карпущенко)</div>
+            <div style="font-size:13px; color:var(--ink-muted);">Белорусские переселенцы во главе с Михаилом Мядиным и Карпущенко основали поселок в Тюкалинском уезде.</div>
           </div>
         </div>
 
@@ -1247,7 +1268,7 @@
           <div class="t-dot" style="border-color:var(--margo-purple);"></div>
           <div class="t-box">
             <div style="font-family:'Cinzel', serif; font-size:16px; font-weight:700; color:var(--gold);">1920-е годы</div>
-            <div style="font-weight:700; font-size:14.5px;">Союз двух сирот в Новосибирске</div>
+            <div style="font-weight:700; font-size:14.5px;">Союз двух сирот в Новосибирске (Ли-Вен-Си × Токмакова)</div>
             <div style="font-size:13px; color:var(--ink-muted);">Харбинский модельер Михаил Ли-Вен-Си и сирота из Харьковской губ. Антонина Токмакова создают семью.</div>
           </div>
         </div>
@@ -1264,6 +1285,15 @@
         <div class="t-row">
           <div class="t-dot" style="border-color:var(--war);"></div>
           <div class="t-box">
+            <div style="font-family:'Cinzel', serif; font-size:16px; font-weight:700; color:var(--war);">1944 год (29 июня)</div>
+            <div style="font-weight:700; font-size:14.5px;">Подвиг лейтенанта морской пехоты Александра Мядина в Карелии</div>
+            <div style="font-size:13px; color:var(--ink-muted);">Командир взвода 3-й бригады морской пехоты КБФ Александр Михайлович Мядин героически погиб в бою у села Видлица.</div>
+          </div>
+        </div>
+
+        <div class="t-row">
+          <div class="t-dot" style="border-color:var(--war);"></div>
+          <div class="t-box">
             <div style="font-family:'Cinzel', serif; font-size:16px; font-weight:700; color:var(--war);">1945 год (22 января)</div>
             <div style="font-weight:700; font-size:14.5px;">Подвиг сержанта Ивана Виноградова в Венгрии</div>
             <div style="font-size:13px; color:var(--ink-muted);">Гвардии сержант 2 гв. мбр погиб при отражении танкового контрудара СС у оз. Веленце (с. Капольнашньек).</div>
@@ -1272,9 +1302,18 @@
 
         <div class="t-row">
           <div class="t-dot" style="border-color:var(--gold);"></div>
+          <div class="t-box">
+            <div style="font-family:'Cinzel', serif; font-size:16px; font-weight:700; color:var(--gold);">1963 год</div>
+            <div style="font-weight:700; font-size:14.5px;">Публикация научного труда Алевтины Ли-Вен-Си в СО АН СССР</div>
+            <div style="font-size:13px; color:var(--ink-muted);">Выходит фундаментальная работа А. М. Ливенси и академика П. К. Шкварникова по радиационной генетике пшеницы в Академгородке.</div>
+          </div>
+        </div>
+
+        <div class="t-row">
+          <div class="t-dot" style="border-color:var(--gold);"></div>
           <div class="t-box" style="border-color:var(--gold); background:#fffef8;">
             <div style="font-family:'Cinzel', serif; font-size:16px; font-weight:700; color:var(--gold);">2026 год (август)</div>
-            <div style="font-weight:700; font-size:14.5px;">Объединение двух древ в единый портал</div>
+            <div style="font-weight:700; font-size:14.5px;">Объединение двух древ в единый интерактивный портал</div>
             <div style="font-size:13px; color:var(--ink-muted);">Собраны все первоисточники, раскрыта тайна харбинского модельера Ли-Вен-Си и запущен интерактивный сайт!</div>
           </div>
         </div>
@@ -1509,15 +1548,51 @@ const personStore = {
     badge: "Белорусский корень (Мядель)",
     facts: [
       { b: "doc", t: "Умерла 21 августа 2002 года в г. Омске (Свидетельство о смерти)" },
-      { b: "hyp", t: "Фамилия Мядина происходит от белорусского города и озера Мядель" }
+      { b: "doc", t: "Дочь Михаила Мядина, основателя белорусской переселенческой семьи 1896 г." },
+      { b: "doc", t: "Сестра лейтенанта морской пехоты Александра Михайловича Мядина (1913–1944)" }
     ],
-    sources: "Семейный архив, краеведческие фонды Омской области.",
+    sources: "Семейный архив, краеведческие фонды Омской области, ЦВМА.",
     family: [
+      { r: "Отец", id: "mikhail_myadin", n: "Михаил Мядин" },
+      { r: "Брат-герой", id: "alexander_myadin", n: "Александр Михайлович Мядин" },
       { r: "Супруг", id: "ivan_karp", n: "Иван Карпущенко" },
       { r: "Дочь", id: "lyudmila_karp", n: "Людмила Ивановна Карпущенко" },
       { r: "Сын", id: "dmitry_karp", n: "Дмитрий Карпущенко" }
     ],
-    questions: "Родители Анны Михайловны, точный уезд выезда из Беларуси."
+    questions: "Точный уезд выезда из Беларуси (Виленская / Минская губернии)."
+  },
+  alexander_myadin: {
+    name: "Мядин Александр Михайлович",
+    dates: "1913 — 29 июня 1944 гг.",
+    badge: "Брат прабабушки · Герой морпех",
+    facts: [
+      { b: "doc", t: "Родился в 1913 году в Омской обл., Называевский р-н (Милютинский с/с / д. Кочковатка)" },
+      { b: "doc", t: "Лейтенант, командир взвода 3-го отдельного батальона 3-й бригады морской пехоты КБФ" },
+      { b: "doc", t: "Погиб в бою 29 июня 1944 года в Карелии (Олонецкий р-н, с. Видлица)" },
+      { b: "doc", t: "Родной брат прабабушки Анны Михайловны Мядиной, сын Михаила Мядина" }
+    ],
+    sources: "ЦВМА (донесение 3 бр. морской пехоты), ОБД «Память народа» (obd-pobeda.karelia.ru).",
+    family: [
+      { r: "Отец", id: "mikhail_myadin", n: "Михаил Мядин" },
+      { r: "Сестра", id: "anna_myadina", n: "Анна Михайловна Мядина" }
+    ],
+    questions: "Наградные листы в ЦВМА."
+  },
+  mikhail_myadin: {
+    name: "Михаил Мядин",
+    dates: "Беларусь → д. Кочковатка / Милютино",
+    badge: "Прапрадед Дениса · Находка 2026",
+    facts: [
+      { b: "doc", t: "Отец Анны Михайловны Мядиной и лейтенанта Александра Михайловича Мядина" },
+      { b: "pub", t: "Глава семьи белорусских переселенцев первой волны (1896 г., Тюкалинский уезд)" },
+      { b: "hyp", t: "Фамилия Мядин указывает на происхождение из района озера и города Мядель" }
+    ],
+    sources: "ГИАОО, донесения ЦВМА по сыну Александру, краеведческие реестры.",
+    family: [
+      { r: "Дочь", id: "anna_myadina", n: "Анна Михайловна Мядина" },
+      { r: "Сын", id: "alexander_myadin", n: "Александр Михайлович Мядин" }
+    ],
+    questions: "Точная волость и уезд в Беларуси."
   },
   ivan_vas_nech: {
     name: "Нечаев Иван Васильевич (младший)",
@@ -1826,15 +1901,15 @@ const personStore = {
     questions: "Точная дата и место рождения в Сибири."
   },
   alevtina_livensi: {
-    name: "Алевтина Михайловна Ли-Вен-Си",
+    name: "Алевтина Михайловна Ли-Вен-Си (Ливенси)",
     dates: "Новосибирск (Академгородок)",
     badge: "Сестра бабушки · Учёный-генетик",
     facts: [
       { b: "doc", t: "Советский учёный, генетик и селекционер Института цитологии и генетики СО АН СССР" },
-      { b: "doc", t: "Соавтор фундаментальных научных трудов по радиационному мутагенезу пшеницы с академиком П. К. Шкварниковым" },
+      { b: "doc", t: "Соавтор фундаментального труда с академиком П. К. Шкварниковым (1963 г.): «Варьирование частоты радиационных повреждений хромосом в первичных корешках семян пшеницы»" },
       { b: "pub", t: "Родная дочь модельера Михаила Ли-Вен-Си, сестра бабушки Лидии Михайловны" }
     ],
-    sources: "Газета «Наука в Сибири» (sbras.info), архивы ИЦиГ СО РАН (icgbio.ru).",
+    sources: "Архивы ИЦиГ СО РАН (icgbio.ru), газета «Наука в Сибири» (sbras.info).",
     family: [
       { r: "Отец", id: "mikhail_livensi", n: "Михаил Ли-Вен-Си" },
       { r: "Мать", id: "antonina_tokm", n: "Антонина Валентиновна Токмакова" },

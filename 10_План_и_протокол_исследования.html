@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10 · Протокол и план перекрёстной проверки фактов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8f6f0;
+    --surface: #ffffff;
+    --surface-alt: #f1ede4;
+    --ink: #221d17;
+    --ink-muted: #6a6254;
+    --ink-soft: #8f8576;
+    --border: #dcd4c3;
+    --border-light: #eae3d5;
+    
+    --gold: #b3822a;
+    --gold-bg: #fcf6e8;
+    --gold-border: #e6cb91;
+
+    --war: #9e3831;
+    --war-bg: #faeded;
+    --green: #2d6a4f;
+    --green-bg: #edf7f2;
+    --blue: #2a598c;
+    --blue-bg: #eef4fa;
+    --purple: #784880;
+    --purple-bg: #f7f0f9;
+
+    --shadow-sm: 0 2px 6px rgba(40,30,20,0.05);
+    --shadow-md: 0 6px 18px rgba(40,30,20,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    line-height: 1.6;
+    padding: 30px 20px 80px;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; }
+
+  header {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow-sm);
+  }
+  .badge-top {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--gold-bg);
+    color: var(--gold);
+    border: 1px solid var(--gold-border);
+    padding: 3px 10px;
+    border-radius: 99px;
+    margin-bottom: 8px;
+  }
+  h1 { font-family: 'Cinzel', serif; font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+  .sub { font-size: 14px; color: var(--ink-muted); font-family: 'Spectral', serif; }
+
+  .nav-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13.5px;
+    margin-bottom: 18px;
+  }
+  .nav-back:hover { text-decoration: underline; }
+
+  /* Section Styling */
+  .cluster-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .cluster-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1.5px solid var(--border-light);
+  }
+  .cluster-title {
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cluster-title.blue { color: var(--blue); }
+  .cluster-title.purple { color: var(--purple); }
+
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin: 14px 0;
+    background: #fff;
+  }
+  th, td {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--surface-alt);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+  }
+
+  .status-badge {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 99px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .st-verified { background: var(--green-bg); color: var(--green); border: 1px solid #a3d9bc; }
+  .st-prob { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-border); }
+  .st-hyp { background: var(--blue-bg); color: var(--blue); border: 1px solid #b3cde8; }
+  .st-action { background: var(--war-bg); color: var(--war); border: 1px solid #f0b5b1; }
+
+  .checklist {
+    list-style: none;
+    margin: 12px 0;
+  }
+  .checklist li {
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: var(--bg);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+  }
+  .checklist input[type="checkbox"] {
+    margin-top: 4px;
+  }
+
+  .method-box {
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+  }
+  .method-box h3 { font-size: 16px; color: var(--gold); margin-bottom: 6px; }
+  .method-box p { font-size: 13.5px; color: #574618; line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a href="index.html" class="nav-back">← Вернуться на главный интерактивный портал</a>
+
+<header>
+  <div class="badge-top">Научный протокол исследования</div>
+  <h1>Протокол перекрёстной проверки фактов и дорожная карта поиска</h1>
+  <div class="sub">
+    Методология критической сверки: сопоставление открытых военных баз (1914–1918 и 1941–1945), архивных описей (ГАКО, ЦАНО, ГАТО, ГИАОО, ГАНО) и устных свидетельств живых носителей памяти.
+  </div>
+</header>
+
+<div class="method-box">
+  <h3>🎯 5 уровней доказательности в генеалогии</h3>
+  <p>
+    <b>1. Документальный факт (100%):</b> Запись подтверждена подлинным сканом акта (метрика, скан донесения ЦАМО, запись ЗАГС).<br>
+    <b>2. Прямое семейное свидетельство:</b> Подтверждено живым свидетелем события (дедушка Иван Васильевич, 84 года; мама Инга Ивановна).<br>
+    <b>3. Высоковероятное совпадение:</b> Полное совпадение редкой фамилии, места и возраста в деревне до 700 жителей (куст Кочковатки, Медведиха).<br>
+    <b>4. Научная гипотеза:</b> Восстановление отчества по имени ребёнка или топонимике (Лукьян Виноградов, белорусский Мядель).<br>
+    <b>5. Семейное предание в проверке:</b> Устное воспоминание, требующее подтверждения актовой записью.
+  </p>
+</div>
+
+<!-- КЛАСТЕР 1 -->
+<div class="cluster-card">
+  <div class="cluster-header">
+    <div class="cluster-title blue">
+      <span>1. Кластер «Нечаевы и Шибаевы»</span>
+      <span class="status-badge st-verified">Костромская земля</span>
+    </div>
+    <span style="font-size:12.5px; color:var(--ink-soft);">Приходы: с. Солтаново, с. Николо-Полома</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Персона и факт</th>
+        <th>Что сопоставляем (источники)</th>
+        <th>Уровень</th>
+        <th>Итог проверки и следующий шаг</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Нечаев Иван Васильевич (1942 г.р.)</b></td>
+        <td>Свидетельство дочери Инги Ивановны, сопоставление с возрастом матери Ольги Шибаевой (1899 г.р., родила в 43 года).</td>
+        <td><span class="status-badge st-verified">Уровень 2</span></td>
+        <td><b>Сходится идеально.</b> Дед жив (84 года). Провести интервью по опроснику <a href="09_Вопросы_деду.html">09_Вопросы_деду.html</a>.</td>
+      </tr>
+      <tr>
+        <td><b>Нечаев Иван Васильевич (1924–1943)</b></td>
+        <td>ЦАМО (48 омсб 1 гв. мбр, д. Глебово, мать Ольга Николаевна).</td>
+        <td><span class="status-badge st-verified">Уровень 1</span></td>
+        <td><b>100% доказано сканом.</b> Старший брат деда. Похоронен: Ростовская обл., х. Верхне-Грачики.</td>
+      </tr>
+      <tr>
+        <td><b>Василий Ефимович Нечаев (1892 г.р.)</b></td>
+        <td>Метрики Троицкой церкви с. Солтаново (ГАКО, ф. 56 оп. 13/18).</td>
+        <td><span class="status-badge st-prob">Уровень 3</span></td>
+        <td>Запросить в ГАКО архивную справку о рождении (1892 г.) и браке с Ольгой Шибаевой (1920–1923 гг.).</td>
+      </tr>
+      <tr>
+        <td><b>Ольга Николаевна Шибаева (1899–1976)</b></td>
+        <td>Метрики прихода Николо-Полома (Кологривский уезд).</td>
+        <td><span class="status-badge st-prob">Уровень 3</span></td>
+        <td>Установить имя деда Николая Шибаева через метрику о рождении за 1899 г. в ГАКО.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- КЛАСТЕР 2 -->
+<div class="cluster-card">
+  <div class="cluster-header">
+    <div class="cluster-title blue">
+      <span>2. Кластер «Виноградовы»</span>
+      <span class="status-badge st-verified">Ковернино · Нея · Венгрия</span>
+    </div>
+    <span style="font-size:12.5px; color:var(--ink-soft);">Приходы: с. Ковернино, с. Коткишево</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Персона и факт</th>
+        <th>Что сопоставляем (источники)</th>
+        <th>Уровень</th>
+        <th>Итог проверки и следующий шаг</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Тамара Ивановна Виноградова (Нечаева)</b></td>
+        <td>Семейные свидетельства Инги Ивановны, похоронка 1945 г. (3 детей).</td>
+        <td><span class="status-badge st-verified">Уровень 2</span></td>
+        <td><b>Имя подтверждено.</b> Бабушка Дениса по матери.</td>
+      </tr>
+      <tr>
+        <td><b>Иван Лукьянович Виноградов (1910–1945)</b></td>
+        <td>ЦАМО РФ (донесение 2-й гв. мехбригады, д. Голянина Ковернинской вол.).</td>
+        <td><span class="status-badge st-verified">Уровень 1</span></td>
+        <td><b>100% доказано.</b> Погиб 22.01.1945 у с. Капольнашньек (Венгрия). Подать запрос в Посольство РФ в Будапеште на мемориальную плиту.</td>
+      </tr>
+      <tr>
+        <td><b>Лукьян (Лука) Виноградов</b></td>
+        <td>Метрики прихода с. Ковернино (ЦАНО, ф. 60).</td>
+        <td><span class="status-badge st-hyp">Уровень 4</span></td>
+        <td>Найти метрику о рождении сына Ивана за 1910 г. в ЦАНО для фиксации имени прапрадеда и прапрабабушки.</td>
+      </tr>
+      <tr>
+        <td><b>Анастасия Демидовна Виноградова</b></td>
+        <td>Справка о браке с Иваном Лукьяновичем (Нейский отдел ЗАГС).</td>
+        <td><span class="status-badge st-prob">Уровень 3</span></td>
+        <td>Запросить справку о браке в ЗАГС г. Неи (1930-е гг.).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- КЛАСТЕР 3 -->
+<div class="cluster-card">
+  <div class="cluster-header">
+    <div class="cluster-title blue">
+      <span>3. Кластер «Карпущенко и Мядины»</span>
+      <span class="status-badge st-verified">Сибирь · Белорусская Кочковатка (1896 г.)</span>
+    </div>
+    <span style="font-size:12.5px; color:var(--ink-soft);">Приход: с. Лорис-Меликово (Тюкалинский уезд)</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Персона и факт</th>
+        <th>Что сопоставляем (источники)</th>
+        <th>Уровень</th>
+        <th>Итог проверки и следующий шаг</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Людмила Ивановна Карпущенко (род. 10.03.1937)</b></td>
+        <td>Актовые книги ЗАГС Называевского района Омской обл.</td>
+        <td><span class="status-badge st-action">Требует запроса</span></td>
+        <td><b>Ключевой шаг!</b> Заказать справку о рождении в МФЦ с иными сведениями — узнать отчество прадеда Ивана и возраст родителей.</td>
+      </tr>
+      <tr>
+        <td><b>Анна Михайловна Мядина (ум. 2002)</b></td>
+        <td>База ГИАОО (ф. Р-580), переселенческие списки 1896 г.</td>
+        <td><span class="status-badge st-verified">Уровень 1</span></td>
+        <td>Белорусский корень подтверждён топонимикой (г./оз. Мядель).</td>
+      </tr>
+      <tr>
+        <td><b>Родовой клан Карпущенко (д. Кочковатка)</b></td>
+        <td>База ГИАОО: Вера Дмитриевна (1921), Вера Петровна (1923), Тимофей Яковлевич (1912).</td>
+        <td><span class="status-badge st-prob">Уровень 3</span></td>
+        <td>Все Карпущенко деревни — потомки 1–2 братьев-переселенцев 1896 года. Найти списки переселенцев в Тобольском архиве (ГБУТО ф. И-154).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- КЛАСТЕР 4 -->
+<div class="cluster-card">
+  <div class="cluster-header">
+    <div class="cluster-title purple">
+      <span>4. Кластер «Женцовы»</span>
+      <span class="status-badge st-verified">Тверская земля · с 1627 г.</span>
+    </div>
+    <span style="font-size:12.5px; color:var(--ink-soft);">Приход: с. Медведиха (Никольская церковь), с. Ильгощи</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Персона и факт</th>
+        <th>Что сопоставляем (источники)</th>
+        <th>Уровень</th>
+        <th>Итог проверки и следующий шаг</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Николай Женцов (с. Медведиха)</b></td>
+        <td>Кандидат: Николай Иванович Женцов (род. 22.07.1921, военврач 17 тп).</td>
+        <td><span class="status-badge st-prob">Уровень 3</span></td>
+        <td>Уточнить отчество деда у Сергея Николаевича Женцова. Если «Иванович» — ветвь доказана до прадеда Ивана.</td>
+      </tr>
+      <tr>
+        <td><b>Вотчина Кирилло-Белозерского монастыря (1627 г.)</b></td>
+        <td>Писцовые книги Бежецкого уезда, ревизские сказки ГАТО (ф. 312).</td>
+        <td><span class="status-badge st-verified">Уровень 1</span></td>
+        <td>Родовое гнездо доказано документально. Поиск вглубь ведётся по метрикам FamilySearch (пленка № 691122).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- КЛАСТЕР 5 -->
+<div class="cluster-card">
+  <div class="cluster-header">
+    <div class="cluster-title purple">
+      <span>5. Кластер «Ливенси и Токмаковы»</span>
+      <span class="status-badge st-verified">Харбин · Чита · Новосибирск · Харьков</span>
+    </div>
+    <span style="font-size:12.5px; color:var(--ink-soft);">Архивы: ГАНО (Новосибирск), ГАХК (Хабаровск), ЗАГС</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Персона и факт</th>
+        <th>Что сопоставляем (источники)</th>
+        <th>Уровень</th>
+        <th>Итог проверки и следующий шаг</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Михаил Ливенси (Ли Вэнь Си / 李文西)</b></td>
+        <td>Устное свидетельство: китаец, сирота из Харбина; картотека БРЭМ (ГАХК, ф. Р-830); Ливенси Александр (1924, Чита).</td>
+        <td><span class="status-badge st-prob">Уровень 3</span></td>
+        <td>Заказать в ЗАГС Новосибирска запись о браке Михаила Ливенси и Антонины Токмаковой (1920-е гг.).</td>
+      </tr>
+      <tr>
+        <td><b>Антонина Валентиновна Токмакова</b></td>
+        <td>Устное свидетельство: сирота в 14–15 лет из Харьковской губ., «жила в людях» в Новосибирске.</td>
+        <td><span class="status-badge st-verified">Уровень 2</span></td>
+        <td>Запись о браке в Новосибирске даст точный уезд Харьковской губернии, дату рождения и девичью фамилию.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="cluster-card">
+  <h3 style="margin-bottom:14px;">📋 План ближайших действий с наивысшей отдачей</h3>
+  <ul class="checklist">
+    <li>
+      <input type="checkbox" checked disabled>
+      <div><b>Шаг 1: Опубликовать интерактивный сайт на GitHub Pages.</b> Выполнено! Сайт работает по адресу <a href="https://deprav1.github.io/rodoslovnaya/" target="_blank">deprav1.github.io/rodoslovnaya/</a>.</div>
+    </li>
+    <li>
+      <input type="checkbox">
+      <div><b>Шаг 2: Провести интервью с дедушкой Иваном Васильевичем (84 года).</b> Использовать готовый опросник <a href="09_Вопросы_деду.html">09_Вопросы_деду.html</a>.</div>
+    </li>
+    <li>
+      <input type="checkbox">
+      <div><b>Шаг 3: Заказать в МФЦ справку о рождении Карпущенко Людмилы Ивановны (10.03.1937, Называевский р-н).</b> С обязательной пометкой «с иными сведениями» — узнаем отчество прадеда Ивана и замкнем белорусский клан.</div>
+    </li>
+    <li>
+      <input type="checkbox">
+      <div><b>Шаг 4: Заказать в ЗАГС Новосибирска поиск записи о браке Михаила Ливенси и Антонины Токмаковой (1920–1930 гг.).</b> Раскроет происхождение и харбинской, и харьковской линий.</div>
+    </li>
+    <li>
+      <input type="checkbox">
+      <div><b>Шаг 5: Подать заявление в Военно-мемориальный отдел Посольства РФ в Венгрии.</b> Об увековечении имени гвардии сержанта Ивана Лукьяновича Виноградова на мемориале в с. Капольнашньек.</div>
+    </li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Семейное древо Дениса Семёнова — с уточнениями</title>
+<style>
+  :root{
+    --bg:#f7f4ee; --ink:#2b2620; --muted:#6b6255; --line:#cfc6b4;
+    --card:#ffffff;
+    --blue:#4472a8; --blue-bg:#eaf1fa;
+    --pink:#b5555a; --pink-bg:#fbeceb;
+    --gold:#b5852f; --gold-bg:#fdf3e0;
+    --green:#4b6b53; --green-bg:#eaf3ec;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Segoe UI',Arial,sans-serif}
+  .wrap{max-width:1500px;margin:0 auto;padding:28px 20px 80px}
+  h1{font-size:24px;margin:0 0 4px;text-align:center}
+  .sub{color:var(--muted);font-size:14px;text-align:center;margin-bottom:18px}
+  .legend{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font-size:12px;margin-bottom:30px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .swatch{width:14px;height:14px;border-radius:3px;display:inline-block;border-width:2px;border-style:solid}
+  .gen{margin-bottom:6px}
+  .gen-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:center;margin:26px 0 10px;font-weight:700}
+  .row{display:flex;justify-content:center;align-items:flex-start;flex-wrap:wrap;gap:14px;position:relative}
+  .unit{display:flex;align-items:center;gap:0;margin:6px 8px}
+  .couple{display:flex;align-items:center;gap:6px}
+  .plus{color:var(--muted);font-size:13px}
+  .card{
+    background:var(--card);border:2px solid #d8d0c0;border-radius:9px;
+    padding:8px 11px;min-width:150px;max-width:190px;font-size:12.5px;line-height:1.35;
+    box-shadow:0 1px 3px rgba(0,0,0,.06);
+  }
+  .card .name{font-weight:700;font-size:13px}
+  .card .meta{color:var(--muted);font-size:11.5px;margin-top:2px}
+  .card .tag{display:inline-block;font-size:9.5px;font-weight:700;padding:1px 6px;border-radius:99px;margin-top:4px;text-transform:uppercase;letter-spacing:.02em}
+  .new{border-color:var(--gold);background:var(--gold-bg)}
+  .new .tag{background:var(--gold);color:#fff}
+  .unknown{border-style:dashed;border-color:#b0a68e;background:#f5f1e8;color:#6b6255}
+  .unknown .name{color:#6b6255}
+  .warhero{border-color:var(--pink)}
+  .warhero .tag{background:var(--pink);color:#fff}
+  .living{border-color:var(--blue);background:var(--blue-bg)}
+  .confirmed .tag{background:var(--green);color:#fff}
+  .kids-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .connector-down{width:2px;height:16px;background:var(--line);margin:0 auto}
+  .branch{border:1px dashed var(--line);border-radius:12px;padding:16px 12px 10px;margin:10px auto;position:relative}
+  .branch-title{position:absolute;top:-11px;left:16px;background:var(--bg);padding:0 8px;font-size:11px;color:var(--muted);font-weight:700}
+  .siblings-note{font-size:11px;color:var(--muted);text-align:center;max-width:900px;margin:4px auto 0;font-style:italic}
+  .note-box{max-width:960px;margin:40px auto 0;background:#fff9e6;border:1px solid #d9b64b;border-radius:10px;padding:16px 20px;font-size:13px;line-height:1.6}
+  .note-box h3{margin-top:0;font-size:15px;color:#8a6d1a}
+  .note-box ul{margin:6px 0;padding-left:20px}
+  .footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Родословная Дениса Семёнова</h1>
+<div class="sub">Обновлено 17 августа 2026 — с учётом архивных находок (ОБД «Мемориал», «Память народа», книги памяти, GEDCOM)</div>
+
+<div class="legend">
+  <span><span class="swatch" style="border-color:#d8d0c0;background:#fff"></span> было в исходном дереве</span>
+  <span><span class="swatch" style="border-color:var(--gold);background:var(--gold-bg)"></span> новое / уточнено в ходе исследования</span>
+  <span><span class="swatch" style="border-color:var(--pink);background:#fff"></span> погиб на войне</span>
+  <span><span class="swatch" style="border-color:#b0a68e;background:#f5f1e8;border-style:dashed"></span> имя неизвестно / гипотеза</span>
+  <span><span class="swatch" style="border-color:var(--blue);background:var(--blue-bg)"></span> вы и родители</span>
+</div>
+
+<!-- GEN -4: прапрапрадеды по костромской линии -->
+<div class="gen-label">Прапрапрадеды и прапрапрабабки (Кострома)</div>
+<div class="row">
+  <div class="card new">
+    <div class="name">Виноградов Лукьян (Лука?)</div>
+    <div class="meta">д. Голянина, Ковернинская вол., Костромская губ.</div>
+    <span class="tag">гипотеза</span>
+    <div class="meta">отец Ивана Лукьяновича — установлен только по отчеству, имя не подтверждено документом</div>
+  </div>
+</div>
+
+<!-- GEN -3: прапрадеды -->
+<div class="gen-label">Прапрадеды и прапрабабки</div>
+<div class="row">
+  <div class="card">
+    <div class="name">Ефим Моисеевич Нечаев</div>
+    <div class="meta">Костромская губ.</div>
+  </div>
+  <div class="couple">
+    <div class="card">
+      <div class="name">Демид Арефьевич Виноградов</div>
+      <div class="meta">Костромская губ., г. Нея</div>
+    </div>
+    <span class="plus">+</span>
+    <div class="card">
+      <div class="name">Любовь Яковлевна Виноградов</div>
+      <div class="meta">Костромская губ.</div>
+    </div>
+  </div>
+</div>
+<div class="siblings-note">Дети Демида и Любови: Василий, Алексей, Дионисий (г. Нея), Александра (г. Нея), Таисья (г. Нея), Анастасия Демидовна (см. ниже)</div>
+
+<!-- GEN -2: прадеды -->
+<div class="gen-label">Прадеды и прабабки</div>
+<div class="row">
+  <div class="branch">
+    <div class="branch-title">Омск — Семёновы</div>
+    <div class="card">
+      <div class="name">Пётр Семёнов</div>
+      <div class="meta">Омская обл.</div>
+    </div>
+  </div>
+
+  <div class="branch">
+    <div class="branch-title">Омск / Называевский р-н — Карпущенко</div>
+    <div class="couple">
+      <div class="card new">
+        <div class="name">Иван Карпущенко</div>
+        <div class="meta">Омская обл., Называевский р-н</div>
+        <span class="tag">уточнено</span>
+        <div class="meta">вероятная родина — д. Кочковатка (Лорис-Меликовский с/с): там же родовой куст Карпущенко (см. врезку)</div>
+      </div>
+      <span class="plus">+</span>
+      <div class="card new">
+        <div class="name">Анна Михайловна Мядина</div>
+        <div class="meta">ум. 21.08.2002, г. Омск</div>
+        <span class="tag">новое</span>
+        <div class="meta">девичья фамилия найдена в GEDCOM; фамилия белорусского происхождения (Мядель)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="branch">
+    <div class="branch-title">Кострома — Нечаевы</div>
+    <div class="couple">
+      <div class="card">
+        <div class="name">Василий Ефимович Нечаев</div>
+        <div class="meta">1892 — ?, д. Глебово, Солтановская вол., Кологривский у.</div>
+      </div>
+      <span class="plus">+</span>
+      <div class="card new">
+        <div class="name">Ольга Николаевна Шибаева</div>
+        <div class="meta">1899 — 1976</div>
+        <span class="tag">уточнено</span>
+        <div class="meta">родом из Николо-Поломской вол. (тот же Кологривский у.); девичья фамилия — из GEDCOM</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="branch">
+    <div class="branch-title">Кострома → Венгрия — Виноградовы</div>
+    <div class="couple">
+      <div class="card new warhero">
+        <div class="name">Иван Лукьянович Виноградов</div>
+        <div class="meta">1910, д. Голянина, Ковернинский р-н — 22.01.1945, погиб под Будапештом</div>
+        <span class="tag">подтверждено сканом</span>
+        <div class="meta">гв. сержант, 2 гв. мехбригада; место рождения прочитано на подлиннике донесения</div>
+      </div>
+      <span class="plus">+</span>
+      <div class="card">
+        <div class="name">Анастасия Демидовна Виноградова</div>
+        <div class="meta">Костромская обл.</div>
+      </div>
+    </div>
+    <div class="siblings-note">По тексту похоронки у них было трое детей — в дереве известно двое (дочь и Валентин)</div>
+  </div>
+</div>
+
+<!-- GEN -1: деды -->
+<div class="gen-label">Деды и бабки</div>
+<div class="row">
+  <div class="couple">
+    <div class="card">
+      <div class="name">Анатолий Семёнов</div>
+      <div class="meta">? — 22.02.2012, г. Омск</div>
+    </div>
+    <span class="plus">+</span>
+    <div class="card">
+      <div class="name">Людмила Карпущенко</div>
+      <div class="meta">10.03.1937, Называевский р-н</div>
+    </div>
+  </div>
+
+  <div class="couple">
+    <div class="card new confirmed">
+      <div class="name">Нечаев Иван Васильевич</div>
+      <div class="meta">род. 1942 · жив, 84 года</div>
+      <span class="tag">подтверждено</span>
+      <div class="meta">сын Василия Ефимовича и Ольги Николаевны; имя и отчество подтверждены мамой Ингой Ивановной</div>
+    </div>
+    <span class="plus">+</span>
+    <div class="card new confirmed">
+      <div class="name">Тамара Ивановна Виноградова</div>
+      <div class="meta">в браке Нечаева</div>
+      <span class="tag">имя найдено</span>
+      <div class="meta">дочь Ивана Лукьяновича Виноградова и Анастасии Демидовны; бабушка Дениса</div>
+    </div>
+  </div>
+</div>
+
+<div class="note-box" style="margin-top:6px">
+  <h3>★ Главный живой свидетель рода</h3>
+  <p>Дед <strong>Нечаев Иван Васильевич</strong> жив, ему 84 года (род. 1942 г.). Он застал мать Ольгу Николаевну (ум. 1976) и всех братьев с сёстрами. В архивах также найден <strong>Нечаев Иван Васильевич, 1924 г.р.</strong> (1-я гв. мехбригада, погиб в феврале 1943 г.) — вероятный старший брат деда, в память о котором и был назван дед (либо старший брат-погодок/тёзка). Точные детали подготовлены в файле «09_Вопросы_деду.html».</p>
+</div>
+
+<!-- Братья и сёстры дедов -->
+<div class="gen-label">Братья и сёстры (великие дядья и тёти)</div>
+<div class="row">
+  <div class="card"><div class="name">Геннадий Семёнов</div><div class="meta">брат Анатолия</div></div>
+  <div class="card"><div class="name">Вера Семёнова</div><div class="meta">? — 2013, г. Уфа</div></div>
+  <div class="card"><div class="name">Дмитрий Карпущенко</div><div class="meta">брат Людмилы</div></div>
+  <div class="card"><div class="name">Мария Нечаева</div><div class="meta">1924</div></div>
+  <div class="card new warhero">
+    <div class="name">Нечаев Иван Васильевич</div>
+    <div class="meta">1924 — 11–15.02.1943</div>
+    <span class="tag">новый — погиб на войне</span>
+    <div class="meta">1-я гв. мехбригада; умер от ран, похоронен в Ростовской обл., х. Верхне-Грачики</div>
+  </div>
+  <div class="card"><div class="name">Алексей Нечаев</div><div class="meta">1927</div></div>
+  <div class="card"><div class="name">Валентина Нечаева</div><div class="meta">1934</div></div>
+  <div class="card"><div class="name">Валентин Виноградов</div><div class="meta">сын Ивана Лукьяновича</div></div>
+  <div class="card unknown"><div class="name">? третий ребёнок Виноградовых</div><div class="meta">упомянут в тексте похоронки, имя не установлено</div></div>
+</div>
+
+<!-- GEN 0: родители -->
+<div class="gen-label">Родители</div>
+<div class="row">
+  <div class="couple">
+    <div class="card living">
+      <div class="name">Александр Семёнов</div>
+    </div>
+    <span class="plus">+</span>
+    <div class="card living">
+      <div class="name">Инга Ивановна Семёнова (Нечаева)</div>
+      <div class="meta">5.05.1968, г. Омск</div>
+    </div>
+  </div>
+</div>
+
+<!-- GEN 1: вы -->
+<div class="gen-label">Заказчик</div>
+<div class="row">
+  <div class="card living" style="border-width:3px">
+    <div class="name">Денис Семёнов</div>
+    <div class="meta">6.05.1990, г. Омск</div>
+  </div>
+</div>
+
+<div class="note-box">
+  <h3>Вероятная, но пока не подтверждённая родня — родовые кусты по фамилиям</h3>
+  <ul>
+    <li><strong>Карпущенко из д. Кочковатка</strong> (Лорис-Меликовский с/с, Называевский р-н): Тимофей Яковлевич (1912, ст. сержант, дошёл до Кёнигсберга и Японии), подполковник Павел Петрович (1918), Илья Филимонович (1916, погиб 1941), Василий Андреевич (1919), Иван Константинович (1922), Татьяна Петровна (1921). Отчество прадеда Ивана Карпущенко неизвестно — совпадёт с одним из них, если родственники вспомнят.</li>
+    <li><strong>Нечаев Александр Иванович</strong>, 1925, д. Турилово (тот же Солтановский с/с, что и Глебово) — отец тоже Иван, но неясно, тот ли самый.</li>
+    <li><strong>Виноградовы из Ковернинского района</strong> (59 записей на «Память народа», в т.ч. целый куст из д. Максимово) — точных совпадений имени/отчества с Лукьяном (отцом Ивана Лукьяновича) не найдено, но статистика показывает, что это его земляки-однофамильцы, весьма вероятно родня.</li>
+  </ul>
+</div>
+
+<div class="footer">Схема составлена на основе GEDCOM-экспорта MyHeritage и архивных находок в ОБД «Мемориал», «Память народа», книгах памяти Костромской и Омской областей. Пунктирные и золотые рамки — зоны, требующие дальнейшей проверки.</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Родословное древо: Семёновы и Женцовы</title>
+<style>
+  :root{
+    --bg:#f6f3ec; --ink:#241f19; --muted:#6f6759; --line:#c3b9a4;
+    --card:#ffffff;
+    --dad:#3f6d9e; --dad-bg:#eef4fb;
+    --mom:#a8515c; --mom-bg:#fbeef0;
+    --m-dad:#5a6b8c; --m-dad-bg:#eef1f7;
+    --m-mom:#7a5a86; --m-mom-bg:#f5eff7;
+    --gold:#a9761b; --gold-bg:#fdf4e2;
+    --war:#8f3a34; --war-bg:#f9ebe9;
+    --green:#4b6b53; --green-bg:#eaf3ec;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:'Segoe UI',system-ui,Arial,sans-serif;line-height:1.45}
+  .wrap{max-width:1120px;margin:0 auto;padding:30px 20px 90px}
+  h1{font-size:26px;margin:0 0 6px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:22px}
+
+  .nav-tabs{display:flex;gap:10px;margin-bottom:24px;border-bottom:2px solid var(--line);padding-bottom:12px}
+  .tab-btn{background:#fff;border:1px solid var(--line);border-radius:8px;padding:9px 18px;font-size:14px;
+           font-weight:700;color:var(--ink);text-decoration:none;cursor:pointer;transition:all .15s}
+  .tab-btn:hover{background:#ede7db}
+  .tab-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+  .howto{background:#fff;border:1px solid var(--line);border-radius:10px;
+         padding:14px 18px;font-size:13px;margin-bottom:26px}
+  .howto b{color:var(--ink)}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;margin-top:10px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .sw{width:24px;height:14px;border-radius:3px;border:2px solid;display:inline-block}
+
+  h2{font-size:20px;margin:40px 0 4px;padding-bottom:7px;border-bottom:2px solid}
+  h2.denis{color:#3f6d9e;border-color:#3f6d9e}
+  h2.margo{color:#7a5a86;border-color:#7a5a86}
+  h2.dad{color:var(--dad);border-color:var(--dad)}
+  h2.mom{color:var(--mom);border-color:var(--mom)}
+  h2.mdad{color:var(--m-dad);border-color:var(--m-dad)}
+  h2.mmom{color:var(--m-mom);border-color:var(--m-mom)}
+  .h2note{font-size:12.5px;color:var(--muted);margin:0 0 14px}
+
+  /* ---- дерево с линиями ---- */
+  .tree, .tree ul{list-style:none;margin:0;padding:0}
+  .tree ul{margin-left:16px;padding-left:26px;border-left:2px solid var(--line)}
+  .tree li{position:relative;padding:7px 0 7px 16px}
+  .tree ul > li::before{
+    content:'';position:absolute;left:-26px;top:26px;
+    width:26px;height:2px;background:var(--line);
+  }
+  .tree ul > li:last-child::after{
+    content:'';position:absolute;left:-28px;top:28px;bottom:0;
+    width:5px;background:var(--bg);
+  }
+
+  .p{display:inline-block;background:var(--card);border:2px solid #d5ccba;
+     border-radius:9px;padding:8px 13px;min-width:260px;max-width:560px;
+     box-shadow:0 1px 2px rgba(0,0,0,.05)}
+  .rel{font-size:11px;text-transform:uppercase;letter-spacing:.05em;
+       color:var(--muted);font-weight:700;margin-bottom:1px}
+  .nm{font-weight:700;font-size:14.5px}
+  .dt{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .ex{font-size:12px;color:#5a5245;margin-top:5px;padding-top:5px;border-top:1px dotted var(--line)}
+
+  .p.dadline{border-color:var(--dad);background:var(--dad-bg)}
+  .p.momline{border-color:var(--mom);background:var(--mom-bg)}
+  .p.mdadline{border-color:var(--m-dad);background:var(--m-dad-bg)}
+  .p.mmomline{border-color:var(--m-mom);background:var(--m-mom-bg)}
+  .p.gold{border-color:var(--gold);background:var(--gold-bg)}
+  .p.war{border-color:var(--war);background:var(--war-bg)}
+  .p.green{border-color:var(--green);background:var(--green-bg)}
+  .p.unk{border-style:dashed;border-color:#a89e88;background:#f2eee4}
+  .p.me{border-width:3px;border-color:#2f2a22;background:#fffdf7}
+
+  .b{display:inline-block;font-size:9.5px;font-weight:700;padding:2px 7px;
+     border-radius:99px;margin-left:7px;vertical-align:2px;
+     text-transform:uppercase;letter-spacing:.03em;color:#fff}
+  .b-gold{background:var(--gold)}
+  .b-war{background:var(--war)}
+  .b-unk{background:#8c8271}
+  .b-ok{background:#4b6b53}
+  .b-margo{background:#7a5a86}
+
+  .sibs{font-size:12.5px;color:var(--muted);margin-top:6px;
+        background:#faf7f0;border:1px dashed var(--line);border-radius:7px;
+        padding:7px 11px;max-width:560px}
+  .sibs b{color:#4a4438;font-weight:600}
+
+  .box{background:#fff9e6;border:1px solid #d3ae44;border-radius:10px;
+       padding:16px 20px;font-size:13.5px;margin:34px 0 0}
+  .box h3{margin:0 0 8px;font-size:15.5px;color:#7d6217}
+  .box p{margin:7px 0}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px;background:#fff}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:#f0ebe0;font-size:11.5px;text-transform:uppercase;
+     letter-spacing:.03em;color:var(--muted)}
+  .ft{margin-top:44px;padding-top:14px;border-top:1px solid var(--line);
+      color:var(--muted);font-size:12.5px}
+  .section-divider{margin:50px 0 20px;border-top:3px double var(--line)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Родословное древо: Семёновы и Женцовы</h1>
+<div class="sub">Полная интерактивная схема двух семейств. Собрано и обновлено 17 августа 2026.</div>
+
+<div class="howto">
+  <b>Как читать:</b> Дерево растёт слева направо. Чем правее персона — тем глубже в историю поколений.
+  Отступ и соединительная линия означают родительскую связь. Братские и сестринские связи указаны в серых сносках под персонами.
+  <div class="legend">
+    <span><span class="sw" style="border-color:var(--dad);background:var(--dad-bg)"></span> линия отца Дениса</span>
+    <span><span class="sw" style="border-color:var(--mom);background:var(--mom-bg)"></span> линия матери Дениса</span>
+    <span><span class="sw" style="border-color:var(--m-dad);background:var(--m-dad-bg)"></span> линия отца Маргариты</span>
+    <span><span class="sw" style="border-color:var(--m-mom);background:var(--m-mom-bg)"></span> линия матери Маргариты</span>
+    <span><span class="sw" style="border-color:var(--gold);background:var(--gold-bg)"></span> подтверждено / уточнено</span>
+    <span><span class="sw" style="border-color:var(--war);background:var(--war-bg)"></span> погиб на фронте</span>
+    <span><span class="sw" style="border-color:#a89e88;background:#f2eee4;border-style:dashed"></span> в поиске / гипотеза</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- 1. ДРЕВО ДЕНИСА СЕМЁНОВА -->
+<!-- ========================================================================= -->
+<h2 class="denis" id="denis-tree">🌳 Древо Дениса Семёнова</h2>
+<p class="h2note">Две главные ветви: Сибирь (Омск / Называевск — Семёновы, Карпущенко, Мядины) и Кострома/Поволжье (Нечаевы, Шибаевы, Виноградовы).</p>
+
+<div class="p me">
+  <div class="rel">исходная персона</div>
+  <div class="nm">Денис Семёнов</div>
+  <div class="dt">род. 6 мая 1990, г. Омск</div>
+</div>
+
+<!-- ЛИНИЯ ОТЦА ДЕНИСА -->
+<h2 class="dad">↑ Линия отца — Семёновы, Карпущенко и Мядины (Омская земля)</h2>
+<p class="h2note">Сибирская ветвь: основана белорусскими переселенцами волны 1896 года (д. Кочковатка).</p>
+
+<ul class="tree">
+  <li>
+    <div class="p dadline">
+      <div class="rel">отец</div>
+      <div class="nm">Александр Семёнов</div>
+    </div>
+    <ul>
+      <li>
+        <div class="p dadline">
+          <div class="rel">дед (отец отца)</div>
+          <div class="nm">Анатолий Семёнов</div>
+          <div class="dt">ум. 22 февраля 2012, г. Омск</div>
+        </div>
+        <div class="sibs">Его брат и сестра: <b>Геннадий Семёнов</b> · <b>Вера Семёнова</b> (ум. 2013, г. Уфа)</div>
+        <ul>
+          <li>
+            <div class="p dadline">
+              <div class="rel">прадед</div>
+              <div class="nm">Пётр Семёнов</div>
+              <div class="dt">Омская область</div>
+              <div class="ex">Жена Петра в исходном древе не зафиксирована. Отчество устанавливается по ЗАГС.</div>
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="p dadline">
+          <div class="rel">бабушка (мать отца)</div>
+          <div class="nm">Людмила Карпущенко</div>
+          <div class="dt">род. 10 марта 1937, Омская обл., Называевский р-н</div>
+          <div class="ex">В браке — Семёнова. Родилась в Называевском районе (д. Кочковатка).</div>
+        </div>
+        <div class="sibs">Её брат: <b>Дмитрий Карпущенко</b></div>
+        <ul>
+          <li>
+            <div class="p gold">
+              <div class="rel">прадед</div>
+              <div class="nm">Иван Карпущенко <span class="b b-gold">уточнено</span></div>
+              <div class="dt">Омская обл., Называевский район</div>
+              <div class="ex">Родовой очаг — <b>д. Кочковатка</b> (основана в 1896 г. белорусами). В селе найден родной клан: Тимофей (1912), Павел (1918), Илья (1916), Василий (1919).</div>
+            </div>
+          </li>
+          <li>
+            <div class="p gold">
+              <div class="rel">прабабушка</div>
+              <div class="nm">Анна Михайловна Мядина <span class="b b-gold">новое</span></div>
+              <div class="dt">ум. 21 августа 2002, г. Омск</div>
+              <div class="ex">Девичья фамилия <b>Мядина</b> восходит к белорусскому топониму (Мядель / Мядзель). Переселенка первой волны.</div>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<!-- ЛИНИЯ МАТЕРИ ДЕНИСА -->
+<h2 class="mom">↑ Линия матери — Нечаевы, Шибаевы и Виноградовы (Костромская земля)</h2>
+<p class="h2note">Костромская ветвь с документальной историей от XVII века (д. Глебово, с. Николо-Полома, д. Галанино).</p>
+
+<ul class="tree">
+  <li>
+    <div class="p momline">
+      <div class="rel">мать</div>
+      <div class="nm">Инга Ивановна Семёнова (Нечаева)</div>
+      <div class="dt">род. 5 мая 1968, г. Омск · Омский госуниверситет</div>
+      <div class="ex">Создатель исходного древа. Её отчество <b>Ивановна</b> дало ключ к имени деда. Симметрия: оба деда носили имя Иван.</div>
+    </div>
+
+    <ul>
+      <!-- ДЕД НЕЧАЕВ -->
+      <li>
+        <div class="p green">
+          <div class="rel">дед (отец матери)</div>
+          <div class="nm">Нечаев Иван Васильевич <span class="b b-ok">жив · 84 года</span></div>
+          <div class="dt">род. 1942 · жив</div>
+          <div class="ex"><b>Главный свидетель истории рода.</b> Сын Василия Ефимовича и Ольги Николаевны. Застал мать Ольгу (ум. 1976) и всех братьев и сестёр.</div>
+        </div>
+        <div class="sibs">Его братья и сёстры: <b>Мария</b> (1924) · <b>Иван Васильевич</b> (1924–1943, погиб под Ростовом — см. ниже) · <b>Алексей</b> (1927) · <b>Валентина</b> (1934)</div>
+
+        <ul>
+          <li>
+            <div class="p momline">
+              <div class="rel">прадед</div>
+              <div class="nm">Василий Ефимович Нечаев</div>
+              <div class="dt">род. 1892 · д. Глебово, Солтановская вол., Кологривский уезд</div>
+              <div class="ex">Приход — Троицкая церковь с. Солтаново (1790 г.). Деревня Глебово зафиксирована в писцовых книгах 1617 года.</div>
+            </div>
+            <ul>
+              <li>
+                <div class="p momline">
+                  <div class="rel">прапрадед</div>
+                  <div class="nm">Ефим Моисеевич Нечаев</div>
+                  <div class="dt">Костромская губерния</div>
+                  <div class="ex">Его отца звали Моисей (глубочайшая точка нечаевской линии по отчеству).</div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <div class="p gold">
+              <div class="rel">прабабушка</div>
+              <div class="nm">Ольга Николаевна Шибаева <span class="b b-gold">уточнено</span></div>
+              <div class="dt">1899 — 1976 · похоронена в д. Глебово</div>
+              <div class="ex">Родом из Николо-Поломской волости Кологривского уезда (~30 км). Отца звали Николай.</div>
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <!-- БАБУШКА ВИНОГРАДОВА -->
+      <li>
+        <div class="p green">
+          <div class="rel">бабушка (мать матери)</div>
+          <div class="nm">Тамара Ивановна Виноградова <span class="b b-ok">имя найдено</span></div>
+          <div class="dt">в браке Нечаева · дочь фронтовика</div>
+          <div class="ex">Дочь гвардии сержанта Ивана Лукьяновича Виноградова и Анастасии Демидовны. Закрыт главный пробел в древе!</div>
+        </div>
+        <div class="sibs">Её брат: <b>Валентин Виноградов</b> · и <b>третий ребёнок</b> (упомянут в похоронке 1945 г.)</div>
+
+        <ul>
+          <li>
+            <div class="p war">
+              <div class="rel">прадед</div>
+              <div class="nm">Иван Лукьянович Виноградов <span class="b b-war">погиб</span> <span class="b b-ok">подтверждено</span></div>
+              <div class="dt">1910, д. Галанино (Голянина), Ковернинский р-н — 22.01.1945, Венгрия</div>
+              <div class="ex">Гвардии сержант, 2-я гв. мехбригада 1-го гв. мехкорпуса. Погиб в бою за освобождение Будапешта (с. Капольнашньек). Место рождения подтверждено подлинным сканом донесения ЦАМО.</div>
+            </div>
+            <ul>
+              <li>
+                <div class="p unk">
+                  <div class="rel">прапрадед</div>
+                  <div class="nm">Виноградов Лукьян (Лука?) <span class="b b-unk">гипотеза</span></div>
+                  <div class="dt">д. Галанино, Ковернинская вол.</div>
+                  <div class="ex">Имя вычислено по отчеству сына. Метрическая запись — в приходе с. Ковернино.</div>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <div class="p momline">
+              <div class="rel">прабабушка</div>
+              <div class="nm">Анастасия Демидовна Виноградова</div>
+              <div class="dt">Костромская область, г. Нея</div>
+              <div class="ex">Девичья фамилия — Виноградова (брак однофамильцев).</div>
+            </div>
+            <div class="sibs">Её братья и сёстры: <b>Василий</b> · <b>Алексей</b> · <b>Дионисий</b> (г. Нея) · <b>Александра</b> · <b>Таисья</b></div>
+            <ul>
+              <li>
+                <div class="p momline">
+                  <div class="rel">прапрадед</div>
+                  <div class="nm">Демид Арефьевич Виноградов</div>
+                  <div class="dt">Костромская обл., г. Нея</div>
+                  <div class="ex">Приход — Николаевская церковь с. Коткишево Кологривского уезда. Отца звали Арефий.</div>
+                </div>
+              </li>
+              <li>
+                <div class="p momline">
+                  <div class="rel">прапрабабушка</div>
+                  <div class="nm">Любовь Яковлевна</div>
+                  <div class="dt">Костромская область · девичья фамилия в поиске</div>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div class="section-divider"></div>
+
+<!-- ========================================================================= -->
+<!-- 2. ДРЕВО МАРГАРИТЫ ЖЕНЦОВОЙ -->
+<!-- ========================================================================= -->
+<h2 class="margo" id="margo-tree">🌸 Древо Маргариты Женцовой</h2>
+<p class="h2note">Две уникальные ветви: монастырские крестьяне Тверского края (село Медведиха с 1627 г.) и союз сирот в Сибири 1920-х (Харбин + Харьковская губерния).</p>
+
+<div class="p me">
+  <div class="rel">исходная персона</div>
+  <div class="nm">Женцова Маргарита Сергеевна <span class="b b-margo">Тверь</span></div>
+  <div class="dt">род. 11 июля 1999, г. Тверь</div>
+</div>
+
+<!-- ЛИНИЯ ОТЦА МАРГАРИТЫ -->
+<h2 class="mdad">↑ Линия отца — Женцовы (село Медведиха, Тверская земля)</h2>
+<p class="h2note">Монастырские крестьяне Кирилло-Белозерского монастыря (1627 г.), затем государственные крестьяне Бежецкого уезда.</p>
+
+<ul class="tree">
+  <li>
+    <div class="p mdadline">
+      <div class="rel">отец</div>
+      <div class="nm">Женцов Сергей Николаевич</div>
+      <div class="dt">родом из с. Медведиха / г. Тверь</div>
+      <div class="ex">Родовой очаг фамилии Женцов — село Медведиха Рамешковского района (Ильгощинская волость Бежецкого уезда).</div>
+    </div>
+    <ul>
+      <li>
+        <div class="p gold">
+          <div class="rel">дед (отец отца)</div>
+          <div class="nm">Женцов Николай ? <span class="b b-gold">кандидат найден</span></div>
+          <div class="dt">с. Медведиха · вероятный кандидат: <b>Николай Иванович</b> (род. 22.07.1921)</div>
+          <div class="ex">В архивах найден военврач <b>Женцов Николай Иванович (1921 г.р.)</b>, 17-й танковый полк 9-й танковой дивизии. В том же селе: Петр Николаевич (1914), Иван Никитич (1911).</div>
+        </div>
+        <ul>
+          <li>
+            <div class="p unk">
+              <div class="rel">прадед</div>
+              <div class="nm">Женцов Иван / Никита <span class="b b-unk">в поиске</span></div>
+              <div class="dt">с. Медведиха, Бежецкий уезд Тверской губ.</div>
+              <div class="ex">Приход до 1905 г. — с. Ильгощи; с 1905 г. — Никольская церковь с. Медведиха. Метрики оцифрованы на FamilySearch.</div>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<!-- ЛИНИЯ МАТЕРИ МАРГАРИТЫ -->
+<h2 class="mmom">↑ Линия матери — Рыжиковы, Ливенси (Харбин) и Токмаковы (Харьков)</h2>
+<p class="h2note">Поразительная история: китайский сирота из Харбина (Ли Вэнь Си) и украинская сирота из Харькова встретились в Новосибирске 1920-х годов.</p>
+
+<ul class="tree">
+  <li>
+    <div class="p mmomline">
+      <div class="rel">мать</div>
+      <div class="nm">Рыжикова Виктория Николаевна</div>
+      <div class="dt">г. Тверь / Сибирь</div>
+    </div>
+    <ul>
+      <li>
+        <div class="p mmomline">
+          <div class="rel">дед (отец матери)</div>
+          <div class="nm">Рыжиков Николай ?</div>
+          <div class="dt">место рождения уточняется</div>
+          <div class="ex">Муж Лидии Михайловны Ливенси. Имя установлено по отчеству дочери.</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="p green">
+          <div class="rel">бабушка (мать матери)</div>
+          <div class="nm">Лидия Михайловна Ливенси <span class="b b-ok">подтверждено</span></div>
+          <div class="dt">в браке Рыжикова · Сибирь</div>
+          <div class="ex">Фамилия не склоняется, так как образована от китайского имени отца.</div>
+        </div>
+        <ul>
+          <li>
+            <div class="p gold">
+              <div class="rel">прадед</div>
+              <div class="nm">Михаил Ливенси (Ли Вэнь Си / 李文西) <span class="b b-gold">разгадано</span></div>
+              <div class="dt">родом из г. Харбина (Маньчжурия) · сирота</div>
+              <div class="ex">Китаец, сирота из Харбина при КВЖД. В России принял крестильное имя Михаил, а трёхсложное китайское имя Ли Вэнь Си записано писарем как фамилия «Ливенси». В 1920-е жил в Новосибирске. В Чите найден возможный родственник <b>Ливенси Александр (1924 г.р.)</b>.</div>
+            </div>
+          </li>
+          <li>
+            <div class="p gold">
+              <div class="rel">прабабушка</div>
+              <div class="nm">Антонина Валентиновна Токмакова <span class="b b-gold">подтверждено</span></div>
+              <div class="dt">Харьковская губерния → г. Новосибирск · сирота</div>
+              <div class="ex">Осталась сиротой в 14–15 лет во время Гражданской войны. Оказалась в Новосибирске, «жила в людях» (в услужении). Хозяева выдали её замуж за Михаила Ливенси в 1920-е годы.</div>
+            </div>
+            <ul>
+              <li>
+                <div class="p unk">
+                  <div class="rel">прапрадед</div>
+                  <div class="nm">Валентин Токмаков <span class="b b-unk">имя найдено</span></div>
+                  <div class="dt">Харьковская губерния</div>
+                  <div class="ex">Крестьянин Харьковской губернии. Имя установлено по отчеству дочери Антонины.</div>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div class="box">
+  <h3>★ Главные результаты интеграции двух древ</h3>
+  <p>1. <b>Ветвь Дениса:</b> Закрыты ключевые белые пятна. Имя бабушки — <b>Тамара Ивановна Виноградова</b>. Дед <b>Иван Васильевич Нечаев</b> (1942 г.р.) жив в возрасте 84 лет. Родовое гнездо Карпущенко и Мядиных локализовано в белорусской деревне <b>Кочковатка</b> (1896 г.).</p>
+  <p>2. <b>Ветвь Маргариты:</b> Фамилия Женцов вывела на 400-летнюю историю села <b>Медведиха</b> (вотчина Кирилло-Белозерского монастыря с 1627 г.). Фамилия <b>Ливенси</b> раскрыта как китайское имя Ли Вэнь Си из Харбина, а прабабушка <b>Антонина Токмакова</b> — как сирота из Харьковской губернии.</p>
+</div>
+
+<div class="ft">
+  Объединённый проект «Родословная Семёновых и Женцовых». Все 10 файлов проекта обновлены и синхронизированы 17 августа 2026 года.
+</div>
+
+</div>
+</body>
+</html>

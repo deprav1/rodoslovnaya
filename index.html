@@ -782,7 +782,15 @@
           <div class="node-snippet-text">Точка соединения сибирской и костромской династий.</div>
         </div>
 
-        <!-- GEN 2: РОДИТЕЛИ -->
+        <!-- GEN 2: РОДИТЕЛИ + ДЯДЯ -->
+        <!-- Брат отца (дядя): Анатолий Анатольевич Семёнов -->
+        <div class="tree-node sib-card dad-node" style="left: 330px; top: 40px;" onclick="openPersonDossier('anatoly_anat_sem')">
+          <div class="node-role-tag">Брат отца (дядя)</div>
+          <div class="node-name-text">Анатолий Семёнов (мл.)</div>
+          <div class="node-meta-text">Набережные Челны (Татарстан)</div>
+          <div class="node-snippet-text">Сын Анатолия и Людмилы. Работал в Набережных Челнах.</div>
+        </div>
+
         <div class="tree-node dad-node" style="left: 330px; top: 180px;" onclick="openPersonDossier('alex_sem')">
           <div class="node-role-tag">Отец</div>
           <div class="node-name-text">Александр Семёнов</div>
@@ -1008,7 +1016,15 @@
           <div class="node-meta-text">род. 11 июля 1999 г., г. Тверь</div>
         </div>
 
-        <!-- GEN 2: РОДИТЕЛИ -->
+        <!-- GEN 2: РОДИТЕЛИ + ДЯДЯ -->
+        <!-- Брат отца (дядя): Анатолий Анатольевич Семёнов -->
+        <div class="tree-node sib-card dad-node" style="left: 330px; top: 40px;" onclick="openPersonDossier('anatoly_anat_sem')">
+          <div class="node-role-tag">Брат отца (дядя)</div>
+          <div class="node-name-text">Анатолий Семёнов (мл.)</div>
+          <div class="node-meta-text">Набережные Челны (Татарстан)</div>
+          <div class="node-snippet-text">Сын Анатолия и Людмилы. Работал в Набережных Челнах.</div>
+        </div>
+
         <div class="tree-node margo-node" style="left: 330px; top: 100px;" onclick="openPersonDossier('sergey_zhents')">
           <div class="node-role-tag">Отец</div>
           <div class="node-name-text">Женцов Сергей Николаевич</div>
@@ -1461,6 +1477,7 @@ const personStore = {
     sources: "Семейный архив.",
     family: [
       { r: "Отец", id: "anatoly_sem", n: "Анатолий Семёнов" },
+      { r: "Брат", id: "anatoly_anat_sem", n: "Анатолий Анатольевич Семёнов (Набережные Челны)" },
       { r: "Мать", id: "lyudmila_karp", n: "Людмила Ивановна Карпущенко" },
       { r: "Сын", id: "denis", n: "Денис Семёнов" }
     ],
@@ -1497,7 +1514,8 @@ const personStore = {
       { r: "Брат", id: "gennady_sem", n: "Геннадий Семёнов" },
       { r: "Сестра", id: "vera_sem", n: "Вера Семёнова" },
       { r: "Супруга", id: "lyudmila_karp", n: "Людмила Ивановна Карпущенко" },
-      { r: "Сын", id: "alex_sem", n: "Александр Анатольевич Семёнов" }
+      { r: "Сын", id: "alex_sem", n: "Александр Анатольевич Семёнов" },
+      { r: "Сын", id: "anatoly_anat_sem", n: "Анатолий Анатольевич Семёнов (Набережные Челны)" }
     ],
     questions: "Точная дата и место рождения."
   },
@@ -1561,7 +1579,8 @@ const personStore = {
       { r: "Мать", id: "anna_myadina", n: "Анна Михайловна Мядина" },
       { r: "Брат", id: "dmitry_karp", n: "Дмитрий Карпущенко" },
       { r: "Супруг", id: "anatoly_sem", n: "Анатолий Семёнов" },
-      { r: "Сын", id: "alex_sem", n: "Александр Анатольевич Семёнов" }
+      { r: "Сын", id: "alex_sem", n: "Александр Анатольевич Семёнов" },
+      { r: "Сын", id: "anatoly_anat_sem", n: "Анатолий Анатольевич Семёнов (Набережные Челны)" }
     ],
     questions: "Получить архивную справку с иными сведениями."
   },

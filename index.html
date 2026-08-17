@@ -495,6 +495,70 @@
     flex: 1;
   }
 
+  /* Pedigree view: compact horizontal family map */
+  .pedigree-view {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+  .pedigree-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .pedigree-head h2 { margin: 0; font-family: 'Cinzel', serif; font-size: 18px; }
+  .pedigree-head p { margin: 4px 0 0; font-size: 12px; color: var(--ink-muted); }
+  .pedigree-switch { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pedigree-switch button {
+    border: 1px solid var(--line); background: var(--surface-alt); color: var(--ink-muted);
+    padding: 7px 11px; border-radius: 8px; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer;
+  }
+  .pedigree-switch button.active { background: var(--denis); border-color: var(--denis); color: #fff; }
+  .pedigree-switch button.margo.active { background: var(--margo); border-color: var(--margo); }
+  .pedigree-scroll { overflow: auto; padding: 18px; background-color: #faf9f5;
+    background-image: radial-gradient(#ded9cc 0.8px, transparent 0.8px); background-size: 18px 18px; }
+  .pedigree-canvas { position: relative; width: 1370px; height: 900px; margin: 0 auto; }
+  .pedigree-family { position: absolute; inset: 0; }
+  .pedigree-family[hidden] { display: none; }
+  .pedigree-label { position: absolute; top: 6px; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+  .pedigree-lines { position: absolute; inset: 0; width: 1370px; height: 900px; overflow: visible; pointer-events: none; }
+  .pedigree-lines path { fill: none; stroke: #c9c4b8; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ped-card {
+    position: absolute; width: 260px; min-height: 88px; margin: 0; padding: 11px 12px 10px 62px;
+    border: 1.5px solid var(--denis-border); border-radius: 999px; background: rgba(255,255,255,.97);
+    box-shadow: 0 2px 7px rgba(45, 38, 25, .08); cursor: pointer; transition: transform .15s, box-shadow .15s;
+  }
+  .ped-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); z-index: 2; }
+  .ped-card.female { border-color: var(--margo-border); }
+  .ped-card.unknown { border-style: dashed; color: var(--ink-muted); cursor: default; }
+  .ped-card .ped-avatar {
+    position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 42px; height: 42px;
+    border-radius: 50%; display: grid; place-items: center; background: var(--denis-bg); color: var(--denis);
+    border: 2px solid var(--denis-border); font-weight: 800; font-size: 14px;
+  }
+  .ped-card.female .ped-avatar { background: var(--margo-bg); color: var(--margo); border-color: var(--margo-border); }
+  .ped-card.unknown .ped-avatar { background: var(--surface-alt); color: var(--ink-soft); border-color: var(--line); }
+  .ped-name { font-size: 13px; line-height: 1.25; font-weight: 800; color: var(--ink); }
+  .ped-meta { margin-top: 3px; color: var(--ink-muted); font-size: 11px; line-height: 1.3; }
+  .ped-role { margin-top: 3px; color: var(--ink-soft); font-size: 10px; line-height: 1.2; }
+  .ped-card.war-status { border-color: var(--war-border); }
+  .ped-card.war-status .ped-avatar { color: var(--war); background: var(--war-bg); border-color: var(--war-border); }
+  .ped-card.living-status { border-width: 2px; }
+  .ped-card.living-status::after { content: ''; position: absolute; right: 13px; top: 13px; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+  .ped-card .ped-fact { display: inline-block; margin-top: 4px; color: var(--gold); font-size: 10px; font-weight: 700; }
+  .ped-card.margo-card { border-color: var(--margo-border); }
+  .ped-card.margo-card .ped-avatar { background: var(--margo-bg); color: var(--margo); border-color: var(--margo-border); }
+  @media (max-width: 720px) {
+    .pedigree-head { align-items: flex-start; flex-direction: column; }
+    .pedigree-scroll { padding: 10px; }
+    .pedigree-canvas { transform-origin: top left; }
+  }
+
   /* Sources Table */
   .sources-table-wrap {
     overflow-x: auto;
@@ -851,13 +915,140 @@
       </div>
 
       <div class="view-toggle">
-        <button class="view-btn active" id="btn-view-hier" onclick="setViewMode('hier')">Иерархия</button>
+        <button class="view-btn active" id="btn-view-pedigree" onclick="setViewMode('pedigree')">Родословная</button>
+        <button class="view-btn" id="btn-view-hier" onclick="setViewMode('hier')">Подробности</button>
         <button class="view-btn" id="btn-view-gen" onclick="setViewMode('gen')">Поколения</button>
       </div>
     </div>
 
-    <!-- VIEW 1: HIERARCHICAL TREE -->
-    <div id="view-hierarchical" class="tree-dual-container">
+    <!-- VIEW 1: HORIZONTAL PEDIGREE -->
+    <section id="view-pedigree" class="pedigree-view">
+      <div class="pedigree-head">
+        <div>
+          <h2>Родословное древо</h2>
+          <p>Нажмите на человека, чтобы открыть его карточку. Линии показывают связь «родитель → ребёнок».</p>
+        </div>
+        <div class="pedigree-switch" aria-label="Выбор дерева">
+          <button class="active" id="ped-btn-denis" onclick="switchPedigree('denis')">Денис Семёнов</button>
+          <button class="margo" id="ped-btn-margo" onclick="switchPedigree('margo')">Маргарита Женцова</button>
+        </div>
+      </div>
+      <div class="pedigree-scroll">
+        <div class="pedigree-canvas">
+          <div class="pedigree-family" id="pedigree-denis">
+            <span class="pedigree-label" style="left:32px">Вы</span>
+            <span class="pedigree-label" style="left:360px">Родители</span>
+            <span class="pedigree-label" style="left:690px">Деды и бабушки</span>
+            <span class="pedigree-label" style="left:1020px">Прадеды и прабабушки</span>
+            <svg class="pedigree-lines" viewBox="0 0 1370 900" aria-hidden="true">
+              <path d="M292 444 H325 V218 H360 M325 444 V558 H360" />
+              <path d="M622 218 H655 V128 H690 M655 218 V308 H690" />
+              <path d="M622 558 H655 V478 H690 M655 558 V658 H690" />
+              <path d="M952 128 H985 V88 H1020 M985 128 V188 H1020" />
+              <path d="M952 308 H985 V278 H1020 M985 308 V378 H1020" />
+              <path d="M952 478 H985 V468 H1020 M985 478 V568 H1020" />
+              <path d="M952 658 H985 V668 H1020 M985 658 V768 H1020" />
+            </svg>
+
+            <div class="p-card ped-card living-status" style="left:32px;top:400px" onclick="openDossier('denis')">
+              <div class="ped-avatar">ДС</div><div class="ped-name">Денис Семёнов</div><div class="ped-meta">род. 6 мая 1990 · Омск</div><div class="ped-role">исходная персона</div>
+            </div>
+            <div class="p-card ped-card living-status" style="left:360px;top:174px" onclick="openDossier('alex_sem')">
+              <div class="ped-avatar">АС</div><div class="ped-name">Александр Анатольевич Семёнов</div><div class="ped-meta">Омск</div><div class="ped-role">отец</div>
+            </div>
+            <div class="p-card ped-card female living-status" style="left:360px;top:514px" onclick="openDossier('inga_nech')">
+              <div class="ped-avatar">ИН</div><div class="ped-name">Инга Ивановна Семёнова</div><div class="ped-meta">род. 5 мая 1968 · Омск</div><div class="ped-role">мать</div>
+            </div>
+            <div class="p-card ped-card" style="left:690px;top:84px" onclick="openDossier('anatoly_sem')">
+              <div class="ped-avatar">АС</div><div class="ped-name">Анатолий Петрович Семёнов</div><div class="ped-meta">ум. 22 февраля 2012 · Омск</div><div class="ped-role">дед по отцу</div>
+            </div>
+            <div class="p-card ped-card female" style="left:690px;top:264px" onclick="openDossier('lyudmila_karp')">
+              <div class="ped-avatar">ЛК</div><div class="ped-name">Людмила Ивановна Карпущенко</div><div class="ped-meta">род. 10 марта 1937</div><div class="ped-role">бабушка по отцу</div>
+            </div>
+            <div class="p-card ped-card living-status" style="left:690px;top:434px" onclick="openDossier('ivan_vas_nech')">
+              <div class="ped-avatar">ИН</div><div class="ped-name">Иван Васильевич Нечаев</div><div class="ped-meta">род. 1942 · Глебово</div><div class="ped-role">дед по матери</div>
+            </div>
+            <div class="p-card ped-card female" style="left:690px;top:614px" onclick="openDossier('tamara_vinogr')">
+              <div class="ped-avatar">ТВ</div><div class="ped-name">Тамара Ивановна Виноградова</div><div class="ped-meta">Костромская область</div><div class="ped-role">бабушка по матери</div>
+            </div>
+            <div class="p-card ped-card" style="left:1020px;top:44px" onclick="openDossier('petr_sem')">
+              <div class="ped-avatar">ПС</div><div class="ped-name">Пётр Семёнов</div><div class="ped-meta">Омская область</div><div class="ped-role">прадед</div>
+            </div>
+            <div class="p-card ped-card female unknown" style="left:1020px;top:144px">
+              <div class="ped-avatar">?</div><div class="ped-name">Имя не установлено</div><div class="ped-meta">супруга Петра Семёнова</div><div class="ped-role">прабабушка</div>
+            </div>
+            <div class="p-card ped-card" style="left:1020px;top:234px" onclick="openDossier('ivan_karp')">
+              <div class="ped-avatar">ИК</div><div class="ped-name">Иван Карпущенко</div><div class="ped-meta">Называевский район</div><div class="ped-role">прадед</div>
+            </div>
+            <div class="p-card ped-card female" style="left:1020px;top:334px" onclick="openDossier('anna_myadina')">
+              <div class="ped-avatar">АМ</div><div class="ped-name">Анна Михайловна Мядина</div><div class="ped-meta">ум. 21 августа 2002 · Омск</div><div class="ped-role">прабабушка</div>
+            </div>
+            <div class="p-card ped-card" style="left:1020px;top:424px" onclick="openDossier('vasily_efim_nech')">
+              <div class="ped-avatar">ВН</div><div class="ped-name">Василий Ефимович Нечаев</div><div class="ped-meta">род. ок. 1892 · Глебово</div><div class="ped-role">прадед</div>
+            </div>
+            <div class="p-card ped-card female" style="left:1020px;top:524px" onclick="openDossier('olga_shibaeva')">
+              <div class="ped-avatar">ОШ</div><div class="ped-name">Ольга Николаевна Шибаева</div><div class="ped-meta">1899–1976 · Глебово</div><div class="ped-role">прабабушка</div>
+            </div>
+            <div class="p-card ped-card war-status" style="left:1020px;top:624px" onclick="openDossier('ivan_luk_vinogr')">
+              <div class="ped-avatar">ИВ</div><div class="ped-name">Иван Лукьянович Виноградов</div><div class="ped-meta">1910–1945 · Венгрия</div><div class="ped-role">прадед</div>
+            </div>
+            <div class="p-card ped-card female" style="left:1020px;top:724px" onclick="openDossier('anastasia_dem_vinogr')">
+              <div class="ped-avatar">АВ</div><div class="ped-name">Анастасия Демидовна Виноградова</div><div class="ped-meta">Нея, Костромская область</div><div class="ped-role">прабабушка</div>
+            </div>
+          </div>
+
+          <div class="pedigree-family" id="pedigree-margo" hidden>
+            <span class="pedigree-label" style="left:32px">Вы</span>
+            <span class="pedigree-label" style="left:360px">Родители</span>
+            <span class="pedigree-label" style="left:690px">Деды и бабушки</span>
+            <span class="pedigree-label" style="left:1020px">Прадеды и прабабушки</span>
+            <svg class="pedigree-lines" viewBox="0 0 1370 900" aria-hidden="true">
+              <path d="M292 444 H325 V218 H360 M325 444 V558 H360" />
+              <path d="M622 218 H655 V128 H690 M655 218 V308 H690" />
+              <path d="M622 558 H655 V478 H690 M655 558 V658 H690" />
+              <path d="M952 128 H985 V108 H1020" />
+              <path d="M952 658 H985 V578 H1020 M985 658 V758 H1020" />
+            </svg>
+            <div class="p-card ped-card living-status margo-card" style="left:32px;top:400px" onclick="openDossier('margo')">
+              <div class="ped-avatar">МЖ</div><div class="ped-name">Маргарита Сергеевна Женцова</div><div class="ped-meta">род. 11 июля 1999 · Тверь</div><div class="ped-role">исходная персона</div>
+            </div>
+            <div class="p-card ped-card living-status margo-card" style="left:360px;top:174px" onclick="openDossier('sergey_zhents')">
+              <div class="ped-avatar">СЖ</div><div class="ped-name">Сергей Николаевич Женцов</div><div class="ped-meta">Тверь · Медведиха</div><div class="ped-role">отец</div>
+            </div>
+            <div class="p-card ped-card female living-status margo-card" style="left:360px;top:514px" onclick="openDossier('victoria_ryzh')">
+              <div class="ped-avatar">ВР</div><div class="ped-name">Виктория Николаевна Рыжикова</div><div class="ped-meta">Тверь</div><div class="ped-role">мать</div>
+            </div>
+            <div class="p-card ped-card margo-card" style="left:690px;top:84px" onclick="openDossier('nikolay_zhents')">
+              <div class="ped-avatar">НЖ</div><div class="ped-name">Николай Женцов</div><div class="ped-meta">Медведиха, Тверская область</div><div class="ped-role">дед по отцу</div>
+            </div>
+            <div class="p-card ped-card female unknown margo-card" style="left:690px;top:264px">
+              <div class="ped-avatar">?</div><div class="ped-name">Имя не установлено</div><div class="ped-meta">мать Сергея Женцова</div><div class="ped-role">бабушка по отцу</div>
+            </div>
+            <div class="p-card ped-card margo-card" style="left:690px;top:434px" onclick="openDossier('nikolay_ryzh')">
+              <div class="ped-avatar">НР</div><div class="ped-name">Николай Рыжиков</div><div class="ped-meta">Тверь</div><div class="ped-role">дед по матери</div>
+            </div>
+            <div class="p-card ped-card female margo-card" style="left:690px;top:614px" onclick="openDossier('lidia_livensi')">
+              <div class="ped-avatar">ЛЛ</div><div class="ped-name">Лидия Михайловна Ливенси</div><div class="ped-meta">Новосибирск → Тверь</div><div class="ped-role">бабушка по матери</div>
+            </div>
+            <div class="p-card ped-card margo-card" style="left:1020px;top:64px" onclick="openDossier('ivan_zhents_anc')">
+              <div class="ped-avatar">Ж</div><div class="ped-name">Предки Женцовых</div><div class="ped-meta">Медведиха · Ильгощи</div><div class="ped-role">родовой очаг</div>
+            </div>
+            <div class="p-card ped-card unknown margo-card" style="left:1020px;top:164px">
+              <div class="ped-avatar">?</div><div class="ped-name">Имя не установлено</div><div class="ped-meta">супруга Николая Женцова</div><div class="ped-role">прабабушка</div>
+            </div>
+            <div class="p-card ped-card margo-card" style="left:1020px;top:534px" onclick="openDossier('mikhail_livensi')">
+              <div class="ped-avatar">МЛ</div><div class="ped-name">Михаил Ли-Вен-Си</div><div class="ped-meta">Харбин → Новосибирск</div><div class="ped-role">прадед</div>
+            </div>
+            <div class="p-card ped-card female margo-card" style="left:1020px;top:714px" onclick="openDossier('antonina_tokm')">
+              <div class="ped-avatar">АТ</div><div class="ped-name">Антонина Валентиновна Токмакова</div><div class="ped-meta">Харьковская губ. → Новосибирск</div><div class="ped-role">прабабушка</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: HIERARCHICAL DETAILS -->
+    <div id="view-hierarchical" class="tree-dual-container" style="display:none;">
 
       <!-- Denis Section -->
       <div class="tree-section" id="tree-sec-denis">
@@ -2585,15 +2776,26 @@ function switchTab(tabId) {
 
 function setViewMode(mode) {
   document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-  if (mode === 'hier') {
-    document.getElementById('btn-view-hier').classList.add('active');
-    document.getElementById('view-hierarchical').style.display = 'block';
-    document.getElementById('view-generational').style.display = 'none';
-  } else {
-    document.getElementById('btn-view-gen').classList.add('active');
-    document.getElementById('view-hierarchical').style.display = 'none';
-    document.getElementById('view-generational').style.display = 'block';
-  }
+  const pedigree = document.getElementById('view-pedigree');
+  const hier = document.getElementById('view-hierarchical');
+  const gen = document.getElementById('view-generational');
+  if (pedigree) pedigree.style.display = mode === 'pedigree' ? 'block' : 'none';
+  if (hier) hier.style.display = mode === 'hier' ? 'block' : 'none';
+  if (gen) gen.style.display = mode === 'gen' ? 'block' : 'none';
+  const button = document.getElementById('btn-view-' + mode);
+  if (button) button.classList.add('active');
+}
+
+function switchPedigree(branch) {
+  const denis = document.getElementById('pedigree-denis');
+  const margo = document.getElementById('pedigree-margo');
+  const denisButton = document.getElementById('ped-btn-denis');
+  const margoButton = document.getElementById('ped-btn-margo');
+  if (!denis || !margo) return;
+  denis.hidden = branch !== 'denis';
+  margo.hidden = branch !== 'margo';
+  if (denisButton) denisButton.classList.toggle('active', branch === 'denis');
+  if (margoButton) margoButton.classList.toggle('active', branch === 'margo');
 }
 
 function filterTree(type) {
@@ -2607,10 +2809,12 @@ function filterTree(type) {
     if (mSec) mSec.style.display = 'block';
     document.querySelectorAll('.p-card').forEach(n => n.style.opacity = '1');
   } else if (type === 'denis') {
+    switchPedigree('denis');
     if (dSec) dSec.style.display = 'block';
     if (mSec) mSec.style.display = 'none';
     document.querySelectorAll('.p-card').forEach(n => n.style.opacity = '1');
   } else if (type === 'margo') {
+    switchPedigree('margo');
     if (dSec) dSec.style.display = 'none';
     if (mSec) mSec.style.display = 'block';
     document.querySelectorAll('.p-card').forEach(n => n.style.opacity = '1');

@@ -3,44 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Родословная · Семёновы и Женцовы</title>
+<title>Родословное древо со связями · Семёновы и Женцовы</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f5f2ea;
+    --bg: #f4f0e6;
     --surface: #ffffff;
-    --surface-card: #ffffff;
-    --ink: #1a1612;
-    --ink-muted: #5c5446;
-    --ink-soft: #8a7f6e;
-    --line: #cfc5b2;
-    --line-light: #e6dfd1;
+    --ink: #1c1813;
+    --ink-muted: #615747;
+    --ink-soft: #8c806d;
+    --line: #c7bca7;
+    --line-bold: #8e8068;
     
-    --denis-primary: #1e5288;
+    --denis-blue: #1e5288;
     --denis-bg: #eaf1f8;
-    --denis-border: #99badb;
+    --denis-border: #92b7dd;
 
-    --margo-primary: #6c2f7a;
-    --margo-bg: #f6eef8;
-    --margo-border: #cc9fdb;
+    --denis-mom: #8a3449;
+    --denis-mom-bg: #fbedf0;
+    --denis-mom-border: #db9fae;
+
+    --margo-purple: #6a2a7a;
+    --margo-bg: #f6edf8;
+    --margo-border: #cb9ad8;
 
     --gold: #b3822a;
-    --gold-bg: #fdf6e6;
-    --gold-border: #e2c178;
+    --gold-bg: #fcf5e3;
+    --gold-border: #e3be71;
 
     --war: #a32a24;
     --war-bg: #fae8e7;
-    --war-border: #e28e8a;
+    --war-border: #e4918d;
 
     --green: #236343;
     --green-bg: #eaf5ee;
     --green-border: #8ec9a7;
 
-    --shadow-sm: 0 2px 8px rgba(30, 20, 10, 0.04);
-    --shadow-md: 0 8px 24px rgba(30, 20, 10, 0.08);
-    --shadow-lg: 0 16px 44px rgba(30, 20, 10, 0.13);
+    --shadow-sm: 0 2px 8px rgba(30, 20, 10, 0.05);
+    --shadow-md: 0 8px 24px rgba(30, 20, 10, 0.09);
+    --shadow-lg: 0 16px 44px rgba(30, 20, 10, 0.14);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,9 +51,8 @@
     background: var(--bg);
     color: var(--ink);
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    line-height: 1.5;
+    line-height: 1.45;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
   }
 
   /* Header */
@@ -60,10 +62,10 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
   }
   .header-inner {
-    max-width: 1600px;
+    max-width: 1700px;
     margin: 0 auto;
     padding: 12px 28px;
     display: flex;
@@ -79,7 +81,7 @@
   .brand-icon {
     width: 44px;
     height: 44px;
-    background: linear-gradient(135deg, #1e5288, #6c2f7a);
+    background: linear-gradient(135deg, #1e5288, #6a2a7a);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -97,11 +99,10 @@
   }
   .brand-sub { font-size: 11.5px; color: var(--ink-muted); }
 
-  /* Navigation */
   nav.nav-bar {
     display: flex;
     gap: 6px;
-    background: #eae4d5;
+    background: #e9e3d4;
     padding: 4px;
     border-radius: 12px;
   }
@@ -120,91 +121,89 @@
     gap: 6px;
     white-space: nowrap;
   }
-  .nav-btn:hover { color: var(--ink); background: rgba(255,255,255,0.6); }
+  .nav-btn:hover { color: var(--ink); background: rgba(255,255,255,0.65); }
   .nav-btn.active {
     background: #fff;
     color: var(--ink);
     box-shadow: 0 2px 6px rgba(0,0,0,0.06);
   }
 
-  /* Main Container */
   main {
-    max-width: 1600px;
+    max-width: 1700px;
     margin: 0 auto;
     padding: 24px 28px 100px;
   }
 
   /* Hero */
   .hero {
-    background: linear-gradient(135deg, #162436 0%, #34193d 100%);
+    background: linear-gradient(135deg, #142233 0%, #301738 100%);
     border-radius: 18px;
-    padding: 28px 36px;
+    padding: 26px 34px;
     color: #fff;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
     box-shadow: var(--shadow-md);
-    position: relative;
   }
   .hero-tag {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.15);
     padding: 4px 14px;
     border-radius: 99px;
-    font-size: 11.5px;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: #f5e1be;
   }
   .hero-title {
     font-family: 'Cinzel', serif;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .hero-desc {
     font-family: 'Spectral', serif;
-    font-size: 15.5px;
-    line-height: 1.6;
+    font-size: 15px;
+    line-height: 1.55;
     color: #e5dff0;
-    max-width: 1000px;
+    max-width: 1100px;
   }
   .hero-stats {
     display: flex;
     gap: 16px;
-    margin-top: 18px;
+    margin-top: 16px;
     flex-wrap: wrap;
   }
   .stat-chip {
     background: rgba(255,255,255,0.1);
     border: 1px solid rgba(255,255,255,0.15);
-    padding: 7px 16px;
+    padding: 6px 14px;
     border-radius: 10px;
   }
-  .stat-val { font-size: 17px; font-weight: 700; color: #fff; }
-  .stat-lbl { font-size: 10.5px; color: #d6ccdf; text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat-val { font-size: 16px; font-weight: 700; color: #fff; }
+  .stat-lbl { font-size: 10px; color: #d6ccdf; text-transform: uppercase; letter-spacing: 0.04em; }
 
-  /* Tree Toolbar */
-  .toolbar {
+  /* Tree Controls */
+  .tree-controls {
     background: #fff;
     border: 1px solid var(--line);
     border-radius: 14px;
-    padding: 12px 20px;
-    margin-bottom: 22px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 14px;
+    gap: 12px;
     box-shadow: var(--shadow-sm);
   }
-  .family-toggles {
+  .btn-group {
     display: flex;
     gap: 8px;
   }
-  .fam-btn {
+  .tree-select-btn {
     border: 1.5px solid var(--line);
     background: var(--bg);
     padding: 7px 16px;
@@ -215,280 +214,268 @@
     transition: all 0.15s;
     color: var(--ink-muted);
   }
-  .fam-btn:hover { background: #e8e2d4; color: var(--ink); }
-  .fam-btn.active {
+  .tree-select-btn:hover { background: #e6dfcf; color: var(--ink); }
+  .tree-select-btn.active {
     background: var(--ink);
     color: #fff;
     border-color: var(--ink);
   }
-  .fam-btn.denis-active {
-    background: var(--denis-primary);
+  .tree-select-btn.denis-btn.active {
+    background: var(--denis-blue);
+    border-color: var(--denis-blue);
     color: #fff;
-    border-color: var(--denis-primary);
   }
-  .fam-btn.margo-active {
-    background: var(--margo-primary);
+  .tree-select-btn.margo-btn.active {
+    background: var(--margo-purple);
+    border-color: var(--margo-purple);
     color: #fff;
-    border-color: var(--margo-primary);
   }
 
-  .filter-chips {
+  .legend-chips {
     display: flex;
-    gap: 6px;
+    gap: 12px;
     flex-wrap: wrap;
-  }
-  .chip {
-    border: 1px solid var(--line);
-    background: #fff;
-    padding: 5px 12px;
-    border-radius: 16px;
+    align-items: center;
     font-size: 11.5px;
-    font-weight: 600;
-    cursor: pointer;
     color: var(--ink-muted);
   }
-  .chip:hover { background: #ede7dc; color: var(--ink); }
-  .chip.active { background: #5c5446; color: #fff; border-color: #5c5446; }
-
-  .search-wrap {
-    position: relative;
-    min-width: 220px;
-  }
-  .search-field {
-    width: 100%;
-    padding: 7px 12px 7px 30px;
-    border-radius: 20px;
-    border: 1px solid var(--line);
-    background: var(--bg);
-    font-size: 12.5px;
-    outline: none;
-  }
-  .search-field:focus { border-color: var(--gold); background: #fff; }
-  .search-ico {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--ink-soft);
-    font-size: 12px;
+  .l-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: -1px;
+    margin-right: 4px;
   }
 
-  /* Tree Visualization Canvas / Tree Columns */
-  .tree-canvas {
+  /* Visual Tree Stage (SVG Canvas + HTML Nodes) */
+  .tree-stage-card {
     background: #ffffff;
     border: 1px solid var(--line);
     border-radius: 20px;
-    padding: 30px;
+    padding: 24px;
     margin-bottom: 26px;
     box-shadow: var(--shadow-sm);
     overflow-x: auto;
   }
-  .tree-header-badge {
+  .stage-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 14px;
-    margin-bottom: 24px;
-    border-bottom: 2px solid var(--line-light);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    border-bottom: 2px solid #eae3d5;
   }
-  .tree-main-title {
-    font-size: 21px;
+  .stage-title {
+    font-size: 20px;
     font-weight: 800;
     display: flex;
     align-items: center;
     gap: 10px;
   }
-  .tree-main-title.denis { color: var(--denis-primary); }
-  .tree-main-title.margo { color: var(--margo-primary); }
+  .stage-title.denis { color: var(--denis-blue); }
+  .stage-title.margo { color: var(--margo-purple); }
 
-  /* Tree Grid: Generations from Left to Right (Horizontal Pedigree) */
-  .pedigree-grid {
-    display: grid;
-    grid-template-columns: 280px 300px 320px 340px;
-    gap: 36px;
+  /* Tree Interactive Canvas */
+  .tree-canvas-wrapper {
     position: relative;
-    padding: 10px 0;
-    min-width: 1300px;
+    min-width: 1420px;
+    height: 820px;
+    background: #faf8f3;
+    border: 1px solid #e7decb;
+    border-radius: 16px;
+    overflow: hidden;
   }
-  .gen-col-title {
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ink-soft);
-    padding-bottom: 8px;
-    margin-bottom: 16px;
-    border-bottom: 1.5px solid var(--line-light);
-    text-align: center;
-  }
-  .gen-col {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 20px;
-    position: relative;
+  .tree-canvas-wrapper.margo-height {
+    height: 640px;
   }
 
-  /* Card Component */
-  .card {
+  /* SVG Connections Overlay */
+  .tree-svg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .tree-link {
+    fill: none;
+    stroke: var(--line-bold);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    transition: stroke 0.2s;
+  }
+  .tree-link.dad-line { stroke: #2a6bb0; }
+  .tree-link.mom-line { stroke: #a83f58; }
+  .tree-link.margo-line { stroke: #8a3b9e; }
+  .tree-link.gold-line { stroke: var(--gold); stroke-width: 2.6; }
+
+  /* Interactive Person Node Cards (Absolute Positioning on Canvas) */
+  .tree-node {
+    position: absolute;
+    width: 250px;
     background: #ffffff;
     border: 2px solid var(--line);
-    border-radius: 14px;
-    padding: 12px 16px;
+    border-radius: 12px;
+    padding: 10px 14px;
     cursor: pointer;
-    transition: all 0.18s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-    position: relative;
+    z-index: 2;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
   }
-  .card:hover {
-    transform: translateY(-2px);
+  .tree-node:hover {
+    transform: translateY(-3px) scale(1.02);
     box-shadow: var(--shadow-md);
     border-color: var(--gold) !important;
+    z-index: 10;
   }
 
-  /* Color themes */
-  .card.root { border-width: 3px; border-color: #2b251d; background: #fffcf5; }
-  .card.denis-blue { border-color: var(--denis-border); background: var(--denis-bg); }
-  .card.margo-purple { border-color: var(--margo-border); background: var(--margo-bg); }
-  .card.gold-theme { border-color: var(--gold-border); background: var(--gold-bg); }
-  .card.war-theme { border-color: var(--war-border); background: var(--war-bg); }
-  .card.living-theme { border-color: var(--green-border); background: var(--green-bg); }
-  .card.unk-theme { border-style: dashed; border-color: #a89e88; background: #f3efe6; }
+  /* Node Themes */
+  .tree-node.me-node { border-width: 3px; border-color: #2b251d; background: #fffcf4; }
+  .tree-node.dad-node { border-color: var(--denis-border); background: var(--denis-bg); }
+  .tree-node.mom-node { border-color: var(--denis-mom-border); background: var(--denis-mom-bg); }
+  .tree-node.margo-node { border-color: var(--margo-border); background: var(--margo-bg); }
+  .tree-node.gold-node { border-color: var(--gold-border); background: var(--gold-bg); }
+  .tree-node.war-node { border-color: var(--war-border); background: var(--war-bg); }
+  .tree-node.living-node { border-color: var(--green-border); background: var(--green-bg); }
+  .tree-node.unk-node { border-style: dashed; border-color: #b0a490; background: #f2ede2; }
 
-  .card-role {
-    font-size: 10px;
+  .node-role-tag {
+    font-size: 9.5px;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    font-weight: 800;
     color: var(--ink-soft);
-    margin-bottom: 3px;
+    margin-bottom: 2px;
   }
-  .card-name {
-    font-size: 15px;
-    font-weight: 700;
+  .node-name-text {
+    font-size: 13.5px;
+    font-weight: 800;
     color: var(--ink);
     line-height: 1.25;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     flex-wrap: wrap;
   }
-  .card-dates {
-    font-size: 12px;
+  .node-meta-text {
+    font-size: 11px;
     color: var(--ink-muted);
     margin-top: 3px;
-    font-weight: 500;
   }
-  .card-sub {
-    font-size: 11.5px;
+  .node-snippet-text {
+    font-size: 10.5px;
     color: #574e40;
-    margin-top: 6px;
-    padding-top: 6px;
+    margin-top: 5px;
+    padding-top: 5px;
     border-top: 1px dotted var(--line);
     line-height: 1.35;
   }
 
-  .pill {
+  .badge-pill {
     display: inline-block;
-    font-size: 9px;
+    font-size: 8.5px;
     font-weight: 800;
-    padding: 2px 7px;
+    padding: 1px 6px;
     border-radius: 99px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
     color: #fff;
   }
-  .pill-gold { background: var(--gold); }
-  .pill-war { background: var(--war); }
-  .pill-green { background: var(--green); }
-  .pill-margo { background: var(--margo-primary); }
-  .pill-blue { background: var(--denis-primary); }
+  .bp-gold { background: var(--gold); }
+  .bp-war { background: var(--war); }
+  .bp-green { background: var(--green); }
+  .bp-margo { background: var(--margo-purple); }
 
-  .siblings-tag {
-    font-size: 11.5px;
-    color: var(--ink-muted);
-    background: #faf7ef;
-    border: 1px dashed var(--line);
-    border-radius: 8px;
-    padding: 5px 10px;
-    margin-top: 6px;
+  /* Generation Columns Header Guides */
+  .gen-guide {
+    position: absolute;
+    top: 10px;
+    font-size: 10.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #9c917f;
+    padding: 4px 12px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    border: 1px solid #e0d7c5;
+    pointer-events: none;
   }
-  .siblings-tag b { color: var(--ink); font-weight: 600; }
 
   /* Tab View System */
-  .tab-view { display: none; }
-  .tab-view.active { display: block; animation: fadeIn 0.2s ease; }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; animation: fadeIn 0.2s ease; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
   /* Source Table */
-  .table-box {
+  .data-card {
     background: #fff;
     border: 1px solid var(--line);
-    border-radius: 16px;
+    border-radius: 18px;
     padding: 24px;
     box-shadow: var(--shadow-sm);
   }
-  .data-table {
+  .src-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 13px;
   }
-  .data-table th, .data-table td {
+  .src-table th, .src-table td {
     padding: 10px 14px;
-    border-bottom: 1px solid var(--line-light);
+    border-bottom: 1px solid #eee8dc;
     text-align: left;
   }
-  .data-table th {
-    background: #f3ede2;
+  .src-table th {
+    background: #f1ebdE;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--ink-muted);
   }
 
-  /* Progress Tab */
-  .progress-grid {
+  /* Progress Grid */
+  .prog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 20px;
+    gap: 18px;
   }
-  .prog-card {
+  .prog-box {
     background: #fff;
     border: 1px solid var(--line);
     border-radius: 16px;
     padding: 20px;
     box-shadow: var(--shadow-sm);
   }
-  .prog-head {
+  .prog-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
   }
-  .prog-name { font-size: 16px; font-weight: 700; }
-  .prog-val { font-size: 15px; font-weight: 700; color: var(--gold); }
-  .bar-outer {
-    background: #ede6d6;
+  .prog-bar-bg {
+    background: #eae3d2;
     height: 8px;
     border-radius: 99px;
     overflow: hidden;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
-  .bar-inner {
+  .prog-bar-fill {
     height: 100%;
     background: var(--gold);
     border-radius: 99px;
   }
-  .prog-text { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
 
   /* Timeline */
-  .t-line-box {
+  .timeline-wrap {
     position: relative;
     max-width: 900px;
     margin: 0 auto;
     padding: 10px 0;
   }
-  .t-line-box::before {
+  .timeline-wrap::before {
     content: '';
     position: absolute;
     left: 28px;
@@ -502,7 +489,7 @@
     padding-left: 68px;
     margin-bottom: 24px;
   }
-  .t-marker {
+  .t-dot {
     position: absolute;
     left: 19px;
     top: 6px;
@@ -514,29 +501,16 @@
     box-shadow: var(--shadow-sm);
     z-index: 2;
   }
-  .t-marker.blue { border-color: var(--denis-primary); }
-  .t-marker.purple { border-color: var(--margo-primary); }
-  .t-marker.red { border-color: var(--war); background: var(--war-bg); }
-
-  .t-content {
+  .t-box {
     background: #fff;
     border: 1px solid var(--line);
     border-radius: 12px;
     padding: 14px 18px;
     box-shadow: var(--shadow-sm);
   }
-  .t-year-tag {
-    font-family: 'Cinzel', serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--gold);
-    margin-bottom: 2px;
-  }
-  .t-title-tag { font-size: 14.5px; font-weight: 700; margin-bottom: 4px; }
-  .t-desc-tag { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
 
   /* Modal Dossier */
-  .modal-shade {
+  .modal-overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(20, 15, 10, 0.55);
@@ -547,10 +521,10 @@
     justify-content: center;
     padding: 20px;
   }
-  .modal-shade.active { display: flex; animation: modalFade 0.2s ease; }
+  .modal-overlay.active { display: flex; animation: modalFade 0.2s ease; }
   @keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
 
-  .modal-window {
+  .modal-card {
     background: #fff;
     border-radius: 20px;
     max-width: 740px;
@@ -562,11 +536,11 @@
     position: relative;
     border: 1px solid var(--line);
   }
-  .modal-close-btn {
+  .modal-close {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: #f1ede4;
+    background: #efe9dc;
     border: none;
     width: 34px;
     height: 34px;
@@ -578,70 +552,66 @@
     justify-content: center;
     color: var(--ink-muted);
   }
-  .modal-close-btn:hover { background: #e0d8ca; color: var(--ink); }
+  .modal-close:hover { background: #dfd7c7; color: var(--ink); }
 
-  .modal-top {
+  .modal-header {
     margin-bottom: 18px;
     padding-bottom: 14px;
-    border-bottom: 2px solid var(--line-light);
+    border-bottom: 2px solid #eee8dc;
   }
-  .modal-title { font-size: 22px; font-weight: 800; color: var(--ink); }
-  .modal-subtitle { font-size: 13.5px; color: var(--ink-muted); margin-top: 3px; }
+  .modal-name { font-size: 22px; font-weight: 800; color: var(--ink); }
+  .modal-meta { font-size: 13.5px; color: var(--ink-muted); margin-top: 3px; }
 
-  .modal-block { margin-bottom: 16px; }
-  .modal-block-title {
+  .modal-section { margin-bottom: 16px; }
+  .modal-sec-title {
     font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--ink-soft);
     margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
   }
-  .modal-block-body {
+  .modal-sec-body {
     font-size: 13.5px;
     color: var(--ink);
     line-height: 1.6;
     background: var(--bg);
     padding: 12px 16px;
     border-radius: 12px;
-    border: 1px solid var(--line-light);
+    border: 1px solid #e7decb;
   }
 
-  .facts-ul { list-style: none; padding: 0; margin: 0; }
-  .fact-li {
+  .facts-list { list-style: none; padding: 0; margin: 0; }
+  .fact-item {
     display: flex;
     align-items: flex-start;
     gap: 8px;
     margin-bottom: 8px;
     font-size: 13px;
   }
-  .fact-li:last-child { margin-bottom: 0; }
+  .fact-item:last-child { margin-bottom: 0; }
 
-  .f-badge {
+  .fact-badge {
     font-size: 9.5px;
     font-weight: 800;
     padding: 2px 7px;
     border-radius: 99px;
     white-space: nowrap;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
     color: #fff;
   }
   .fb-doc { background: #236343; }
   .fb-pub { background: #b3822a; }
   .fb-mem { background: #cf7123; }
-  .fb-hyp { background: #9e332b; }
+  .fb-hyp { background: #a32a24; }
 
-  .rel-buttons {
+  .family-btn-group {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
     margin-top: 4px;
   }
-  .rel-btn {
+  .f-link-btn {
     background: #fff;
     border: 1px solid var(--line);
     padding: 5px 12px;
@@ -650,14 +620,12 @@
     font-weight: 600;
     color: var(--ink);
     cursor: pointer;
-    transition: all 0.15s;
   }
-  .rel-btn:hover { border-color: var(--gold); background: var(--gold-bg); }
+  .f-link-btn:hover { border-color: var(--gold); background: var(--gold-bg); }
 
   @media (max-width: 860px) {
     .header-inner { flex-direction: column; align-items: stretch; }
     .hero { padding: 20px; }
-    .hero-title { font-size: 21px; }
   }
 </style>
 </head>
@@ -669,14 +637,14 @@
       <div class="brand-icon">🌿</div>
       <div>
         <div class="brand-title">Хроники двух родов</div>
-        <div class="brand-sub">Генеалогический портал: Семёновы и Женцовы</div>
+        <div class="brand-sub">Родословное древо предков: Семёновы и Женцовы</div>
       </div>
     </div>
     <nav class="nav-bar">
-      <button class="nav-btn active" onclick="showTab('tree')">🌳 Древо и связи</button>
-      <button class="nav-btn" onclick="showTab('sources')">📚 Библиотека источников</button>
-      <button class="nav-btn" onclick="showTab('progress')">🔬 Прогресс и запросы</button>
-      <button class="nav-btn" onclick="showTab('timeline')">⏳ Хроника веков</button>
+      <button class="nav-btn active" onclick="switchNav('tree')">🌳 Древо со связями</button>
+      <button class="nav-btn" onclick="switchNav('sources')">📚 Библиотека источников</button>
+      <button class="nav-btn" onclick="switchNav('progress')">🔬 Прогресс и запросы</button>
+      <button class="nav-btn" onclick="switchNav('timeline')">⏳ Хроника веков</button>
     </nav>
   </div>
 </header>
@@ -685,15 +653,15 @@
 
   <!-- Hero Header -->
   <div class="hero">
-    <div class="hero-tag">✨ Научное генеалогическое исследование · Август 2026</div>
-    <div class="hero-title">Родословное древо Дениса Семёнова и Маргариты Женцовой</div>
+    <div class="hero-tag">✨ Наглядное древо предков с линиями родства</div>
+    <div class="hero-title">Родословные древа Дениса Семёнова и Маргариты Женцовой</div>
     <div class="hero-desc">
-      Интерактивная роспись двух старинных династий: монастырские крестьяне Тверской земли с 1627 года, белорусские переселенцы в Сибирь 1896 года, подвиги героев Великой Отечественной войны и судьба харбинского сироты-модельера Михаила Ли-Вен-Си.
+      Интерактивная роспись поколений с соединительными линиями: от вас и родителей к дедушкам, прадедам и предкам XVII века. Кликните на любую карточку, чтобы открыть полное досье с первоисточниками и биографией.
     </div>
     <div class="hero-stats">
       <div class="stat-chip">
         <div class="stat-val">42 персоны</div>
-        <div class="stat-lbl">Объединённое древо</div>
+        <div class="stat-lbl">В объединённом древе</div>
       </div>
       <div class="stat-chip">
         <div class="stat-val">1627 год</div>
@@ -705,272 +673,368 @@
       </div>
       <div class="stat-chip">
         <div class="stat-val">100%</div>
-        <div class="stat-lbl">Документальная база</div>
+        <div class="stat-lbl">Документальная точность</div>
       </div>
     </div>
   </div>
 
-  <!-- ================= TAB 1: TREE ================= -->
-  <div id="tab-tree" class="tab-view active">
+  <!-- ================= TAB 1: TREE WITH REAL CONNECTOR LINES ================= -->
+  <div id="tab-tree" class="tab-pane active">
 
-    <div class="toolbar">
-      <div class="family-toggles">
-        <button class="fam-btn active" id="fbtn-all" onclick="selectFamily('all')">Все династии</button>
-        <button class="fam-btn" id="fbtn-denis" onclick="selectFamily('denis')">🔵 Ветвь Дениса</button>
-        <button class="fam-btn" id="fbtn-margo" onclick="selectFamily('margo')">🟣 Ветвь Маргариты</button>
+    <div class="tree-controls">
+      <div class="btn-group">
+        <button class="tree-select-btn active" id="btn-tree-all" onclick="filterTreeDisplay('all')">Оба древа</button>
+        <button class="tree-select-btn denis-btn" id="btn-tree-denis" onclick="filterTreeDisplay('denis')">🔵 Ветвь Дениса</button>
+        <button class="tree-select-btn margo-btn" id="btn-tree-margo" onclick="filterTreeDisplay('margo')">🟣 Ветвь Маргариты</button>
       </div>
 
-      <div class="filter-chips">
-        <button class="chip active" onclick="applyHighlight('all')">Все персоны</button>
-        <button class="chip" onclick="applyHighlight('war')">🎖️ Фронтовики</button>
-        <button class="chip" onclick="applyHighlight('living')">🌱 Живые свидетели</button>
-      </div>
-
-      <div class="search-wrap">
-        <span class="search-ico">🔍</span>
-        <input type="text" class="search-field" placeholder="Поиск по имени, селу..." oninput="filterCards(this.value)">
+      <div class="legend-chips">
+        <span><span class="l-dot" style="background:#2a6bb0;"></span> Линия отца Дениса</span>
+        <span><span class="l-dot" style="background:#a83f58;"></span> Линия матери Дениса</span>
+        <span><span class="l-dot" style="background:#8a3b9e;"></span> Ветвь Маргариты</span>
+        <span><span class="l-dot" style="background:var(--gold);"></span> Находки 2026</span>
+        <span><span class="l-dot" style="background:var(--war);"></span> Погиб на фронте</span>
+        <span><span class="l-dot" style="background:var(--green);"></span> Жив (84 года)</span>
       </div>
     </div>
 
-    <!-- 1. ДРЕВО ДЕНИСА СЕМЁНОВА -->
-    <div class="tree-canvas" id="canvas-denis">
-      <div class="tree-header-badge">
-        <div class="tree-main-title denis">
-          <span>🌳 Ветвь Дениса Семёнова</span>
-          <span class="pill pill-blue">Кострома · Омск · Беларусь</span>
+    <!-- ================= 1. ДРЕВО ДЕНИСА СЕМЁНОВА ================= -->
+    <div class="tree-stage-card" id="stage-denis">
+      <div class="stage-head">
+        <div class="stage-title denis">
+          <span>🌳 Древо предков: Денис Семёнов</span>
+          <span class="badge-pill" style="background:var(--denis-blue);">Кострома · Омск · Беларусь</span>
         </div>
-        <span style="font-size:12.5px; color:var(--ink-muted);">Нажмите на карточку любой персоны для открытия досье</span>
+        <span style="font-size:12px; color:var(--ink-muted);">Горизонтальная схема: слева — Денис, вправо — ветви родителей, дедов и прадедов</span>
       </div>
 
-      <div class="pedigree-grid">
-        <!-- КОЛОНКА 1: ДЕНИС -->
-        <div class="gen-col">
-          <div class="gen-col-title">Поколение I · Исходная персона</div>
-          <div class="card root" onclick="showPersonDossier('denis')">
-            <div class="card-role">Исходная персона</div>
-            <div class="card-name">Денис Семёнов</div>
-            <div class="card-dates">род. 6 мая 1990 г., г. Омск</div>
-            <div class="card-sub">Соединяет сибирскую (Омск) и костромскую (Глебово, Нея, Ковернино) ветви.</div>
-          </div>
+      <div class="tree-canvas-wrapper" id="canvas-denis-wrap">
+        <!-- Generation Guide Labels -->
+        <div class="gen-guide" style="left: 30px;">Поколение I (Вы)</div>
+        <div class="gen-guide" style="left: 350px;">Поколение II (Родители)</div>
+        <div class="gen-guide" style="left: 670px;">Поколение III (Деды и бабушки)</div>
+        <div class="gen-guide" style="left: 990px;">Поколение IV (Прадеды)</div>
+        <div class="gen-guide" style="left: 1310px;">Поколение V (Прапрадеды)</div>
+
+        <!-- SVG CONNECTIONS LAYER -->
+        <svg class="tree-svg-layer">
+          <!-- Денис -> Отец (Александр) -->
+          <path class="tree-link dad-line" d="M 280,410 H 315 V 200 H 350" />
+          <!-- Денис -> Мать (Инга) -->
+          <path class="tree-link mom-line" d="M 280,410 H 315 V 600 H 350" />
+
+          <!-- Отец -> Дед Анатолий -->
+          <path class="tree-link dad-line" d="M 600,200 H 635 V 100 H 670" />
+          <!-- Отец -> Бабушка Людмила -->
+          <path class="tree-link dad-line" d="M 600,200 H 635 V 280 H 670" />
+
+          <!-- Дед Анатолий -> Прадед Пётр -->
+          <path class="tree-link dad-line" d="M 920,100 H 990" />
+
+          <!-- Бабушка Людмила -> Прадед Иван Карпущенко -->
+          <path class="tree-link gold-line" d="M 920,280 H 955 V 230 H 990" />
+          <!-- Бабушка Людмила -> Прабабушка Анна Мядина -->
+          <path class="tree-link gold-line" d="M 920,280 H 955 V 330 H 990" />
+
+          <!-- Мать Инга -> Дед Иван Васильевич (Нечаев) -->
+          <path class="tree-link mom-line" d="M 600,600 H 635 V 490 H 670" />
+          <!-- Мать Инга -> Бабушка Тамара (Виноградова) -->
+          <path class="tree-link mom-line" d="M 600,600 H 635 V 700 H 670" />
+
+          <!-- Дед Иван Васильевич -> Прадед Василий Нечаев -->
+          <path class="tree-link mom-line" d="M 920,490 H 955 V 430 H 990" />
+          <!-- Дед Иван Васильевич -> Прабабушка Ольга Шибаева -->
+          <path class="tree-link gold-line" d="M 920,490 H 955 V 530 H 990" />
+
+          <!-- Прадед Василий Нечаев -> Прапрадед Ефим Моисеевич -->
+          <path class="tree-link mom-line" d="M 1240,430 H 1310" />
+
+          <!-- Бабушка Тамара -> Прадед Иван Лукьянович Виноградов -->
+          <path class="tree-link mom-line" d="M 920,700 H 955 V 640 H 990" />
+          <!-- Бабушка Тамара -> Прабабушка Анастасия Демидовна -->
+          <path class="tree-link mom-line" d="M 920,700 H 955 V 740 H 990" />
+
+          <!-- Прадед Иван Лукьянович -> Прапрадед Лукьян Виноградов -->
+          <path class="tree-link mom-line" d="M 1240,640 H 1310" />
+
+          <!-- Прабабушка Анастасия -> Прапрадед Демид Виноградов -->
+          <path class="tree-link mom-line" d="M 1240,740 H 1275 V 720 H 1310" />
+          <!-- Прабабушка Анастасия -> Прапрабабушка Любовь Яковлевна -->
+          <path class="tree-link mom-line" d="M 1240,740 H 1275 V 770 H 1310" />
+        </svg>
+
+        <!-- GEN 1: ДЕНИС -->
+        <div class="tree-node me-node" style="left: 30px; top: 370px;" onclick="openPersonDossier('denis')">
+          <div class="node-role-tag">Исходная персона</div>
+          <div class="node-name-text">Денис Семёнов</div>
+          <div class="node-meta-text">род. 6 мая 1990 г., г. Омск</div>
+          <div class="node-snippet-text">Точка соединения сибирской и костромской династий.</div>
         </div>
 
-        <!-- КОЛОНКА 2: РОДИТЕЛИ -->
-        <div class="gen-col">
-          <div class="gen-col-title">Поколение II · Родители</div>
-          
-          <!-- Отец -->
-          <div class="card denis-blue" onclick="showPersonDossier('alex_sem')">
-            <div class="card-role">Отец</div>
-            <div class="card-name">Александр Анатольевич Семёнов</div>
-            <div class="card-dates">г. Омск</div>
-            <div class="card-sub">Линия Семёновых, Карпущенко и Мядиных.</div>
-          </div>
-
-          <!-- Мать -->
-          <div class="card denis-blue" onclick="showPersonDossier('inga_nech')">
-            <div class="card-role">Мать</div>
-            <div class="card-name">Инга Ивановна Нечаева (Семёнова)</div>
-            <div class="card-dates">род. 5 мая 1968 г., г. Омск · ОмГУ</div>
-            <div class="card-sub">Линия Нечаевых, Шибаевых и Виноградовых.</div>
-          </div>
+        <!-- GEN 2: РОДИТЕЛИ -->
+        <!-- Отец -->
+        <div class="tree-node dad-node" style="left: 350px; top: 160px;" onclick="openPersonDossier('alex_sem')">
+          <div class="node-role-tag">Отец</div>
+          <div class="node-name-text">Александр Семёнов</div>
+          <div class="node-meta-text">г. Омск</div>
+          <div class="node-snippet-text">Линия Семёновых и Карпущенко.</div>
         </div>
 
-        <!-- КОЛОНКА 3: ДЕДЫ И БАБУШКИ -->
-        <div class="gen-col">
-          <div class="gen-col-title">Поколение III · Дедушки и бабушки</div>
-
-          <!-- Дед по отцу -->
-          <div class="card denis-blue" onclick="showPersonDossier('anatoly_sem')">
-            <div class="card-role">Дед (по отцу)</div>
-            <div class="card-name">Анатолий Семёнов</div>
-            <div class="card-dates">ум. 22 февраля 2012 г., г. Омск</div>
-            <div class="siblings-tag">Брат: <b>Геннадий</b> · Сестра: <b>Вера</b> (ум. 2013)</div>
-          </div>
-
-          <!-- Бабушка по отцу -->
-          <div class="card gold-theme" onclick="showPersonDossier('lyudmila_karp')">
-            <div class="card-role">Бабушка (по отцу)</div>
-            <div class="card-name">Людмила Ивановна Карпущенко <span class="pill pill-gold">Кочковатка</span></div>
-            <div class="card-dates">род. 10 марта 1937 г., Называевский р-н</div>
-            <div class="siblings-tag">Брат: <b>Дмитрий Карпущенко</b></div>
-          </div>
-
-          <!-- Дед по матери -->
-          <div class="card living-theme" onclick="showPersonDossier('ivan_vas_nech')">
-            <div class="card-role">Дед (по матери)</div>
-            <div class="card-name">Нечаев Иван Васильевич <span class="pill pill-green">Жив · 84 года</span></div>
-            <div class="card-dates">род. 1942 г. · д. Глебово, Костромская обл.</div>
-            <div class="siblings-tag">Брат-герой: <b>Иван</b> (1924–1943) · <b>Мария</b>, <b>Алексей</b>, <b>Валентина</b></div>
-          </div>
-
-          <!-- Бабушка по матери -->
-          <div class="card gold-theme" onclick="showPersonDossier('tamara_vinogr')">
-            <div class="card-role">Бабушка (по матери)</div>
-            <div class="card-name">Тамара Ивановна Виноградова <span class="pill pill-gold">уточнено</span></div>
-            <div class="card-dates">Костромская обл. · дочь фронтовика</div>
-            <div class="siblings-tag">Брат: <b>Валентин Виноградов</b></div>
-          </div>
+        <!-- Мать -->
+        <div class="tree-node mom-node" style="left: 350px; top: 560px;" onclick="openPersonDossier('inga_nech')">
+          <div class="node-role-tag">Мать</div>
+          <div class="node-name-text">Инга Нечаева (Семёнова)</div>
+          <div class="node-meta-text">род. 5 мая 1968 г., Омск · ОмГУ</div>
+          <div class="node-snippet-text">Линия Нечаевых и Виноградовых.</div>
         </div>
 
-        <!-- КОЛОНКА 4: ПРАДЕДЫ -->
-        <div class="gen-col">
-          <div class="gen-col-title">Поколение IV · Прадеды и прабабки</div>
-
-          <div class="card denis-blue" onclick="showPersonDossier('petr_sem')">
-            <div class="card-role">Прадед (Омск)</div>
-            <div class="card-name">Пётр Семёнов</div>
-            <div class="card-dates">Омская область</div>
-          </div>
-
-          <div class="card gold-theme" onclick="showPersonDossier('ivan_karp')">
-            <div class="card-role">Прадед (Омск / Кочковатка)</div>
-            <div class="card-name">Иван Карпущенко <span class="pill pill-gold">уточнено</span></div>
-            <div class="card-dates">д. Кочковатка (белорусы 1896 г.)</div>
-          </div>
-
-          <div class="card gold-theme" onclick="showPersonDossier('anna_myadina')">
-            <div class="card-role">Прабабушка (Беларусь / Мядель)</div>
-            <div class="card-name">Анна Михайловна Мядина</div>
-            <div class="card-dates">ум. 21 августа 2002 г., г. Омск</div>
-          </div>
-
-          <div class="card denis-blue" onclick="showPersonDossier('vasily_efim_nech')">
-            <div class="card-role">Прадед (д. Глебово, Кострома)</div>
-            <div class="card-name">Василий Ефимович Нечаев</div>
-            <div class="card-dates">род. 1892 г. · отец: Ефим Моисеевич</div>
-          </div>
-
-          <div class="card gold-theme" onclick="showPersonDossier('olga_shibaeva')">
-            <div class="card-role">Прабабушка (Николо-Полома)</div>
-            <div class="card-name">Ольга Николаевна Шибаева</div>
-            <div class="card-dates">1899 — 1976 гг. · д. Глебово</div>
-          </div>
-
-          <div class="card war-theme" onclick="showPersonDossier('ivan_luk_vinogr')">
-            <div class="card-role">Прадед-фронтовик (погиб в 1945)</div>
-            <div class="card-name">Иван Лукьянович Виноградов <span class="pill pill-war">Герой</span></div>
-            <div class="card-dates">1910, д. Галанино — 22.01.1945, Венгрия</div>
-          </div>
-
-          <div class="card denis-blue" onclick="showPersonDossier('anastasia_dem_vinogr')">
-            <div class="card-role">Прабабушка (г. Нея)</div>
-            <div class="card-name">Анастасия Демидовна Виноградова</div>
-            <div class="card-dates">отец: Демид Арефьевич · мать: Любовь</div>
-          </div>
+        <!-- GEN 3: ДЕДУШКИ И БАБУШКИ -->
+        <!-- Дед Анатолий -->
+        <div class="tree-node dad-node" style="left: 670px; top: 60px;" onclick="openPersonDossier('anatoly_sem')">
+          <div class="node-role-tag">Дед (по отцу)</div>
+          <div class="node-name-text">Анатолий Семёнов</div>
+          <div class="node-meta-text">ум. 22 февраля 2012 г., Омск</div>
+          <div class="node-snippet-text">Брат: Геннадий · Сестра: Вера (Уфа)</div>
         </div>
+
+        <!-- Бабушка Людмила -->
+        <div class="tree-node gold-node" style="left: 670px; top: 240px;" onclick="openPersonDossier('lyudmila_karp')">
+          <div class="node-role-tag">Бабушка (по отцу)</div>
+          <div class="node-name-text">Людмила Карпущенко <span class="badge-pill bp-gold">Кочковатка</span></div>
+          <div class="node-meta-text">род. 10.03.1937, Называевский р-н</div>
+          <div class="node-snippet-text">Брат: Дмитрий Карпущенко</div>
+        </div>
+
+        <!-- Дед Иван Васильевич -->
+        <div class="tree-node living-node" style="left: 670px; top: 450px;" onclick="openPersonDossier('ivan_vas_nech')">
+          <div class="node-role-tag">Дед (по матери)</div>
+          <div class="node-name-text">Иван Васильевич Нечаев <span class="badge-pill bp-green">Жив · 84 г.</span></div>
+          <div class="node-meta-text">род. 1942, д. Глебово Костромской обл.</div>
+          <div class="node-snippet-text">Брат-герой: Иван (1924–1943)</div>
+        </div>
+
+        <!-- Бабушка Тамара -->
+        <div class="tree-node gold-node" style="left: 670px; top: 660px;" onclick="openPersonDossier('tamara_vinogr')">
+          <div class="node-role-tag">Бабушка (по матери)</div>
+          <div class="node-name-text">Тамара Виноградова <span class="badge-pill bp-gold">найдено</span></div>
+          <div class="node-meta-text">Костромская обл. · дочь фронтовика</div>
+          <div class="node-snippet-text">Брат: Валентин Виноградов</div>
+        </div>
+
+        <!-- GEN 4: ПРАДЕДЫ -->
+        <!-- Прадед Пётр -->
+        <div class="tree-node dad-node" style="left: 990px; top: 65px;" onclick="openPersonDossier('petr_sem')">
+          <div class="node-role-tag">Прадед</div>
+          <div class="node-name-text">Пётр Семёнов</div>
+          <div class="node-meta-text">Омская область</div>
+        </div>
+
+        <!-- Прадед Иван Карпущенко -->
+        <div class="tree-node gold-node" style="left: 990px; top: 195px;" onclick="openPersonDossier('ivan_karp')">
+          <div class="node-role-tag">Прадед</div>
+          <div class="node-name-text">Иван Карпущенко <span class="badge-pill bp-gold">Кочковатка</span></div>
+          <div class="node-meta-text">Омская обл., д. Кочковатка (1896 г.)</div>
+          <div class="node-snippet-text">Родовой куст из 7 фронтовиков</div>
+        </div>
+
+        <!-- Прабабушка Анна Мядина -->
+        <div class="tree-node gold-node" style="left: 990px; top: 295px;" onclick="openPersonDossier('anna_myadina')">
+          <div class="node-role-tag">Прабабушка</div>
+          <div class="node-name-text">Анна Михайловна Мядина <span class="badge-pill bp-gold">Мядель</span></div>
+          <div class="node-meta-text">ум. 21.08.2002, Омск (Беларусь)</div>
+        </div>
+
+        <!-- Прадед Василий Нечаев -->
+        <div class="tree-node mom-node" style="left: 990px; top: 395px;" onclick="openPersonDossier('vasily_efim_nech')">
+          <div class="node-role-tag">Прадед</div>
+          <div class="node-name-text">Василий Ефимович Нечаев</div>
+          <div class="node-meta-text">род. 1892, д. Глебово Кологривского у.</div>
+          <div class="node-snippet-text">Троицкая церковь с. Солтаново (1790 г.)</div>
+        </div>
+
+        <!-- Прабабушка Ольга Шибаева -->
+        <div class="tree-node gold-node" style="left: 990px; top: 495px;" onclick="openPersonDossier('olga_shibaeva')">
+          <div class="node-role-tag">Прабабушка</div>
+          <div class="node-name-text">Ольга Николаевна Шибаева</div>
+          <div class="node-meta-text">1899 — 1976 гг. · Николо-Полома</div>
+        </div>
+
+        <!-- Прадед Иван Лукьянович Виноградов -->
+        <div class="tree-node war-node" style="left: 990px; top: 605px;" onclick="openPersonDossier('ivan_luk_vinogr')">
+          <div class="node-role-tag">Прадед-фронтовик</div>
+          <div class="node-name-text">Иван Лукьянович Виноградов <span class="badge-pill bp-war">Погиб</span></div>
+          <div class="node-meta-text">1910, д. Галанино — 22.01.1945, Венгрия</div>
+          <div class="node-snippet-text">Гв. сержант 2 гв. мбр (с. Капольнашньек)</div>
+        </div>
+
+        <!-- Прабабушка Анастасия Виноградова -->
+        <div class="tree-node mom-node" style="left: 990px; top: 705px;" onclick="openPersonDossier('anastasia_dem_vinogr')">
+          <div class="node-role-tag">Прабабушка</div>
+          <div class="node-name-text">Анастасия Демидовна Виноградова</div>
+          <div class="node-meta-text">Костромская обл., г. Нея</div>
+        </div>
+
+        <!-- GEN 5: ПРАПРАДЕДЫ -->
+        <!-- Прапрадед Ефим Моисеевич Нечаев -->
+        <div class="tree-node mom-node" style="left: 1310px; top: 395px;" onclick="openPersonDossier('efim_mois_nech')">
+          <div class="node-role-tag">Прапрадед</div>
+          <div class="node-name-text">Ефим Моисеевич Нечаев</div>
+          <div class="node-meta-text">Костромская губерния</div>
+        </div>
+
+        <!-- Прапрадед Лукьян Виноградов -->
+        <div class="tree-node unk-node" style="left: 1310px; top: 605px;" onclick="openPersonDossier('lukyan_vinogr')">
+          <div class="node-role-tag">Прапрадед</div>
+          <div class="node-name-text">Лукьян (Лука?) Виноградов</div>
+          <div class="node-meta-text">д. Галанино Ковернинской вол.</div>
+        </div>
+
+        <!-- Прапрадед Демид Виноградов -->
+        <div class="tree-node mom-node" style="left: 1310px; top: 690px; width:220px; padding:6px 10px;" onclick="openPersonDossier('demid_vinogr')">
+          <div class="node-role-tag">Прапрадед</div>
+          <div class="node-name-text" style="font-size:12px;">Демид Арефьевич Виноградов</div>
+          <div class="node-meta-text">г. Нея</div>
+        </div>
+
+        <!-- Прапрабабушка Любовь Яковлевна -->
+        <div class="tree-node mom-node" style="left: 1310px; top: 750px; width:220px; padding:6px 10px;" onclick="openPersonDossier('lyubov_yak')">
+          <div class="node-role-tag">Прапрабабушка</div>
+          <div class="node-name-text" style="font-size:12px;">Любовь Яковлевна</div>
+          <div class="node-meta-text">Костромская обл.</div>
+        </div>
+
       </div>
     </div>
 
-    <!-- 2. ДРЕВО МАРГАРИТЫ ЖЕНЦОВОЙ -->
-    <div class="tree-canvas" id="canvas-margo">
-      <div class="tree-header-badge">
-        <div class="tree-main-title margo">
-          <span>🌸 Ветвь Маргариты Женцовой</span>
-          <span class="pill pill-margo">Тверь · Харбин · Харьков · Чита</span>
+    <!-- ================= 2. ДРЕВО МАРГАРИТЫ ЖЕНЦОВОЙ ================= -->
+    <div class="tree-stage-card" id="stage-margo">
+      <div class="stage-head">
+        <div class="stage-title margo">
+          <span>🌸 Древо предков: Маргарита Женцова</span>
+          <span class="badge-pill bp-margo">Тверь · Харбин · Харьков · Чита</span>
         </div>
-        <span style="font-size:12.5px; color:var(--ink-muted);">Монастырские крестьяне Твери (с 1627 г.) и союз сирот в Новосибирске 1920-х гг.</span>
+        <span style="font-size:12px; color:var(--ink-muted);">Монастырские крестьяне Твери (с 1627 г.) и союз сирот в Сибири 1920-х гг.</span>
       </div>
 
-      <div class="pedigree-grid">
-        <!-- КОЛОНКА 1: МАРГАРИТА -->
-        <div class="gen-col">
-          <div class="gen-col-title">Поколение I · Исходная персона</div>
-          <div class="card root" onclick="showPersonDossier('margo')">
-            <div class="card-role">Исходная персона</div>
-            <div class="card-name">Маргарита Женцова <span class="pill pill-margo">г. Тверь</span></div>
-            <div class="card-dates">род. 11 июля 1999 г., г. Тверь</div>
-            <div class="card-sub">Наследница тверского рода Женцовых и харбинского модельера Михаила Ли-Вен-Си.</div>
-          </div>
+      <div class="tree-canvas-wrapper margo-height" id="canvas-margo-wrap">
+        <div class="gen-guide" style="left: 30px;">Поколение I (Маргарита)</div>
+        <div class="gen-guide" style="left: 350px;">Поколение II (Родители)</div>
+        <div class="gen-guide" style="left: 670px;">Поколение III (Деды и бабушки)</div>
+        <div class="gen-guide" style="left: 990px;">Поколение IV (Прадеды)</div>
+        <div class="gen-guide" style="left: 1310px;">Поколение V (Прапрадеды)</div>
+
+        <!-- SVG CONNECTIONS LAYER -->
+        <svg class="tree-svg-layer">
+          <!-- Маргарита -> Отец Сергей -->
+          <path class="tree-link margo-line" d="M 280,310 H 315 V 140 H 350" />
+          <!-- Маргарита -> Мать Виктория -->
+          <path class="tree-link margo-line" d="M 280,310 H 315 V 470 H 350" />
+
+          <!-- Отец Сергей -> Дед Николай Женцов -->
+          <path class="tree-link margo-line" d="M 600,140 H 670" />
+
+          <!-- Дед Николай -> Предки Женцовых с 1627 г. -->
+          <path class="tree-link gold-line" d="M 920,140 H 990" />
+
+          <!-- Мать Виктория -> Дед Николай Рыжиков -->
+          <path class="tree-link margo-line" d="M 600,470 H 635 V 380 H 670" />
+          <!-- Мать Виктория -> Бабушка Лидия Ливенси -->
+          <path class="tree-link margo-line" d="M 600,470 H 635 V 540 H 670" />
+
+          <!-- Бабушка Лидия -> Прадед Михаил Ли-Вен-Си -->
+          <path class="tree-link gold-line" d="M 920,540 H 955 V 480 H 990" />
+          <!-- Бабушка Лидия -> Прабабушка Антонина Токмакова -->
+          <path class="tree-link gold-line" d="M 920,540 H 955 V 580 H 990" />
+
+          <!-- Прабабушка Антонина -> Прапрадед Валентин Токмаков -->
+          <path class="tree-link margo-line" d="M 1240,580 H 1310" />
+        </svg>
+
+        <!-- GEN 1: МАРГАРИТА -->
+        <div class="tree-node me-node" style="left: 30px; top: 270px;" onclick="openPersonDossier('margo')">
+          <div class="node-role-tag">Исходная персона</div>
+          <div class="node-name-text">Маргарита Женцова <span class="badge-pill bp-margo">Тверь</span></div>
+          <div class="node-meta-text">род. 11 июля 1999 г., г. Тверь</div>
+          <div class="node-snippet-text">Наследница тверского рода и харбинского модельера.</div>
         </div>
 
-        <!-- КОЛОНКА 2: РОДИТЕЛИ -->
-        <div class="gen-col">
-          <div class="gen-col-title">Поколение II · Родители</div>
-
-          <div class="card margo-purple" onclick="showPersonDossier('sergey_zhents')">
-            <div class="card-role">Отец</div>
-            <div class="card-name">Женцов Сергей Николаевич</div>
-            <div class="card-dates">с. Медведиха / г. Тверь</div>
-            <div class="card-sub">Старинный род монастырских крестьян с 1627 года.</div>
-          </div>
-
-          <div class="card margo-purple" onclick="showPersonDossier('victoria_ryzh')">
-            <div class="card-role">Мать</div>
-            <div class="card-name">Рыжикова Виктория Николаевна</div>
-            <div class="card-dates">г. Тверь / Сибирь</div>
-            <div class="card-sub">Линия Рыжиковых, Ли-Вен-Си и Токмаковых.</div>
-          </div>
+        <!-- GEN 2: РОДИТЕЛИ -->
+        <div class="tree-node margo-node" style="left: 350px; top: 100px;" onclick="openPersonDossier('sergey_zhents')">
+          <div class="node-role-tag">Отец</div>
+          <div class="node-name-text">Женцов Сергей Николаевич</div>
+          <div class="node-meta-text">с. Медведиха / г. Тверь</div>
+          <div class="node-snippet-text">Род монастырских крестьян с 1627 г.</div>
         </div>
 
-        <!-- КОЛОНКА 3: ДЕДЫ И БАБУШКИ -->
-        <div class="gen-col">
-          <div class="gen-col-title">Поколение III · Дедушки и бабушки</div>
-
-          <div class="card gold-theme" onclick="showPersonDossier('nikolay_zhents')">
-            <div class="card-role">Дед (по отцу)</div>
-            <div class="card-name">Николай Женцов <span class="pill pill-gold">кандидат найден</span></div>
-            <div class="card-dates">с. Медведиха · вероятный военврач (1921 г.р.)</div>
-            <div class="card-sub">Приход Никольской церкви с. Медведиха (с 1627 г.).</div>
-          </div>
-
-          <div class="card margo-purple" onclick="showPersonDossier('nikolay_ryzh')">
-            <div class="card-role">Дед (по матери)</div>
-            <div class="card-name">Николай Рыжиков</div>
-            <div class="card-dates">место рождения уточняется</div>
-          </div>
-
-          <div class="card gold-theme" onclick="showPersonDossier('lidia_livensi')">
-            <div class="card-role">Бабушка (по матери)</div>
-            <div class="card-name">Лидия Михайловна Ливенси <span class="pill pill-gold">подтверждено</span></div>
-            <div class="card-dates">в браке Рыжикова · Сибирь</div>
-            <div class="siblings-tag">Сестра: <b>Алевтина Ли-Вен-Си</b> (учёный СО РАН) · Брат: <b>Михаил</b> (Тверь)</div>
-          </div>
+        <div class="tree-node margo-node" style="left: 350px; top: 430px;" onclick="openPersonDossier('victoria_ryzh')">
+          <div class="node-role-tag">Мать</div>
+          <div class="node-name-text">Рыжикова Виктория Николаевна</div>
+          <div class="node-meta-text">г. Тверь / Сибирь</div>
+          <div class="node-snippet-text">Линия Рыжиковых и Ли-Вен-Си.</div>
         </div>
 
-        <!-- КОЛОНКА 4: ПРАДЕДЫ -->
-        <div class="gen-col">
-          <div class="gen-col-title">Поколение IV · Прадеды и предки</div>
-
-          <div class="card unk-theme" onclick="showPersonDossier('ivan_zhents_anc')">
-            <div class="card-role">Предки Женцовых (с 1627 г.)</div>
-            <div class="card-name">Род Женцовых (Медведиха)</div>
-            <div class="card-dates">Бежецкий уезд Тверской губ.</div>
-          </div>
-
-          <div class="card gold-theme" onclick="showPersonDossier('mikhail_livensi')">
-            <div class="card-role">Прадед (Харбин / Маньчжурия)</div>
-            <div class="card-name">Михаил Ли-Вен-Си (李文西) <span class="pill pill-gold">модельер</span></div>
-            <div class="card-dates">Харбин → Новосибирск · модельер обуви</div>
-            <div class="card-sub">Отец 5 детей. «Высокий, одетый с иголочки, выделялся в толпе».</div>
-          </div>
-
-          <div class="card gold-theme" onclick="showPersonDossier('antonina_tokm')">
-            <div class="card-role">Прабабушка (Харьков)</div>
-            <div class="card-name">Антонина Валентиновна Токмакова</div>
-            <div class="card-dates">Харьковская губ. → Новосибирск · сирота</div>
-            <div class="card-sub">Осиротела в 14–15 лет, жила «в людях», выдана замуж в 1920-е гг.</div>
-          </div>
-
-          <div class="card unk-theme" onclick="showPersonDossier('valentin_tokm')">
-            <div class="card-role">Прапрадед (Харьков)</div>
-            <div class="card-name">Валентин Токмаков</div>
-            <div class="card-dates">Харьковская губерния</div>
-          </div>
+        <!-- GEN 3: ДЕДЫ И БАБУШКИ -->
+        <div class="tree-node gold-node" style="left: 670px; top: 100px;" onclick="openPersonDossier('nikolay_zhents')">
+          <div class="node-role-tag">Дед (по отцу)</div>
+          <div class="node-name-text">Николай Женцов <span class="badge-pill bp-gold">кандидат</span></div>
+          <div class="node-meta-text">с. Медведиха · военврач (1921 г.р.)</div>
         </div>
+
+        <div class="tree-node margo-node" style="left: 670px; top: 340px;" onclick="openPersonDossier('nikolay_ryzh')">
+          <div class="node-role-tag">Дед (по матери)</div>
+          <div class="node-name-text">Николай Рыжиков</div>
+          <div class="node-meta-text">место рождения уточняется</div>
+        </div>
+
+        <div class="tree-node gold-node" style="left: 670px; top: 500px;" onclick="openPersonDossier('lidia_livensi')">
+          <div class="node-role-tag">Бабушка (по матери)</div>
+          <div class="node-name-text">Лидия Ливенси (Рыжикова) <span class="badge-pill bp-gold">подтверждено</span></div>
+          <div class="node-meta-text">Сибирь · несклоняемая фамилия</div>
+          <div class="node-snippet-text">Сестра: Алевтина (генетик СО РАН) · Брат: Михаил (Тверь)</div>
+        </div>
+
+        <!-- GEN 4: ПРАДЕДЫ -->
+        <div class="tree-node unk-node" style="left: 990px; top: 100px;" onclick="openPersonDossier('ivan_zhents_anc')">
+          <div class="node-role-tag">Предки Женцовых (с 1627 г.)</div>
+          <div class="node-name-text">Род Женцовых (с. Медведиха)</div>
+          <div class="node-meta-text">Кирилло-Белозерский монастырь</div>
+        </div>
+
+        <div class="tree-node gold-node" style="left: 990px; top: 440px;" onclick="openPersonDossier('mikhail_livensi')">
+          <div class="node-role-tag">Прадед (Харбин)</div>
+          <div class="node-name-text">Михаил Ли-Вен-Си (李文西) <span class="badge-pill bp-gold">модельер</span></div>
+          <div class="node-meta-text">Харбин → Новосибирск · модельер обуви</div>
+          <div class="node-snippet-text">Отец 5 детей («высокий, одетый с иголочки»)</div>
+        </div>
+
+        <div class="tree-node gold-node" style="left: 990px; top: 540px;" onclick="openPersonDossier('antonina_tokm')">
+          <div class="node-role-tag">Прабабушка (Харьков)</div>
+          <div class="node-name-text">Антонина Токмакова <span class="badge-pill bp-gold">сирота</span></div>
+          <div class="node-meta-text">Харьковская губ. → Новосибирск</div>
+          <div class="node-snippet-text">Осиротела в 14–15 лет, жила «в людях»</div>
+        </div>
+
+        <!-- GEN 5: ПРАПРАДЕДЫ -->
+        <div class="tree-node unk-node" style="left: 1310px; top: 540px;" onclick="openPersonDossier('valentin_tokm')">
+          <div class="node-role-tag">Прапрадед</div>
+          <div class="node-name-text">Валентин Токмаков</div>
+          <div class="node-meta-text">Харьковская губерния</div>
+        </div>
+
       </div>
     </div>
 
   </div>
 
   <!-- ================= TAB 2: SOURCES ================= -->
-  <div id="tab-sources" class="tab-view">
-    <div class="table-box">
-      <div class="tree-header-badge">
-        <div class="tree-main-title">📚 Единый реестр первоисточников исследования</div>
-        <span style="font-size:12.5px; color:var(--ink-muted);">Все документы, публикации, фонды и семейные свидетельства</span>
+  <div id="tab-sources" class="tab-pane">
+    <div class="data-card">
+      <div class="stage-head">
+        <div class="stage-title">📚 Единый реестр первоисточников исследования</div>
+        <span style="font-size:12px; color:var(--ink-muted);">Все документы, публикации, фонды и семейные свидетельства</span>
       </div>
 
-      <table class="data-table">
+      <table class="src-table">
         <thead>
           <tr>
             <th>#</th>
@@ -987,39 +1051,39 @@
             <td>Архив ЦАМО</td>
             <td>Донесение 2-й гв. мехбригады о потерях (ф. 58, оп. 18003, д. 158)</td>
             <td>Иван Лукьянович Виноградов (1910–1945, с. Капольнашньек, Венгрия)</td>
-            <td><span class="f-badge fb-doc">🟢 Документ</span></td>
-            <td><a style="color:var(--denis-primary); font-weight:700;" href="https://pamyat-naroda.ru" target="_blank">Память народа ↗</a></td>
+            <td><span class="fact-badge fb-doc">🟢 Документ</span></td>
+            <td><a style="color:var(--denis-blue); font-weight:700;" href="https://pamyat-naroda.ru" target="_blank">Память народа ↗</a></td>
           </tr>
           <tr>
             <td>2</td>
             <td>Архив ЦАМО</td>
             <td>Донесение о безвозвратных потерях 1-й гв. мехбригады (48 омсб)</td>
             <td>Иван Васильевич Нечаев (1924–1943, х. Верхне-Грачики)</td>
-            <td><span class="f-badge fb-doc">🟢 Документ</span></td>
-            <td><a style="color:var(--denis-primary); font-weight:700;" href="https://pamyat-naroda.ru" target="_blank">Память народа ↗</a></td>
+            <td><span class="fact-badge fb-doc">🟢 Документ</span></td>
+            <td><a style="color:var(--denis-blue); font-weight:700;" href="https://pamyat-naroda.ru" target="_blank">Память народа ↗</a></td>
           </tr>
           <tr>
             <td>3</td>
             <td>Периодика</td>
             <td>Газета «Тверская жизнь», очерк «Он объединяет народы» (К. Бежецкий)</td>
             <td>Михаил Ли-Вен-Си старший (модельер обуви) и 5 детей в Новосибирске</td>
-            <td><span class="f-badge fb-pub">🟡 Публикация</span></td>
-            <td><a style="color:var(--denis-primary); font-weight:700;" href="https://tverlife.ru" target="_blank">tverlife.ru ↗</a></td>
+            <td><span class="fact-badge fb-pub">🟡 Публикация</span></td>
+            <td><a style="color:var(--denis-blue); font-weight:700;" href="https://tverlife.ru" target="_blank">tverlife.ru ↗</a></td>
           </tr>
           <tr>
             <td>4</td>
             <td>Архив СО РАН</td>
             <td>Газета «Наука в Сибири», списки ИЦиГ СО АН СССР</td>
             <td>Алевтина Михайловна Ли-Вен-Си (учёный-генетик, Новосибирск)</td>
-            <td><span class="f-badge fb-doc">🟢 Документ</span></td>
-            <td><a style="color:var(--denis-primary); font-weight:700;" href="https://sbras.info" target="_blank">sbras.info ↗</a></td>
+            <td><span class="fact-badge fb-doc">🟢 Документ</span></td>
+            <td><a style="color:var(--denis-blue); font-weight:700;" href="https://sbras.info" target="_blank">sbras.info ↗</a></td>
           </tr>
           <tr>
             <td>5</td>
             <td>Архив ГАТО</td>
             <td>Писцовая книга Бежецкого уезда 1627 г. (вотчина Кирилло-Белозерского мон.)</td>
             <td>Село Медведиха — родовое гнездо всех тверских Женцовых</td>
-            <td><span class="f-badge fb-doc">🟢 Документ</span></td>
+            <td><span class="fact-badge fb-doc">🟢 Документ</span></td>
             <td><span style="color:var(--ink-muted);">ГАТО (Тверь)</span></td>
           </tr>
           <tr>
@@ -1027,7 +1091,7 @@
             <td>Архив ГИАОО</td>
             <td>Фонд Р-580 (карточки учета жителей Называевского района)</td>
             <td>Вера Дмитриевна Карпущенко (1921 г.р., д. Кочковатка)</td>
-            <td><span class="f-badge fb-doc">🟢 Документ</span></td>
+            <td><span class="fact-badge fb-doc">🟢 Документ</span></td>
             <td><span style="color:var(--ink-muted);">ГИАОО (Омск)</span></td>
           </tr>
           <tr>
@@ -1035,7 +1099,7 @@
             <td>Семейная память</td>
             <td>Рассказ Маргариты Женцовой (запись от 17 августа 2026 г.)</td>
             <td>Антонина Токмакова (Харьков), Михаил Ли-Вен-Си (Харбин)</td>
-            <td><span class="f-badge fb-mem">🟠 Память</span></td>
+            <td><span class="fact-badge fb-mem">🟠 Память</span></td>
             <td><span style="color:var(--ink-muted);">Семейный архив</span></td>
           </tr>
           <tr>
@@ -1043,7 +1107,7 @@
             <td>Семейная память</td>
             <td>Свидетельство Дениса Семёнова (запись от 17 августа 2026 г.)</td>
             <td>Дед Иван Васильевич Нечаев (84 года, жив), Тамара Виноградова</td>
-            <td><span class="f-badge fb-mem">🟠 Память</span></td>
+            <td><span class="fact-badge fb-mem">🟠 Память</span></td>
             <td><span style="color:var(--ink-muted);">Семейный архив</span></td>
           </tr>
         </tbody>
@@ -1052,128 +1116,128 @@
   </div>
 
   <!-- ================= TAB 3: PROGRESS ================= -->
-  <div id="tab-progress" class="tab-view">
-    <div class="progress-grid">
-      <div class="prog-card">
-        <div class="prog-head">
-          <div class="prog-name">Нечаевы (Костромская земля)</div>
-          <div class="prog-val">82%</div>
+  <div id="tab-progress" class="tab-pane">
+    <div class="prog-grid">
+      <div class="prog-box">
+        <div class="prog-top">
+          <div style="font-weight:700; font-size:15px;">Нечаевы (Костромская земля)</div>
+          <div style="font-weight:700; color:var(--gold);">82%</div>
         </div>
-        <div class="bar-outer"><div class="bar-inner" style="width:82%;"></div></div>
-        <div class="prog-text">4 поколения установлены. Дед Иван (84 года) жив! Запрос в ГАКО по метрикам Василия Ефимовича (1892).</div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:82%;"></div></div>
+        <div style="font-size:13px; color:var(--ink-muted);">4 поколения установлены. Дед Иван (84 года) жив! Запрос в ГАКО по метрикам Василия Ефимовича (1892).</div>
       </div>
 
-      <div class="prog-card">
-        <div class="prog-head">
-          <div class="prog-name">Виноградовы (Галанино → Нея)</div>
-          <div class="prog-val">75%</div>
+      <div class="prog-box">
+        <div class="prog-top">
+          <div style="font-weight:700; font-size:15px;">Виноградовы (Галанино → Нея)</div>
+          <div style="font-weight:700; color:var(--gold);">75%</div>
         </div>
-        <div class="bar-outer"><div class="bar-inner" style="width:75%;"></div></div>
-        <div class="prog-text">Прадед Иван Лукьянович (1910–1945) подтверждён документами ЦАМО. Готово заявление в Посольство в Венгрии.</div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:75%;"></div></div>
+        <div style="font-size:13px; color:var(--ink-muted);">Прадед Иван Лукьянович (1910–1945) подтверждён документами ЦАМО. Готово заявление в Посольство в Венгрии.</div>
       </div>
 
-      <div class="prog-card">
-        <div class="prog-head">
-          <div class="prog-name">Карпущенко и Мядины (Омск)</div>
-          <div class="prog-val">70%</div>
+      <div class="prog-box">
+        <div class="prog-top">
+          <div style="font-weight:700; font-size:15px;">Карпущенко и Мядины (Омск)</div>
+          <div style="font-weight:700; color:var(--gold);">70%</div>
         </div>
-        <div class="bar-outer"><div class="bar-inner" style="width:70%;"></div></div>
-        <div class="prog-text">Белорусское основание Кочковатки 1896 г., 7 фронтовиков. Запрос в ЗАГС Называевска на отчество прадеда Ивана.</div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:70%;"></div></div>
+        <div style="font-size:13px; color:var(--ink-muted);">Белорусское основание Кочковатки 1896 г., 7 фронтовиков. Запрос в ЗАГС Называевска на отчество прадеда Ивана.</div>
       </div>
 
-      <div class="prog-card">
-        <div class="prog-head">
-          <div class="prog-name">Ли-Вен-Си (Харбин → Сибирь)</div>
-          <div class="prog-val">65%</div>
+      <div class="prog-box">
+        <div class="prog-top">
+          <div style="font-weight:700; font-size:15px;">Ли-Вен-Си (Харбин → Сибирь)</div>
+          <div style="font-weight:700; color:var(--gold);">65%</div>
         </div>
-        <div class="bar-outer"><div class="bar-inner" style="width:65%;"></div></div>
-        <div class="prog-text">Модельер Михаил Ли-Вен-Си, учёная Алевтина Ли-Вен-Си (СО РАН). Запрос справки о браке в ЗАГС Новосибирска.</div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:65%;"></div></div>
+        <div style="font-size:13px; color:var(--ink-muted);">Модельер Михаил Ли-Вен-Си, учёная Алевтина Ли-Вен-Си (СО РАН). Запрос справки о браке в ЗАГС Новосибирска.</div>
       </div>
 
-      <div class="prog-card">
-        <div class="prog-head">
-          <div class="prog-name">Женцовы (Тверь / Медведиха)</div>
-          <div class="prog-val">40%</div>
+      <div class="prog-box">
+        <div class="prog-top">
+          <div style="font-weight:700; font-size:15px;">Женцовы (Тверь / Медведиха)</div>
+          <div style="font-weight:700; color:var(--gold);">40%</div>
         </div>
-        <div class="bar-outer"><div class="bar-inner" style="width:40%;"></div></div>
-        <div class="prog-text">История села с 1627 г. Кандидат — военврач Николай Иванович (1921 г.р.). Уточнить у отца Маргариты (Сергея).</div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:40%;"></div></div>
+        <div style="font-size:13px; color:var(--ink-muted);">История села с 1627 г. Кандидат — военврач Николай Иванович (1921 г.р.). Уточнить у отца Маргариты (Сергея).</div>
       </div>
 
-      <div class="prog-card">
-        <div class="prog-head">
-          <div class="prog-name">Токмаковы (Харьков)</div>
-          <div class="prog-val">25%</div>
+      <div class="prog-box">
+        <div class="prog-top">
+          <div style="font-weight:700; font-size:15px;">Токмаковы (Харьков)</div>
+          <div style="font-weight:700; color:var(--gold);">25%</div>
         </div>
-        <div class="bar-outer"><div class="bar-inner" style="width:25%;"></div></div>
-        <div class="prog-text">Антонина Валентиновна Токмакова (сирота). Точный уезд будет в справке о браке из ЗАГС Новосибирска.</div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:25%;"></div></div>
+        <div style="font-size:13px; color:var(--ink-muted);">Антонина Валентиновна Токмакова (сирота). Точный уезд будет в справке о браке из ЗАГС Новосибирска.</div>
       </div>
     </div>
   </div>
 
   <!-- ================= TAB 4: TIMELINE ================= -->
-  <div id="tab-timeline" class="tab-view">
-    <div class="table-box">
-      <div class="t-line-box">
+  <div id="tab-timeline" class="tab-pane">
+    <div class="data-card">
+      <div class="timeline-wrap">
         <div class="t-row">
-          <div class="t-marker purple"></div>
-          <div class="t-content">
-            <div class="t-year-tag">1627 год</div>
-            <div class="t-title-tag">Село Медведиха — вотчина монастыря</div>
-            <div class="t-desc-tag">Первое документальное упоминание родового гнезда Женцовых в писцовой книге Бежецкого уезда Тверской земли.</div>
+          <div class="t-dot" style="border-color:var(--margo-purple);"></div>
+          <div class="t-box">
+            <div style="font-family:'Cinzel', serif; font-size:16px; font-weight:700; color:var(--gold);">1627 год</div>
+            <div style="font-weight:700; font-size:14.5px;">Село Медведиха — вотчина монастыря</div>
+            <div style="font-size:13px; color:var(--ink-muted);">Первое документальное упоминание родового гнезда Женцовых в писцовой книге Бежецкого уезда Тверской земли.</div>
           </div>
         </div>
 
         <div class="t-row">
-          <div class="t-marker blue"></div>
-          <div class="t-content">
-            <div class="t-year-tag">1892 год</div>
-            <div class="t-title-tag">Рождение Василия Ефимовича Нечаева</div>
-            <div class="t-desc-tag">Родился в деревне Глебово Солтановской волости Кологривского уезда (приход Троицкой церкви с. Солтаново).</div>
+          <div class="t-dot" style="border-color:var(--denis-blue);"></div>
+          <div class="t-box">
+            <div style="font-family:'Cinzel', serif; font-size:16px; font-weight:700; color:var(--gold);">1892 год</div>
+            <div style="font-weight:700; font-size:14.5px;">Рождение Василия Ефимовича Нечаева</div>
+            <div style="font-size:13px; color:var(--ink-muted);">Родился в деревне Глебово Солтановской волости Кологривского уезда (приход Троицкой церкви с. Солтаново).</div>
           </div>
         </div>
 
         <div class="t-row">
-          <div class="t-marker blue"></div>
-          <div class="t-content">
-            <div class="t-year-tag">1896 год</div>
-            <div class="t-title-tag">Основание деревни Кочковатка белорусами</div>
-            <div class="t-desc-tag">Белорусские переселенцы основали поселок в Сибири. Зарождение ветви Карпущенко и Мядиных (Мядель).</div>
+          <div class="t-dot" style="border-color:var(--denis-blue);"></div>
+          <div class="t-box">
+            <div style="font-family:'Cinzel', serif; font-size:16px; font-weight:700; color:var(--gold);">1896 год</div>
+            <div style="font-weight:700; font-size:14.5px;">Основание деревни Кочковатка белорусами</div>
+            <div style="font-size:13px; color:var(--ink-muted);">Белорусские переселенцы основали поселок в Сибири. Зарождение ветви Карпущенко и Мядиных (Мядель).</div>
           </div>
         </div>
 
         <div class="t-row">
-          <div class="t-marker purple"></div>
-          <div class="t-content">
-            <div class="t-year-tag">1920-е годы</div>
-            <div class="t-title-tag">Союз двух сирот в Новосибирске</div>
-            <div class="t-desc-tag">Харбинский модельер Михаил Ли-Вен-Си и сирота из Харьковской губ. Антонина Токмакова создают семью.</div>
+          <div class="t-dot" style="border-color:var(--margo-purple);"></div>
+          <div class="t-box">
+            <div style="font-family:'Cinzel', serif; font-size:16px; font-weight:700; color:var(--gold);">1920-е годы</div>
+            <div style="font-weight:700; font-size:14.5px;">Союз двух сирот в Новосибирске</div>
+            <div style="font-size:13px; color:var(--ink-muted);">Харбинский модельер Михаил Ли-Вен-Си и сирота из Харьковской губ. Антонина Токмакова создают семью.</div>
           </div>
         </div>
 
         <div class="t-row">
-          <div class="t-marker blue"></div>
-          <div class="t-content">
-            <div class="t-year-tag">1942 год</div>
-            <div class="t-title-tag">Рождение дедушки Ивана Васильевича Нечаева</div>
-            <div class="t-desc-tag">Родился в д. Глебово. Живой свидетель эпохи (сейчас 84 года!). Назван в честь старшего брата-героя.</div>
+          <div class="t-dot" style="border-color:var(--green);"></div>
+          <div class="t-box">
+            <div style="font-family:'Cinzel', serif; font-size:16px; font-weight:700; color:var(--gold);">1942 год</div>
+            <div style="font-weight:700; font-size:14.5px;">Рождение дедушки Ивана Васильевича Нечаева</div>
+            <div style="font-size:13px; color:var(--ink-muted);">Родился в д. Глебово. Живой свидетель эпохи (сейчас 84 года!). Назван в честь старшего брата-героя.</div>
           </div>
         </div>
 
         <div class="t-row">
-          <div class="t-marker red"></div>
-          <div class="t-content">
-            <div class="t-year-tag" style="color:var(--war);">1945 год (22 января)</div>
-            <div class="t-title-tag">Подвиг сержанта Ивана Виноградова в Венгрии</div>
-            <div class="t-desc-tag">Гвардии сержант 2 гв. мбр погиб при отражении танкового контрудара СС у оз. Веленце (с. Капольнашньек).</div>
+          <div class="t-dot" style="border-color:var(--war);"></div>
+          <div class="t-box">
+            <div style="font-family:'Cinzel', serif; font-size:16px; font-weight:700; color:var(--war);">1945 год (22 января)</div>
+            <div style="font-weight:700; font-size:14.5px;">Подвиг сержанта Ивана Виноградова в Венгрии</div>
+            <div style="font-size:13px; color:var(--ink-muted);">Гвардии сержант 2 гв. мбр погиб при отражении танкового контрудара СС у оз. Веленце (с. Капольнашньек).</div>
           </div>
         </div>
 
         <div class="t-row">
-          <div class="t-marker" style="border-color:var(--gold);"></div>
-          <div class="t-content" style="border-color:var(--gold); background:#fffef8;">
-            <div class="t-year-tag">2026 год (август)</div>
-            <div class="t-title-tag">Объединение двух древ в единый портал</div>
-            <div class="t-desc-tag">Собраны все первоисточники, раскрыта тайна харбинского модельера Ли-Вен-Си и запущен интерактивный сайт!</div>
+          <div class="t-dot" style="border-color:var(--gold);"></div>
+          <div class="t-box" style="border-color:var(--gold); background:#fffef8;">
+            <div style="font-family:'Cinzel', serif; font-size:16px; font-weight:700; color:var(--gold);">2026 год (август)</div>
+            <div style="font-weight:700; font-size:14.5px;">Объединение двух древ в единый портал</div>
+            <div style="font-size:13px; color:var(--ink-muted);">Собраны все первоисточники, раскрыта тайна харбинского модельера Ли-Вен-Си и запущен интерактивный сайт!</div>
           </div>
         </div>
       </div>
@@ -1183,43 +1247,43 @@
 </main>
 
 <!-- Modal Dossier -->
-<div class="modal-shade" id="modal-shade" onclick="hideDossier(event)">
-  <div class="modal-window" onclick="event.stopPropagation()">
-    <button class="modal-close-btn" onclick="hideDossier()">✕</button>
-    <div class="modal-top">
-      <div class="pill pill-gold" id="md-badge">Досье персоны</div>
-      <div class="modal-title" id="md-name">Имя Фамилия</div>
-      <div class="modal-subtitle" id="md-dates">Даты жизни и места</div>
+<div class="modal-overlay" id="modal-dossier" onclick="closeDossierOverlay(event)">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeDossierOverlay()">✕</button>
+    <div class="modal-header">
+      <div class="badge-pill bp-gold" id="d-badge">Досье персоны</div>
+      <div class="modal-name" id="d-name">Имя Фамилия</div>
+      <div class="modal-meta" id="d-dates">Даты жизни и места</div>
     </div>
 
-    <div class="modal-block">
-      <div class="modal-block-title">📋 Установленные факты и уровень достоверности</div>
-      <div class="modal-block-body">
-        <ul class="facts-ul" id="md-facts"></ul>
+    <div class="modal-section">
+      <div class="modal-sec-title">📋 Установленные факты и достоверность</div>
+      <div class="modal-sec-body">
+        <ul class="facts-list" id="d-facts"></ul>
       </div>
     </div>
 
-    <div class="modal-block">
-      <div class="modal-block-title">👥 Семейные связи (нажмите для перехода)</div>
-      <div class="modal-block-body">
-        <div class="rel-buttons" id="md-family"></div>
+    <div class="modal-section">
+      <div class="modal-sec-title">👥 Семейные связи (нажмите для перехода)</div>
+      <div class="modal-sec-body">
+        <div class="family-btn-group" id="d-family"></div>
       </div>
     </div>
 
-    <div class="modal-block">
-      <div class="modal-block-title">🔗 Документальные первоисточники</div>
-      <div class="modal-block-body" id="md-sources"></div>
+    <div class="modal-section">
+      <div class="modal-sec-title">🔗 Документальные первоисточники</div>
+      <div class="modal-sec-body" id="d-sources"></div>
     </div>
 
-    <div class="modal-block" id="md-quest-box">
-      <div class="modal-block-title">❓ Что предстоит выяснить / Направление поиска</div>
-      <div class="modal-block-body" id="md-questions" style="background:#fff9e8; border-color:#ecd9a3;"></div>
+    <div class="modal-section" id="d-quest-box">
+      <div class="modal-sec-title">❓ Что предстоит выяснить / Направление поиска</div>
+      <div class="modal-sec-body" id="d-questions" style="background:#fff9e8; border-color:#ecd9a3;"></div>
     </div>
   </div>
 </div>
 
 <script>
-const personDb = {
+const personStore = {
   denis: {
     name: "Денис Семёнов",
     dates: "род. 6 мая 1990 г., г. Омск",
@@ -1531,6 +1595,19 @@ const personDb = {
     ],
     questions: "Метрическая выписка из ГАКО."
   },
+  efim_mois_nech: {
+    name: "Ефим Моисеевич Нечаев",
+    dates: "Костромская губерния",
+    badge: "Прапрадед Дениса",
+    facts: [
+      { b: "doc", t: "Отец Василия Ефимовича Нечаева (ГАКО, ЦАМО)" }
+    ],
+    sources: "ЦАМО РФ.",
+    family: [
+      { r: "Сын", id: "vasily_efim_nech", n: "Василий Ефимович Нечаев" }
+    ],
+    questions: "Метрика рождения в ГАКО."
+  },
   olga_shibaeva: {
     name: "Ольга Николаевна Шибаева",
     dates: "1899 — 1976 гг. · д. Глебово, Костромская обл.",
@@ -1546,6 +1623,19 @@ const personDb = {
     ],
     questions: "Точная деревня рождения в Николо-Поломской волости."
   },
+  lukyan_vinogr: {
+    name: "Лукьян (Лука?) Виноградов",
+    dates: "д. Галанино, Ковернинская вол., Макарьевский уезд",
+    badge: "Прапрадед Дениса",
+    facts: [
+      { b: "doc", t: "Отец Ивана Лукьяновича Виноградова (из отчества сына в ЦАМО)" }
+    ],
+    sources: "ЦАМО РФ.",
+    family: [
+      { r: "Сын", id: "ivan_luk_vinogr", n: "Иван Лукьянович Виноградов" }
+    ],
+    questions: "Метрическая запись в ЦАНО."
+  },
   anastasia_dem_vinogr: {
     name: "Анастасия Демидовна Виноградова",
     dates: "Костромская обл., г. Нея",
@@ -1560,6 +1650,35 @@ const personDb = {
       { r: "Дочь", id: "tamara_vinogr", n: "Тамара Ивановна Виноградова" }
     ],
     questions: "Даты жизни, метрика в ГАКО."
+  },
+  demid_vinogr: {
+    name: "Демид Арефьевич Виноградов",
+    dates: "г. Нея, Костромская обл.",
+    badge: "Прапрадед Дениса",
+    facts: [
+      { b: "mem", t: "Отец Анастасии Демидовны Виноградовой" },
+      { b: "pub", t: "Приход Николаевской церкви с. Коткишево Кологривского уезда" }
+    ],
+    sources: "Семейный архив.",
+    family: [
+      { r: "Супруга", id: "lyubov_yak", n: "Любовь Яковлевна" },
+      { r: "Дочь", id: "anastasia_dem_vinogr", n: "Анастасия Демидовна Виноградова" }
+    ],
+    questions: "Метрика в ГАКО."
+  },
+  lyubov_yak: {
+    name: "Любовь Яковлевна",
+    dates: "Костромская губерния",
+    badge: "Прапрабабушка Дениса",
+    facts: [
+      { b: "mem", t: "Жена Демида Арефьевича Виноградова" }
+    ],
+    sources: "Семейный архив.",
+    family: [
+      { r: "Супруг", id: "demid_vinogr", n: "Демид Арефьевич Виноградов" },
+      { r: "Дочь", id: "anastasia_dem_vinogr", n: "Анастасия Демидовна Виноградова" }
+    ],
+    questions: "Девичья фамилия, метрика."
   },
   nikolay_ryzh: {
     name: "Николай Рыжиков",
@@ -1604,106 +1723,77 @@ const personDb = {
   }
 };
 
-function showPersonDossier(id) {
-  const d = personDb[id];
-  if (!d) return;
-  document.getElementById('md-name').innerText = d.name;
-  document.getElementById('md-dates').innerText = d.dates;
-  document.getElementById('md-badge').innerText = d.badge;
+function openPersonDossier(id) {
+  const p = personStore[id];
+  if (!p) return;
+  document.getElementById('d-name').innerText = p.name;
+  document.getElementById('d-dates').innerText = p.dates;
+  document.getElementById('d-badge').innerText = p.badge;
 
-  const fl = document.getElementById('md-facts');
+  const fl = document.getElementById('d-facts');
   fl.innerHTML = '';
-  d.facts.forEach(f => {
+  p.facts.forEach(f => {
     let bClass = 'fb-doc', bText = '🟢 Документ';
     if (f.b === 'pub') { bClass = 'fb-pub'; bText = '🟡 Публикация'; }
     else if (f.b === 'mem') { bClass = 'fb-mem'; bText = '🟠 Память'; }
     else if (f.b === 'hyp') { bClass = 'fb-hyp'; bText = '🔴 Гипотеза'; }
-    fl.innerHTML += `<li class="fact-li"><span class="f-badge ${bClass}">${bText}</span><span>${f.t}</span></li>`;
+    fl.innerHTML += `<li class="fact-item"><span class="fact-badge ${bClass}">${bText}</span><span>${f.t}</span></li>`;
   });
 
-  const fam = document.getElementById('md-family');
+  const fam = document.getElementById('d-family');
   fam.innerHTML = '';
-  if (d.family && d.family.length > 0) {
-    d.family.forEach(fm => {
-      fam.innerHTML += `<button class="rel-btn" onclick="showPersonDossier('${fm.id}')"><b>${fm.r}:</b> ${fm.n}</button>`;
+  if (p.family && p.family.length > 0) {
+    p.family.forEach(fm => {
+      fam.innerHTML += `<button class="f-link-btn" onclick="openPersonDossier('${fm.id}')"><b>${fm.r}:</b> ${fm.n}</button>`;
     });
   } else {
     fam.innerHTML = '<span style="color:var(--ink-muted); font-size:12px;">Связи уточняются в архивах</span>';
   }
 
-  document.getElementById('md-sources').innerHTML = `<div style="font-size:13px; color:var(--ink);">${d.sources || 'Семейный архив'}</div>`;
+  document.getElementById('d-sources').innerHTML = `<div style="font-size:13px; color:var(--ink);">${p.sources || 'Семейный архив'}</div>`;
 
-  const qBox = document.getElementById('md-quest-box');
-  if (d.questions) {
+  const qBox = document.getElementById('d-quest-box');
+  if (p.questions) {
     qBox.style.display = 'block';
-    document.getElementById('md-questions').innerText = d.questions;
+    document.getElementById('d-questions').innerText = p.questions;
   } else {
     qBox.style.display = 'none';
   }
 
-  document.getElementById('modal-shade').classList.add('active');
+  document.getElementById('modal-dossier').classList.add('active');
 }
 
-function hideDossier(e) {
-  if (e && e.target !== document.getElementById('modal-shade') && !e.target.classList.contains('modal-close-btn')) return;
-  document.getElementById('modal-shade').classList.remove('active');
+function closeDossierOverlay(e) {
+  if (e && e.target !== document.getElementById('modal-dossier') && !e.target.classList.contains('modal-close')) return;
+  document.getElementById('modal-dossier').classList.remove('active');
 }
 
-function showTab(tabId) {
-  document.querySelectorAll('.tab-view').forEach(el => el.classList.remove('active'));
+function switchNav(tabId) {
+  document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
   const target = document.getElementById('tab-' + tabId);
   if (target) target.classList.add('active');
   event.currentTarget.classList.add('active');
 }
 
-function selectFamily(side) {
-  document.querySelectorAll('.fam-btn').forEach(b => b.className = 'fam-btn');
-  const dCanvas = document.getElementById('canvas-denis');
-  const mCanvas = document.getElementById('canvas-margo');
-  
-  if (side === 'all') {
-    document.getElementById('fbtn-all').classList.add('active');
-    dCanvas.style.display = 'block';
-    mCanvas.style.display = 'block';
-  } else if (side === 'denis') {
-    document.getElementById('fbtn-denis').classList.add('denis-active');
-    dCanvas.style.display = 'block';
-    mCanvas.style.display = 'none';
-  } else if (side === 'margo') {
-    document.getElementById('fbtn-margo').classList.add('margo-active');
-    dCanvas.style.display = 'none';
-    mCanvas.style.display = 'block';
+function filterTreeDisplay(type) {
+  document.querySelectorAll('.tree-select-btn').forEach(b => b.className = 'tree-select-btn' + (b.classList.contains('denis-btn') ? ' denis-btn' : (b.classList.contains('margo-btn') ? ' margo-btn' : '')));
+  const sDenis = document.getElementById('stage-denis');
+  const sMargo = document.getElementById('stage-margo');
+
+  if (type === 'all') {
+    document.getElementById('btn-tree-all').classList.add('active');
+    sDenis.style.display = 'block';
+    sMargo.style.display = 'block';
+  } else if (type === 'denis') {
+    document.getElementById('btn-tree-denis').classList.add('active');
+    sDenis.style.display = 'block';
+    sMargo.style.display = 'none';
+  } else if (type === 'margo') {
+    document.getElementById('btn-tree-margo').classList.add('active');
+    sDenis.style.display = 'none';
+    sMargo.style.display = 'block';
   }
-}
-
-function applyHighlight(type) {
-  document.querySelectorAll('.chip').forEach(b => b.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-  
-  document.querySelectorAll('.card').forEach(card => {
-    if (type === 'all') {
-      card.style.opacity = '1';
-    } else if (type === 'war') {
-      card.style.opacity = card.classList.contains('war-theme') ? '1' : '0.25';
-    } else if (type === 'living') {
-      card.style.opacity = card.classList.contains('living-theme') ? '1' : '0.25';
-    }
-  });
-}
-
-function filterCards(query) {
-  const q = query.toLowerCase().trim();
-  document.querySelectorAll('.card').forEach(card => {
-    const text = card.innerText.toLowerCase();
-    if (!q || text.includes(q)) {
-      card.style.opacity = '1';
-      card.style.borderColor = q ? 'var(--gold)' : '';
-    } else {
-      card.style.opacity = '0.2';
-      card.style.borderColor = '';
-    }
-  });
 }
 </script>
 

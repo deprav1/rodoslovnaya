@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+import os
+
+html_content = """<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -1475,3 +1477,8 @@ document.getElementById('search-input').addEventListener('input', (e) => {
 </script>
 </body>
 </html>
+"""
+
+os.makedirs(r"c:\Users\Lenovo\Desktop\Родословная", exist_ok=True)
+with open(r"c:\Users\Lenovo\Desktop\Родословная\index.html", "w", encoding="utf-8") as f:
+    f.write(html_content)

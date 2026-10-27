@@ -207,3 +207,29 @@ body.modal-open { overflow: hidden; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Possible branches are attached visually, with an explicit evidence boundary. */
+.candidate-branch { border: 1.5px dashed #a87932; border-radius: 12px; background: #fff9ec; padding: 16px; color: var(--ink); min-width: 0; }
+.candidate-branch h3 { font: 600 19px/1.3 'Spectral', Georgia, serif; margin: 10px 0 7px; }
+.candidate-anchor { font-size: 13px; line-height: 1.5; margin-bottom: 12px; }
+.candidate-anchor button { display: inline; padding: 0; border: 0; border-bottom: 1px dotted; background: transparent; color: #78541e; cursor: pointer; font-size: inherit; text-align: left; }
+.candidate-node-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+.candidate-node { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; min-width: 0; padding: 13px; background: var(--surface); border: 1px dashed #b18b50; border-radius: 9px; color: var(--ink); text-align: left; cursor: pointer; overflow-wrap: anywhere; }
+.candidate-node:hover { border-style: solid; background: #fffdf7; }
+.candidate-node-name { font-size: 14px; font-weight: 650; line-height: 1.4; }
+.candidate-node-role { font-size: 13px; line-height: 1.45; color: #78541e; }
+.candidate-node-meta,.candidate-node-source { font-size: 12px; line-height: 1.5; color: var(--ink-muted); }
+.candidate-node-source { margin-top: auto; text-decoration: underline; text-underline-offset: 3px; }
+.candidate-branch-note { font-size: 13px; line-height: 1.6; margin-top: 12px; }
+.pedigree-family > .candidate-branch { position: absolute; left: 1400px; width: 560px; z-index: 1; }
+.candidate-lines { position: absolute; top: 0; left: 0; overflow: visible; pointer-events: none; }
+.candidate-lines path { fill: none; stroke: #a87932; stroke-width: 2; stroke-dasharray: 4 6; }
+.gen-cards > .candidate-branch { flex: 1 1 480px; max-width: 620px; }
+.tree-li > .candidate-branch { max-width: 620px; margin: 12px 0; }
+@media (max-width:720px) {
+  .pedigree-family > .candidate-branch { position: static; left: auto; top: auto !important; width: 100%; }
+  .candidate-lines { display: none; }
+  .candidate-node-grid { grid-template-columns: 1fr; }
+  .candidate-branch { padding: 14px; }
+  .gen-cards > .candidate-branch { flex-basis: 100%; }
+}

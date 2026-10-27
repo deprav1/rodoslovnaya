@@ -36,6 +36,40 @@ const newPeople = {
 };
 Object.assign(dossierData, newPeople);
 
+// These are separate research identities, never replacements for family members.
+Object.assign(dossierData, {
+  candidate_timofey: {name:'Тимофей Яковлевич Карпущенко',dates:'1912 · Кочковатка по военной картотеке',badge:'Историческая персона · родство с Иваном не доказано',route:'denis-paternal',candidate:true,war:true,
+    facts:[{badge:'doc',text:'Военная картотека называет 1912 год и Кочковатку; прочитанные наградные листы подтверждают военные сведения.'},{badge:'hyp',text:'Общие отчество и местность дают наводку для проверки рядом с Иваном Яковлевичем 1907. Братство и общие родители не установлены.'}],family:[],sources:'<a href="https://podvignaroda.ru/?#id=1377727334&amp;tab=navDetailManCard" target="_blank" rel="noopener">Официальная военная картотека ↗</a> · <a href="docs/research/2026-10-08-timofey-primary-awards.md" target="_blank" rel="noopener">Проверка наградных оригиналов</a>',questions:'Найти личные записи Ивана и Тимофея с именами родителей.'},
+  candidate_professor: {name:'Николай Иванович Карпущенко',dates:'Железнодорожный профессор · Новосибирск',badge:'Кандидат на тождество семейному родственнику',route:'denis-paternal',candidate:true,
+    facts:[{badge:'pub',text:'Институциональная публикация СГУПС называет Николая Ивановича Карпущенко, выпускника 1960 года, работника Называевской дистанции пути и профессора.'},{badge:'mem',text:'Семья сообщила о родственнике дедушки — железнодорожном профессоре в Новосибирске, без ФИО.'},{badge:'hyp',text:'Тождество этого человека семейному родственнику, его родители и степень родства с Иваном Яковлевичем не установлены. Отчество не доказывает отцовство Ивана.'}],family:[],sources:'<a href="https://www.stu.ru/education/index.php?page=3746" target="_blank" rel="noopener">Публикация СГУПС ↗</a> · <a href="https://www.pravo.mgimo.ru/?q=node%2F17877" target="_blank" rel="noopener">Биографическая публикация ↗</a>',questions:'Уточнить ФИО семейного родственника и найти документ с именами родителей.'},
+  candidate_myadin_dmitry: {name:'Дмитрий Михайлович Мядин',dates:'1922 · индекс ИАОО, Кочковатка',badge:'Архивный однофамилец · родство не установлено',route:'denis-paternal',candidate:true,
+    facts:[{badge:'pub',text:'Открытый индекс ИАОО содержит Дмитрия Михайловича Мядина, 1922, в Кочковатке. Оригинальная запись и родители не прочитаны.'},{badge:'hyp',text:'Совпадение местности и отчества не устанавливает связь с Анной Михайловной или её предполагаемым отцом Михаилом.'}],family:[],sources:'<a href="https://lk.iaoo.ru/database/record?id=39597" target="_blank" rel="noopener">Индекс ИАОО, запись 39597 ↗</a>',questions:'Прочитать исходную запись и проверить родителей; не соединять по отчеству.'},
+  candidate_myadin_ivan: {name:'Иван Фёдорович Мядин',dates:'1922 · индекс ИАОО, Кочковатка',badge:'Архивный однофамилец · родство не установлено',route:'denis-paternal',candidate:true,
+    facts:[{badge:'pub',text:'Открытый индекс ИАОО содержит Ивана Фёдоровича Мядина, 1922, в Кочковатке; исходная запись не прочитана.'},{badge:'hyp',text:'Отношение к семье Анны Михайловны неизвестно. Фёдор не добавляется как новый родственник по одному отчеству.'}],family:[],sources:'<a href="https://lk.iaoo.ru/database/record?id=89092" target="_blank" rel="noopener">Индекс ИАОО, запись 89092 ↗</a>',questions:'Нужен оригинал записи с родителями и независимая связь с семейной ветвью.'},
+  candidate_myadin_nikolai: {name:'Николай Михайлович Мядин',dates:'1920 · индекс ИАОО, Кочковатка',badge:'Архивный однофамилец · родство не установлено',route:'denis-paternal',candidate:true,
+    facts:[{badge:'pub',text:'Открытый индекс ИАОО содержит Николая Михайловича Мядина, 1920, в Кочковатке; оригинальная запись не прочитана.'},{badge:'hyp',text:'Общее отчество с Анной не доказывает общего отца или братство.'}],family:[],sources:'<a href="https://lk.iaoo.ru/database/record?id=270734" target="_blank" rel="noopener">Индекс ИАОО, запись 270734 ↗</a>',questions:'Получить исходную запись и проверить полные имена родителей.'},
+  candidate_vera: {name:'Вера · фамилия не установлена',dates:'В газетном очерке указана смерть в 1957 году',badge:'Сестра героини публикации · связь с нашей Лидией проверяется',route:'margo-maternal',candidate:true,
+    facts:[{badge:'pub',text:'Очерк «Женщина с характером», 2018, называет сестру героини Веру и 1957 год смерти; фамилия и отчество не приведены.'},{badge:'hyp',text:'Тождество героини очерка нашей Лидии Михайловне ещё требует связывающей проверки. Вера не отождествлена с Верой Семёновой из другой ветви.'}],family:[],sources:'<a href="https://tverlife.ru/pdf/87-2018.pdf#page=5" target="_blank" rel="noopener">Тверская жизнь, 03.11.2018, с. 5 ↗</a>',questions:'Проверить тождество Лидии и документы сестёр; не достраивать фамилию и отчество.'},
+  candidate_stanislava: {name:'Станислава · фамилия не установлена',dates:'Дочь героини газетного очерка',badge:'Публикационный кандидат · связь с нашей семьёй проверяется',route:'margo-maternal',candidate:true,
+    facts:[{badge:'pub',text:'Очерк 2018 года называет Станиславу дочерью героини Лидии; фамилия и отчество не указаны.'},{badge:'hyp',text:'Необходима проверка тождества героини с бабушкой Маргариты. Родство Станиславы с нашей семьёй пока не установлено.'}],family:[],sources:'<a href="https://tverlife.ru/pdf/87-2018.pdf#page=5" target="_blank" rel="noopener">Очерк «Женщина с характером», с. 5 ↗</a>',questions:'Проверить семейную связь, сохраняя имя без достроенных персональных данных.'},
+  candidate_nikolai_zhents: {name:'Николай Иванович Женцов',dates:'1921 · Медведиха · военная карточка',badge:'Военный однофамилец · тождество деду Маргариты не установлено',route:'margo-paternal',candidate:true,war:true,
+    facts:[{badge:'pub',text:'В исследовании сохранена военная карточка Николая Ивановича Женцова, 1921, Медведиха.'},{badge:'hyp',text:'Связь с Сергеем Николаевичем и тождество предполагаемому деду Маргариты не доказаны. Это отдельная поисковая личность.'}],family:[],sources:'<a href="docs/research/2026-09-20-current-evidence-audit.md" target="_blank" rel="noopener">Реестр кандидатов и проверенные ограничения</a>',questions:'Нужна запись Сергея с полным именем отца, затем сверка военной личности.'}
+});
+newPeople.military_petr.war=true;
+dossierData.nikolay_zhents.badge='Предполагаемый дед · семейная версия';
+dossierData.nikolay_zhents.dates='Отец Сергея по семейной версии · полное имя уточняется';
+dossierData.nikolay_zhents.facts=[{badge:'mem',text:'В семейной схеме обозначен Николай — предполагаемый отец Сергея Николаевича. Полное имя и связывающий акт требуют уточнения.'},{badge:'hyp',text:'Военный Николай Иванович Женцов 1921 года — отдельный кандидат на тождество этому человеку; он вынесен в собственную карточку. Они не объединены.'}];
+dossierData.nikolay_zhents.sources='Семейная схема. Военная карточка и исторический контекст Медведихи не заменяют акт о родительстве Сергея.';
+
+const candidateBranches = [
+  {anchor:'petr_sem',owner:'denis',title:'Семёновы · проверка личности Петра',note:'Пунктир означает возможное тождество, а не установленного отца Анатолия.',people:[['military_petr','Возможное тождество Петру · не доказано']]},
+  {anchor:'ivan_karp',owner:'denis',title:'Карпущенко · возможные продолжения',note:'Яков и Степан связаны переписью между собой. Их связь с Иваном, как и родство остальных кандидатов, ещё не установлена.',people:[['census_yakov','Возможный отец Ивана · гипотеза'],['census_stepan','Отец Якова по переписи · связь с Иваном открыта'],['census_foma','Другой двор · братство со Степаном не доказано'],['candidate_timofey','Возможный родственник · степень неизвестна'],['candidate_professor','Возможный семейный родственник · тождество открыто']]},
+  {anchor:'anna_myadina',owner:'denis',title:'Мядины · архивные однофамильцы',note:'Эти имена есть в индексе, оригиналы ещё не прочитаны. Родство с Анной или между кандидатами не установлено.',people:[['candidate_myadin_dmitry','Кандидат для проверки · связь неизвестна'],['candidate_myadin_ivan','Кандидат для проверки · связь неизвестна'],['candidate_myadin_nikolai','Кандидат для проверки · связь неизвестна']]},
+  {anchor:'olga_shibaeva',owner:'denis',title:'Шибаевы · возможная семья Ольги',note:'Николай и Анна — родители Александра по акту 1902. Их связь с Ольгой пока является гипотезой.',people:[['shibaev_nikolai','Возможный отец Ольги · гипотеза'],['shibaev_anna','Возможная мать Ольги · гипотеза'],['shibaev_alexander','Возможный брат Ольги · гипотеза']]},
+  {anchor:'nikolay_zhents',owner:'margo',title:'Женцовы · проверка личности Николая',note:'Военный однофамилец показан отдельно от предполагаемого деда. Связывающего акта нет.',people:[['candidate_nikolai_zhents','Возможное тождество деду · не доказано']]},
+  {anchor:'lidia_livensi',owner:'margo',title:'Ливенси · имена из газетного очерка',note:'Роли названы в публикации о Лидии. Тождество героини нашей Лидии и связь с семьёй ещё проверяются.',people:[['candidate_vera','Сестра героини очерка · кандидат'],['candidate_stanislava','Дочь героини очерка · кандидат']]}
+];
+
 const familyPaths = {
   denis:'Денис · исходная персона', inga_nech:'Денис → мама Инга', ivan_vas_nech:'Денис → Инга → дед Иван Нечаев',
   olga_shibaeva:'Денис → Инга → Иван Нечаев → Ольга Шибаева · материнская ветка',
@@ -45,6 +79,65 @@ const familyPaths = {
   lyudmila_karp:'Денис → Александр → бабушка Людмила', ivan_karp:'Денис → Александр → Людмила → Иван Карпущенко', anna_myadina:'Денис → Александр → Людмила → Анна · семейная версия'
 };
 const candidateAssociations = { olga_shibaeva:['shibaev_nikolai','shibaev_anna','shibaev_alexander'],ivan_karp:['census_yakov','census_stepan','census_foma'],petr_sem:['military_petr'],anatoly_sem:['military_petr'] };
+candidateBranches.forEach(branch=>candidateAssociations[branch.anchor]=branch.people.map(([id])=>id));
+
+function renderCandidateBranches() {
+  document.querySelectorAll('.candidate-branch').forEach(el=>el.remove());
+  for(const branch of candidateBranches) {
+    document.querySelectorAll(`.p-card[data-person-id="${branch.anchor}"]`).forEach(anchor=>{
+      const group=document.createElement('section');
+      group.className='candidate-branch';group.dataset.anchor=branch.anchor;group.dataset.family=branch.owner;
+      group.setAttribute('aria-label',branch.title+' · родство не доказано');
+      group.innerHTML=`<span class="evidence-label candidate">Возможные связи · не доказаны</span><h3>${branch.title}</h3><p class="candidate-anchor">От <button type="button" onclick="openDossier('${branch.anchor}')">${dossierData[branch.anchor].name}</button> <span aria-hidden="true">┄</span></p><div class="candidate-node-grid">${branch.people.map(([id,role])=>{const d=dossierData[id];return `<button type="button" class="candidate-node ${d.war?'war-status':''}" data-candidate-id="${id}" data-family="${branch.owner}" aria-haspopup="dialog" onclick="openDossier('${id}')"><span class="candidate-node-name">${d.name}</span><span class="candidate-node-role">${role}</span><span class="candidate-node-meta">${d.dates}</span><span class="candidate-node-source">Открыть досье и источник →</span></button>`;}).join('')}</div><p class="candidate-branch-note">${branch.note}</p>`;
+      anchor.insertAdjacentElement('afterend',group);
+    });
+  }
+  layoutCandidateBranches();
+}
+function layoutCandidateBranches() {
+  const canvas=document.querySelector('.pedigree-canvas');
+  const mobile=matchMedia('(max-width:720px)').matches;
+  const family=document.querySelector('.pedigree-family:not([hidden])');
+  document.querySelectorAll('.candidate-lines').forEach(el=>el.remove());
+  if(mobile) {canvas.style.width='';canvas.style.height='';return;}
+  if(!family||!family.getClientRects().length) return;
+  const groups=[...family.querySelectorAll('.candidate-branch')];
+  const columns=[32,370,700,1030].map(x=>[...family.querySelectorAll('.ped-card')].filter(c=>parseFloat(c.style.left)===x));
+  const parents=new Map();parents.set(columns[0][0],columns[1]);
+  columns[1].forEach((card,i)=>parents.set(card,columns[2].slice(i*2,i*2+2)));
+  if(family.id==='pedigree-denis') columns[2].forEach((card,i)=>parents.set(card,columns[3].slice(i*2,i*2+2)));
+  else parents.set(columns[2][3],columns[3]);
+  const groupFor=card=>groups.find(g=>g.dataset.anchor===card.dataset.personId);
+  const blockHeight=card=>Math.max(card.offsetHeight,groupFor(card)?.offsetHeight||0,(parents.get(card)||[]).reduce((sum,c)=>sum+blockHeight(c)+24,0));
+  const place=(card,top)=>{
+    const block=blockHeight(card),center=top+block/2;card.style.top=(center-card.offsetHeight/2)+'px';
+    const group=groupFor(card);if(group) group.style.top=(center-group.offsetHeight/2)+'px';
+    let next=top;
+    for(const parent of parents.get(card)||[]) {place(parent,next);next+=blockHeight(parent)+24;}
+  };
+  place(columns[0][0],30);
+  const paths=[],familyPaths=[];
+  for(const [card,ancestors] of parents) {
+    const x=parseFloat(card.style.left)+card.offsetWidth,y=parseFloat(card.style.top)+card.offsetHeight/2;
+    for(const ancestor of ancestors) {
+      const ax=parseFloat(ancestor.style.left),ay=parseFloat(ancestor.style.top)+ancestor.offsetHeight/2,mid=(x+ax)/2;
+      familyPaths.push(`<path class="family-edge" d="M${x} ${y} H${mid} V${ay} H${ax}"/>`);
+    }
+  }
+  family.querySelector('.pedigree-lines').innerHTML=familyPaths.join('');
+  for(const group of groups) {
+    const anchor=family.querySelector(`.ped-card[data-person-id="${group.dataset.anchor}"]`);
+    const x=parseFloat(anchor.style.left)+anchor.offsetWidth,y=parseFloat(anchor.style.top)+anchor.offsetHeight/2;
+    const gy=parseFloat(group.style.top)+group.offsetHeight/2;
+    paths.push(`<path d="M${x} ${y} H${1330+paths.length*12} V${gy} H1400"/>`);
+  }
+  const height=Math.max(1090,blockHeight(columns[0][0])+60);
+  canvas.style.width=groups.length?'2000px':'1450px';canvas.style.height=height+'px';
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('candidate-lines');
+  svg.setAttribute('width','2000');svg.setAttribute('height',String(height));svg.setAttribute('aria-hidden','true');svg.innerHTML=paths.join('');family.prepend(svg);
+}
+window.addEventListener('resize',()=>requestAnimationFrame(layoutCandidateBranches));
+document.fonts?.ready.then(()=>requestAnimationFrame(layoutCandidateBranches));
 dossierData.olga_shibaeva.facts.push({badge:'hyp',text:'Новая находка 27.10.2026: Николай Сергиев Шибаев и Анна Васильева названы родителями Александра в метрике Терийоки 1902 года; при Николае указана деревня Крусанова. Их связь с Ольгой не установлена.'});
 dossierData.olga_shibaeva.questions='Установить точный приход нужного Крусанова на 1899 год и найти акт Ольги с именами родителей. В просмотренном терийокском указателе крещений 1899 подходящей записи нет; это не полный просмотр оригиналов.';
 dossierData.ivan_karp.facts.push({badge:'hyp',text:'Яков Степанов Карпущенко, 17 лет в переписи 1897 Кочковатого, — кандидат в отцы. Его родство с Иваном 1907 пока не доказано; в дереве не присоединён.'});
@@ -122,17 +215,20 @@ function switchTab(tabId) {
   if(!document.getElementById('tab-'+tabId)) return;
   document.querySelectorAll('.tab-pane').forEach(el=>el.classList.toggle('active',el.id==='tab-'+tabId));
   document.querySelectorAll('.nav-btn').forEach(el=>{const on=el.dataset.tab===tabId;el.classList.toggle('active',on);el.setAttribute('aria-pressed',String(on));});
+  if(tabId==='tree') requestAnimationFrame(layoutCandidateBranches);
 }
 function setViewMode(mode) {
   for(const [id,m] of [['view-pedigree','pedigree'],['view-hierarchical','hier'],['view-generational','gen']]) document.getElementById(id).style.display=mode===m?'block':'none';
   document.querySelectorAll('.view-btn').forEach(b=>{const on=b.id==='btn-view-'+mode;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on));});
   updateHighlights();
+  requestAnimationFrame(layoutCandidateBranches);
 }
 function switchPedigree(branch) {
   for(const who of ['denis','margo']) { document.getElementById('pedigree-'+who).hidden=who!==branch;const b=document.getElementById('ped-btn-'+who);b.classList.toggle('active',who===branch);b.setAttribute('aria-pressed',String(who===branch)); }
   if(['denis','margo'].includes(activeFilter)) activeFilter=branch;
   for(const who of ['denis','margo']) document.getElementById('tree-sec-'+who).hidden=['denis','margo'].includes(activeFilter)&&activeFilter!==who;
   updateHighlights(); renderSearchResults();
+  requestAnimationFrame(layoutCandidateBranches);
 }
 function filterTree(type) {
   activeFilter=type;
@@ -150,7 +246,7 @@ function matchesFilter(card) {
 }
 function updateHighlights() {
   document.querySelectorAll('.filter-chip').forEach(b=>{const on=b.dataset.filter===activeFilter;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on));});
-  document.querySelectorAll('.p-card').forEach(card=>{
+  document.querySelectorAll('.p-card,.candidate-node').forEach(card=>{
     const matches=matchesFilter(card)&&(!activeSearch||normalizeSearch(card.textContent).includes(activeSearch));
     card.style.opacity=matches?'1':'.28'; card.style.borderColor=activeSearch&&matches?'var(--gold)':'';
   });
@@ -160,7 +256,8 @@ function renderSearchResults() {
   const cards=[...document.querySelectorAll('.p-card[data-person-id]')].filter(matchesFilter);
   const allowed=new Set(cards.map(c=>c.dataset.personId));
   const matches=Object.entries(dossierData).filter(([id,d])=>{
-    if(!allowed.has(id)&&!(d.candidate&&['all','denis'].includes(activeFilter))) return false;
+    const candidateAllowed=d.candidate&&(activeFilter==='all'||activeFilter===branchRoutes[d.route]?.owner||(activeFilter==='war'&&d.war));
+    if(!allowed.has(id)&&!candidateAllowed) return false;
     return normalizeSearch([d.name,d.dates,...d.facts.map(f=>f.text)].join(' ')).includes(activeSearch);
   });
   document.getElementById('search-summary').textContent=matches.length?`Найдено людей: ${matches.length}`:'В выбранном разделе совпадений нет';
@@ -218,4 +315,4 @@ document.querySelectorAll('.p-card').forEach(card=>{
   card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openDossier(id);}});
 });
 document.getElementById('branch-choices').innerHTML=Object.entries(branchRoutes).map(([key,r])=>`<button type="button" class="branch-choice" data-route="${key}" aria-pressed="false" onclick="selectRoute('${key}')"><span class="branch-owner">${r.owner==='denis'?'Денис Семёнов':'Маргарита Женцова'}</span><strong>${key.endsWith('maternal')?'Линия матери':'Линия отца'}</strong><span class="branch-families">${r.families}</span><span class="branch-caption">${r.caption}</span></button>`).join('');
-renderFindings();selectRoute(currentRoute);updateHighlights();
+renderFindings();renderCandidateBranches();selectRoute(currentRoute);updateHighlights();

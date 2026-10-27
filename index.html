@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Хроники двух родов — Родословное древо Семёновых и Женцовых</title>
+<title>Хроники двух родов · Семейные линии, документы и кандидаты</title>
+<meta name="description" content="Родословная Семёновых и Женцовых: понятные семейные пути, архивные документы и кандидаты с открыто обозначенной неопределённостью.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%23315e50%27/%3E%3Cpath d=%27M32 50V20M32 32L18 24M32 39L46 29%27 stroke=%27%23f7f5ee%27 stroke-width=%274%27 fill=%27none%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -857,8 +859,10 @@
   .tab-pane { display: none; }
   .tab-pane.active { display: block; }
 </style>
+<link rel="stylesheet" href="assets/site.css?v=20261027-1">
 </head>
 <body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
 
 <header>
   <div class="header-inner">
@@ -870,48 +874,62 @@
       </div>
     </div>
 
-    <div class="nav-tabs">
-      <button class="nav-btn active" onclick="switchTab('tree')">🌳 Древо</button>
-      <button class="nav-btn" onclick="switchTab('sources')">📚 Источники</button>
-      <button class="nav-btn" onclick="switchTab('progress')">🔬 Прогресс и запросы</button>
-      <button class="nav-btn" onclick="switchTab('timeline')">⏳ Хроника</button>
-    </div>
+    <nav class="nav-tabs" aria-label="Разделы семейного архива">
+      <button class="nav-btn active" data-tab="tree" aria-pressed="true" onclick="switchTab('tree')">Древо</button>
+      <button class="nav-btn" data-tab="findings" aria-pressed="false" onclick="switchTab('findings')">Находки и кандидаты</button>
+      <button class="nav-btn" data-tab="sources" aria-pressed="false" onclick="switchTab('sources')">Источники</button>
+      <button class="nav-btn" data-tab="progress" aria-pressed="false" onclick="switchTab('progress')">План поиска</button>
+      <button class="nav-btn" data-tab="timeline" aria-pressed="false" onclick="switchTab('timeline')">Хроника</button>
+    </nav>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <!-- Hero Banner -->
-  <div class="hero-banner">
-    <div class="hero-title">Родословная Дениса Семёнова и Маргариты Женцовой</div>
-    <div class="hero-text">
-      Интерактивный свод семейных ветвей с критическими уровнями доказательств. История местностей и архивные контексты показаны отдельно от подтверждённых родственных связей.
-    </div>
+  <section class="hero-banner" aria-labelledby="archive-title">
+    <span class="eyebrow">Семейный архив · обновлено 27 октября 2026</span>
+    <h1 class="hero-title" id="archive-title">История семьи.<br>По одной связи за раз.</h1>
+    <p class="hero-text">Родословная Дениса Семёнова и Маргариты Женцовой. Узнайте, к какой линии относится человек, что о нём известно и какие связи ещё предстоит проверить.</p>
     <div class="hero-stats">
-      <div class="stat-pill">👥 45 персон в древе</div>
-      <div class="stat-pill">📜 7 поколений предков</div>
-      <div class="stat-pill">🎖️ 4 героя-фронтовика</div>
-      <div class="stat-pill">🏛️ 5 государственных архивов (ЦАМО, ГАТО, ГАКО, ГИАОО, СО РАН)</div>
+      <span class="stat-pill">45 человек в исходном дереве</span>
+      <span class="stat-pill">4 семейных направления</span>
+      <span class="stat-pill">Кандидаты показаны отдельно</span>
     </div>
-  </div>
+  </section>
 
   <!-- ================= TAB 1: TREE ================= -->
   <div id="tab-tree" class="tab-pane active">
+    <section class="branch-guide" id="branch-guide" aria-labelledby="branch-heading">
+      <h2 class="section-heading" id="branch-heading">С какой стороны семьи?</h2>
+      <p class="section-intro">Выберите линию. Цепочка ниже покажет, через кого вы связаны с человеком.</p>
+      <div class="branch-grid" id="branch-choices"></div>
+      <div class="route-panel" id="route-panel"></div>
+      <aside class="research-note">
+        <p><strong>Новая метрика по Шибаевым · линия матери Дениса</strong>В документе 1902 года найдены Николай, Анна и их сын Александр. Их связь с прабабушкой Ольгой ещё проверяется.</p>
+        <button class="action-button secondary" onclick="showFinding('shibaev')">Разобраться в находке →</button>
+      </aside>
+    </section>
+    <div class="evidence-legend" aria-label="Как читать сведения">
+      <span class="evidence-label document">Документ · о конкретном факте</span>
+      <span class="evidence-label family">Семейные сведения · акт может отсутствовать</span>
+      <span class="evidence-label candidate">Кандидат · связь с семьёй не доказана</span>
+    </div>
+
 
     <!-- Controls Bar -->
     <div class="controls-bar">
       <div class="filter-group">
         <span style="font-size:12px; font-weight:700; color:var(--ink-muted); text-transform:uppercase;">Фильтры:</span>
-        <button class="filter-chip active" onclick="filterTree('all')">Все персоны</button>
-        <button class="filter-chip" onclick="filterTree('denis')">Ветвь Дениса</button>
-        <button class="filter-chip" onclick="filterTree('margo')">Ветвь Маргариты</button>
-        <button class="filter-chip" onclick="filterTree('war')">🎖️ Фронтовики</button>
-        <button class="filter-chip" onclick="filterTree('living')">🌱 Живые</button>
+        <button class="filter-chip active" data-filter="all" aria-pressed="true" onclick="filterTree('all')">Все персоны</button>
+        <button class="filter-chip" data-filter="denis" aria-pressed="false" onclick="filterTree('denis')">Ветвь Дениса</button>
+        <button class="filter-chip" data-filter="margo" aria-pressed="false" onclick="filterTree('margo')">Ветвь Маргариты</button>
+        <button class="filter-chip" data-filter="war" aria-pressed="false" onclick="filterTree('war')">🎖️ Фронтовики</button>
+        <button class="filter-chip" data-filter="living" aria-pressed="false" onclick="filterTree('living')">🌱 Живые</button>
       </div>
 
       <div class="search-box">
         <span class="search-icon">🔍</span>
-        <input type="text" class="search-input" placeholder="Поиск по имени, дате, месту..." oninput="searchNodes(this.value)">
+        <input type="text" class="search-input" aria-label="Поиск людей, включая кандидатов" placeholder="Имя, место или кандидат…" oninput="searchNodes(this.value)">
       </div>
 
       <div class="view-toggle">
@@ -921,126 +939,116 @@
       </div>
     </div>
 
+    <section class="search-results" id="search-results" hidden aria-live="polite">
+      <h3 id="search-summary"></h3><div class="result-list" id="search-matches"></div>
+    </section>
     <!-- VIEW 1: HORIZONTAL PEDIGREE -->
     <!-- Публикационный триггер: основное представление древа — горизонтальная родословная. -->
     <section id="view-pedigree" class="pedigree-view">
       <div class="pedigree-head">
         <div>
           <h2>Родословное древо</h2>
-          <p>Нажмите на человека, чтобы открыть его карточку. Линии показывают связь «родитель → ребёнок».</p>
+          <p>Нажмите на человека для просмотра источников. Схема сохраняет семейные сведения; пунктир у старших поколений означает, что связывающий акт ещё нужен.</p>
         </div>
         <div class="pedigree-switch" aria-label="Выбор дерева">
           <button class="active" id="ped-btn-denis" onclick="switchPedigree('denis')">Денис Семёнов</button>
           <button class="margo" id="ped-btn-margo" onclick="switchPedigree('margo')">Маргарита Женцова</button>
         </div>
       </div>
+      <p class="scroll-hint">На большом экране дерево можно прокручивать вправо. На телефоне люди расположены по поколениям; точный путь родства — в блоке выше.</p>
       <div class="pedigree-scroll">
         <div class="pedigree-canvas">
           <div class="pedigree-family" id="pedigree-denis">
             <span class="pedigree-label" style="left:32px">Вы</span>
-            <span class="pedigree-label" style="left:360px">Родители</span>
-            <span class="pedigree-label" style="left:690px">Деды и бабушки</span>
-            <span class="pedigree-label" style="left:1020px">Прадеды и прабабушки</span>
-            <svg class="pedigree-lines" viewBox="0 0 1370 900" aria-hidden="true">
-              <path d="M292 444 H325 V218 H360 M325 444 V558 H360" />
-              <path d="M622 218 H655 V128 H690 M655 218 V308 H690" />
-              <path d="M622 558 H655 V478 H690 M655 558 V658 H690" />
-              <path d="M952 128 H985 V88 H1020 M985 128 V188 H1020" />
-              <path d="M952 308 H985 V278 H1020 M985 308 V378 H1020" />
-              <path d="M952 478 H985 V468 H1020 M985 478 V568 H1020" />
-              <path d="M952 658 H985 V668 H1020 M985 658 V768 H1020" />
-            </svg>
+            <span class="pedigree-label" style="left:370px">Родители</span>
+            <span class="pedigree-label" style="left:700px">Деды и бабушки</span>
+            <span class="pedigree-label" style="left:1030px">Прадеды и прабабушки</span>
+            <svg class="pedigree-lines" viewBox="0 0 1450 1090" aria-hidden="true"><path class="family-edge" d="M312 528 H340 V261 H370 M340 528 V663 H370" /><path class="family-edge" d="M650 261 H675 V155 H700 M675 261 V367 H700" /><path class="family-edge" d="M650 663 H675 V568 H700 M675 663 V781 H700" /><path class="family-edge" d="M980 155 H1005 V108 H1030 M1005 155 V226 H1030" /><path class="family-edge" d="M980 367 H1005 V332 H1030 M1005 367 V450 H1030" /><path class="family-edge" d="M980 568 H1005 V556 H1030 M1005 568 V674 H1030" /><path class="family-edge" d="M980 781 H1005 V792 H1030 M1005 781 V910 H1030" /></svg>
 
-            <div class="p-card ped-card living-status" style="left:32px;top:400px" onclick="openDossier('denis')">
-              <div class="ped-avatar">ДС</div><div class="ped-name">Денис Семёнов</div><div class="ped-meta">род. 6 мая 1990 · Омск</div><div class="ped-role">исходная персона</div>
+            <div class="p-card ped-card living-status" style="left:32px;top:472px" onclick="openDossier('denis')">
+              <div class="ped-avatar">ДС</div><div class="ped-name">Денис Семёнов</div><div class="ped-meta">род. 1990 · Омск</div><div class="ped-role">исходная персона</div>
             </div>
-            <div class="p-card ped-card living-status" style="left:360px;top:174px" onclick="openDossier('alex_sem')">
+            <div class="p-card ped-card living-status" style="left:370px;top:205px" onclick="openDossier('alex_sem')">
               <div class="ped-avatar">АС</div><div class="ped-name">Александр Анатольевич Семёнов</div><div class="ped-meta">Омск</div><div class="ped-role">отец</div>
             </div>
-            <div class="p-card ped-card female living-status" style="left:360px;top:514px" onclick="openDossier('inga_nech')">
-              <div class="ped-avatar">ИН</div><div class="ped-name">Инга Ивановна Семёнова</div><div class="ped-meta">род. 5 мая 1968 · Омск</div><div class="ped-role">мать</div>
+            <div class="p-card ped-card female living-status" style="left:370px;top:607px" onclick="openDossier('inga_nech')">
+              <div class="ped-avatar">ИН</div><div class="ped-name">Инга Ивановна Семёнова</div><div class="ped-meta">род. 1968 · Омск</div><div class="ped-role">мать</div>
             </div>
-            <div class="p-card ped-card" style="left:690px;top:84px" onclick="openDossier('anatoly_sem')">
+            <div class="p-card ped-card" style="left:700px;top:99px" onclick="openDossier('anatoly_sem')">
               <div class="ped-avatar">АС</div><div class="ped-name">Анатолий Петрович Семёнов</div><div class="ped-meta">1935–2012 · Башкирия / Омск</div><div class="ped-role">дед по отцу</div>
             </div>
-            <div class="p-card ped-card female" style="left:690px;top:264px" onclick="openDossier('lyudmila_karp')">
+            <div class="p-card ped-card female" style="left:700px;top:312px" onclick="openDossier('lyudmila_karp')">
               <div class="ped-avatar">ЛК</div><div class="ped-name">Людмила Ивановна Карпущенко-Семёнова</div><div class="ped-meta">1937 · Кочковатка · дата требует сверки</div><div class="ped-role">бабушка по отцу</div>
             </div>
-            <div class="p-card ped-card living-status" style="left:690px;top:434px" onclick="openDossier('ivan_vas_nech')">
+            <div class="p-card ped-card living-status" style="left:700px;top:512px" onclick="openDossier('ivan_vas_nech')">
               <div class="ped-avatar">ИН</div><div class="ped-name">Иван Васильевич Нечаев</div><div class="ped-meta">род. 1942 · Нейский район; Глебово — семейная версия</div><div class="ped-role">дед по матери</div>
             </div>
-            <div class="p-card ped-card female" style="left:690px;top:614px" onclick="openDossier('tamara_vinogr')">
+            <div class="p-card ped-card female" style="left:700px;top:725px" onclick="openDossier('tamara_vinogr')">
               <div class="ped-avatar">ТВ</div><div class="ped-name">Тамара Ивановна Виноградова</div><div class="ped-meta">Костромская область</div><div class="ped-role">бабушка по матери</div>
             </div>
-            <div class="p-card ped-card" style="left:1020px;top:44px" onclick="openDossier('petr_sem')">
-              <div class="ped-avatar">ПС</div><div class="ped-name">Пётр Семёнов</div><div class="ped-meta">Башкирия / Омская обл.</div><div class="ped-role">прадед</div>
+            <div class="p-card ped-card" style="left:1030px;top:52px" onclick="openDossier('petr_sem')">
+              <div class="ped-avatar">ПС</div><div class="ped-name">Пётр Семёнов</div><div class="ped-meta">Башкирия / Омская обл.</div><div class="ped-role">предполагаемый прадед · акт связи нужен</div>
             </div>
-            <div class="p-card ped-card female unknown" style="left:1020px;top:144px">
+            <div class="p-card ped-card female unknown" style="left:1030px;top:170px">
               <div class="ped-avatar">?</div><div class="ped-name">Имя не установлено</div><div class="ped-meta">супруга Петра Семёнова</div><div class="ped-role">прабабушка</div>
             </div>
-            <div class="p-card ped-card" style="left:1020px;top:234px" onclick="openDossier('ivan_karp')">
+            <div class="p-card ped-card" style="left:1030px;top:276px" onclick="openDossier('ivan_karp')">
               <div class="ped-avatar">ИК</div><div class="ped-name">Иван Яковлевич Карпущенко</div><div class="ped-meta">1907 · Кочковатка</div><div class="ped-role">прадед</div>
             </div>
-            <div class="p-card ped-card female" style="left:1020px;top:334px" onclick="openDossier('anna_myadina')">
+            <div class="p-card ped-card female" style="left:1030px;top:394px" onclick="openDossier('anna_myadina')">
               <div class="ped-avatar">АМ</div><div class="ped-name">Анна Михайловна Мядина / Карпущенко</div><div class="ped-meta">1913 · ум. 21 августа 2002 · Омск</div><div class="ped-role">прабабушка</div>
             </div>
-            <div class="p-card ped-card" style="left:1020px;top:424px" onclick="openDossier('vasily_efim_nech')">
+            <div class="p-card ped-card" style="left:1030px;top:500px" onclick="openDossier('vasily_efim_nech')">
               <div class="ped-avatar">ВН</div><div class="ped-name">Василий Ефимович Нечаев</div><div class="ped-meta">род. ок. 1892 · Турилово; Глебово — отдельная семейная версия</div><div class="ped-role">прадед</div>
             </div>
-            <div class="p-card ped-card female" style="left:1020px;top:524px" onclick="openDossier('olga_shibaeva')">
+            <div class="p-card ped-card female" style="left:1030px;top:618px" onclick="openDossier('olga_shibaeva')">
               <div class="ped-avatar">ОШ</div><div class="ped-name">Ольга Николаевна Шибаева</div><div class="ped-meta">1899–1976 · Курсаново / Глебово</div><div class="ped-role">прабабушка</div>
             </div>
-            <div class="p-card ped-card war-status" style="left:1020px;top:624px" onclick="openDossier('ivan_luk_vinogr')">
+            <div class="p-card ped-card war-status" style="left:1030px;top:736px" onclick="openDossier('ivan_luk_vinogr')">
               <div class="ped-avatar">ИВ</div><div class="ped-name">Иван Лукьянович Виноградов</div><div class="ped-meta">1910–1945 · Венгрия</div><div class="ped-role">прадед</div>
             </div>
-            <div class="p-card ped-card female" style="left:1020px;top:724px" onclick="openDossier('anastasia_dem_vinogr')">
+            <div class="p-card ped-card female" style="left:1030px;top:854px" onclick="openDossier('anastasia_dem_vinogr')">
               <div class="ped-avatar">АВ</div><div class="ped-name">Анастасия Демидовна Виноградова</div><div class="ped-meta">Нея / Глебово — семейные и документальные маршруты</div><div class="ped-role">прабабушка</div>
             </div>
           </div>
 
           <div class="pedigree-family" id="pedigree-margo" hidden>
             <span class="pedigree-label" style="left:32px">Вы</span>
-            <span class="pedigree-label" style="left:360px">Родители</span>
-            <span class="pedigree-label" style="left:690px">Деды и бабушки</span>
-            <span class="pedigree-label" style="left:1020px">Прадеды и прабабушки</span>
-            <svg class="pedigree-lines" viewBox="0 0 1370 900" aria-hidden="true">
-              <path d="M292 444 H325 V218 H360 M325 444 V558 H360" />
-              <path d="M622 218 H655 V128 H690 M655 218 V308 H690" />
-              <path d="M622 558 H655 V478 H690 M655 558 V658 H690" />
-              <path d="M952 128 H985 V108 H1020" />
-              <path d="M952 658 H985 V578 H1020 M985 658 V758 H1020" />
-            </svg>
-            <div class="p-card ped-card living-status margo-card" style="left:32px;top:400px" onclick="openDossier('margo')">
-              <div class="ped-avatar">МЖ</div><div class="ped-name">Маргарита Сергеевна Женцова</div><div class="ped-meta">род. 11 июля 1999 · Тверь</div><div class="ped-role">исходная персона</div>
+            <span class="pedigree-label" style="left:370px">Родители</span>
+            <span class="pedigree-label" style="left:700px">Деды и бабушки</span>
+            <span class="pedigree-label" style="left:1030px">Прадеды и прабабушки</span>
+            <svg class="pedigree-lines" viewBox="0 0 1450 1090" aria-hidden="true"><path class="family-edge" d="M312 528 H340 V261 H370 M340 528 V663 H370" /><path class="family-edge" d="M650 261 H675 V155 H700 M675 261 V367 H700" /><path class="family-edge" d="M650 663 H675 V568 H700 M675 663 V781 H700" /><path class="family-edge" d="M980 781 H1005 V686 H1030 M1005 781 V899 H1030" /></svg>
+            <div class="p-card ped-card living-status margo-card" style="left:32px;top:472px" onclick="openDossier('margo')">
+              <div class="ped-avatar">МЖ</div><div class="ped-name">Маргарита Сергеевна Женцова</div><div class="ped-meta">род. 1999 · Тверь</div><div class="ped-role">исходная персона</div>
             </div>
-            <div class="p-card ped-card living-status margo-card" style="left:360px;top:174px" onclick="openDossier('sergey_zhents')">
+            <div class="p-card ped-card living-status margo-card" style="left:370px;top:205px" onclick="openDossier('sergey_zhents')">
               <div class="ped-avatar">СЖ</div><div class="ped-name">Сергей Николаевич Женцов</div><div class="ped-meta">Тверь · Медведиха</div><div class="ped-role">отец</div>
             </div>
-            <div class="p-card ped-card female living-status margo-card" style="left:360px;top:514px" onclick="openDossier('victoria_ryzh')">
+            <div class="p-card ped-card female living-status margo-card" style="left:370px;top:607px" onclick="openDossier('victoria_ryzh')">
               <div class="ped-avatar">ВР</div><div class="ped-name">Виктория Николаевна Рыжикова</div><div class="ped-meta">Тверь</div><div class="ped-role">мать</div>
             </div>
-            <div class="p-card ped-card margo-card" style="left:690px;top:84px" onclick="openDossier('nikolay_zhents')">
-              <div class="ped-avatar">НЖ</div><div class="ped-name">Николай Женцов</div><div class="ped-meta">Медведиха, Тверская область</div><div class="ped-role">дед по отцу</div>
+            <div class="p-card ped-card margo-card" style="left:700px;top:99px" onclick="openDossier('nikolay_zhents')">
+              <div class="ped-avatar">НЖ</div><div class="ped-name">Николай Женцов</div><div class="ped-meta">Медведиха, Тверская область</div><div class="ped-role">возможный дед по отцу · связь проверяется</div>
             </div>
-            <div class="p-card ped-card female unknown margo-card" style="left:690px;top:264px">
+            <div class="p-card ped-card female unknown margo-card" style="left:700px;top:312px">
               <div class="ped-avatar">?</div><div class="ped-name">Имя не установлено</div><div class="ped-meta">мать Сергея Женцова</div><div class="ped-role">бабушка по отцу</div>
             </div>
-            <div class="p-card ped-card margo-card" style="left:690px;top:434px" onclick="openDossier('nikolay_ryzh')">
+            <div class="p-card ped-card margo-card" style="left:700px;top:512px" onclick="openDossier('nikolay_ryzh')">
               <div class="ped-avatar">НР</div><div class="ped-name">Николай Рыжиков</div><div class="ped-meta">Тверь</div><div class="ped-role">дед по матери</div>
             </div>
-            <div class="p-card ped-card female margo-card" style="left:690px;top:614px" onclick="openDossier('lidia_livensi')">
+            <div class="p-card ped-card female margo-card" style="left:700px;top:725px" onclick="openDossier('lidia_livensi')">
               <div class="ped-avatar">ЛЛ</div><div class="ped-name">Лидия Михайловна Ливенси</div><div class="ped-meta">Новосибирск → Тверь</div><div class="ped-role">бабушка по матери</div>
             </div>
-            <div class="p-card ped-card margo-card" style="left:1020px;top:64px" onclick="openDossier('ivan_zhents_anc')">
+            <div class="p-card ped-card margo-card context-only" style="left:1030px;top:76px" onclick="openDossier('ivan_zhents_anc')">
               <div class="ped-avatar">Ж</div><div class="ped-name">Медведиха · Ильгощи</div><div class="ped-meta">архивный контекст · метрики с 1767 г.</div><div class="ped-role">родство не замкнуто</div>
             </div>
-            <div class="p-card ped-card unknown margo-card" style="left:1020px;top:164px">
+            <div class="p-card ped-card unknown margo-card" style="left:1030px;top:194px">
               <div class="ped-avatar">?</div><div class="ped-name">Имя не установлено</div><div class="ped-meta">супруга Николая Женцова</div><div class="ped-role">прабабушка</div>
             </div>
-            <div class="p-card ped-card margo-card" style="left:1020px;top:534px" onclick="openDossier('mikhail_livensi')">
+            <div class="p-card ped-card margo-card" style="left:1030px;top:630px" onclick="openDossier('mikhail_livensi')">
               <div class="ped-avatar">МЛ</div><div class="ped-name">Михаил Ли-Вен-Си</div><div class="ped-meta">Харбин → Новосибирск</div><div class="ped-role">прадед</div>
             </div>
-            <div class="p-card ped-card female margo-card" style="left:1020px;top:714px" onclick="openDossier('antonina_tokm')">
+            <div class="p-card ped-card female margo-card" style="left:1030px;top:843px" onclick="openDossier('antonina_tokm')">
               <div class="ped-avatar">АТ</div><div class="ped-name">Антонина Валентиновна Токмакова</div><div class="ped-meta">Харьковская губ. → Новосибирск</div><div class="ped-role">прабабушка</div>
             </div>
           </div>
@@ -1067,7 +1075,7 @@
               <span class="badge b-living">🌱 Денис</span>
             </div>
             <div class="p-name">Денис Семёнов</div>
-            <div class="p-dates">📅 род. 6 мая 1990 г.</div>
+            <div class="p-dates">📅 род. 1990 г.</div>
             <div class="p-places">📍 г. Омск</div>
             <div class="p-snippet">Объединяет сибирскую ветвь (Омск, Кочковатка) и костромскую (Глебово, Нея, Галанино).</div>
           </div>
@@ -1194,7 +1202,7 @@
                 <span class="badge b-living">🌱 Инга (ОмГУ)</span>
               </div>
               <div class="p-name">Инга Ивановна Семёнова (Нечаева)</div>
-              <div class="p-dates">📅 род. 5 мая 1968 г.</div>
+              <div class="p-dates">📅 род. 1968 г.</div>
               <div class="p-places">📍 г. Омск</div>
               <div class="p-snippet">Создатель семейного архива и страницы деда-героя И. Л. Виноградова на «Бессмертном полку».</div>
             </div>
@@ -1331,7 +1339,7 @@
               <span class="badge b-living">🌱 Маргарита</span>
             </div>
             <div class="p-name">Маргарита Сергеевна Женцова</div>
-            <div class="p-dates">📅 род. 11 июля 1999 г.</div>
+            <div class="p-dates">📅 род. 1999 г.</div>
             <div class="p-places">📍 г. Тверь</div>
             <div class="p-snippet">Связывает современные семейные ветви; история Медведихи 1627 г. и биография Ли-Вен-Си показаны как отдельный контекст.</div>
           </div>
@@ -1647,12 +1655,12 @@
           <div class="p-card denis-branch" onclick="openDossier('denis')">
             <div class="p-role">Центральная персона</div>
             <div class="p-name">Денис Семёнов</div>
-            <div class="p-dates">род. 6 мая 1990 г., г. Омск</div>
+            <div class="p-dates">род. 1990 г., г. Омск</div>
           </div>
           <div class="p-card margo-branch" onclick="openDossier('margo')">
             <div class="p-role">Центральная персона</div>
             <div class="p-name">Маргарита Сергеевна Женцова</div>
-            <div class="p-dates">род. 11 июля 1999 г., г. Тверь</div>
+            <div class="p-dates">род. 1999 г., г. Тверь</div>
           </div>
         </div>
       </div>
@@ -1661,14 +1669,22 @@
 
   </div>
 
+  <section id="tab-findings" class="tab-pane" aria-labelledby="findings-heading">
+    <div class="findings-header"><div><span class="eyebrow">Исследование · 25–27 октября 2026</span>
+      <h2 class="section-heading" id="findings-heading">Люди в документах. Связи под вопросом.</h2>
+      <p class="section-intro">Документ может точно описывать семью, даже если её родство с нами ещё неизвестно. Здесь оба вывода показаны отдельно.</p></div></div>
+    <div id="findings-list"></div>
+    <aside class="archive-note"><h3>Что ещё остаётся открытым</h3><p>Военные записи Ивана Виноградова из разных частей пока не объединены в одну доказанную биографию. Галанино Ковернинской волости — возможная географическая привязка, а не установленное место его рождения. По Василию Нечаеву военные однофамильцы не дали надёжной связи с Туриловом и семьёй.</p><p>Цвет или наличие документа не означают доказанного родства. Кандидаты сохраняются вне исходного дерева, а степень надёжности относится к каждому конкретному утверждению.</p></aside>
+  </section>
+
   <!-- ================= TAB 2: SOURCES LIBRARY ================= -->
   <div id="tab-sources" class="tab-pane">
     <div class="section-head">
       <div class="section-title">📚 Библиотека первоисточников и архивных свидетельств</div>
-      <span style="font-size:12.5px; color:var(--ink-muted);">Все документы, подтверждающие генеалогию</span>
+      <span style="font-size:12.5px; color:var(--ink-muted);">Документы, публикации и маршруты поиска</span>
     </div>
     <div class="notice-box" style="margin:0 0 18px; padding:12px 14px; border:1px solid var(--gold-border); border-radius:10px; background:var(--gold-bg); color:var(--ink-muted); font-size:13px;">
-      <b>Контрольная сверка 07.10.2026:</b> новые семейные документы Карпущенко/Семёновой занесены как D2; дата Людмилы сохраняется в двух вариантах до проверки ЗАГС. Бесплатные кандидаты IAОО не присоединены.
+      <b>Состояние на 27.10.2026: метрика Шибаевых и перепись Карпущенко вынесены в раздел «Находки и кандидаты». Предыдущая сверка 07.10:</b> новые семейные документы Карпущенко/Семёновой занесены как D2; дата Людмилы сохраняется в двух вариантах до проверки ЗАГС. Бесплатные кандидаты IAОО не присоединены.
       <a href="docs/research/2026-10-07-family-documents.md" target="_blank">Аудит документов</a> ·
       <a href="docs/research/2026-09-20-current-evidence-audit.md" target="_blank">общий аудит</a>.
     </div>
@@ -1686,6 +1702,8 @@
           </tr>
         </thead>
         <tbody>
+          <tr><td>Новое</td><td>Метрическая запись</td><td>Терийоки · I Ca:1 · 1902 · акт 26</td><td>Родители Александра — Николай Сергиев Шибаев и Анна Васильева. Родство с Ольгой не доказано.</td><td>Оригинал прочитан</td><td><a href="https://digihakemisto.net/item/1298792229/14963843022/209" target="_blank" rel="noopener">Архивный скан ↗</a></td></tr>
+          <tr><td>Новое</td><td>Перепись 1897</td><td>Кочковатый · ф. 417, оп. 2, д. 3987 · кадр 769</td><td>Яков 17 лет записан сыном Степана 45 лет. Связь с Иваном 1907 не доказана.</td><td>Оригинал прочитан</td><td><a href="https://www.familysearch.org/ark:/61903/3:1:3QS7-L9FQ-SKBQ" target="_blank" rel="noopener">Перепись ↗</a> · может требоваться вход</td></tr>
           <tr>
             <td>1</td>
             <td>Архив ЦАМО</td>
@@ -1828,8 +1846,8 @@
       <!-- 2. Виноградовы -->
       <div class="progress-card">
         <div class="progress-top">
-          <div class="progress-title">2. Виноградовы (д. Галанино → Нея → Венгрия)</div>
-          <div class="progress-pct">75% · Подтверждено</div>
+          <div class="progress-title">2. Виноградовы (Галанино (кандидат места) → Нея → Венгрия)</div>
+          <div class="progress-pct">Подтверждено</div>
         </div>
         <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 75%;"></div></div>
         <div class="progress-details">
@@ -1858,7 +1876,7 @@
       <div class="progress-card">
         <div class="progress-top">
           <div class="progress-title">4. Ли-Вен-Си (Харбин → Чита → Новосибирск → Тверь)</div>
-          <div class="progress-pct">65% · Прорывное открытие</div>
+          <div class="progress-pct">Прорывное открытие</div>
         </div>
         <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 65%;"></div></div>
         <div class="progress-details">
@@ -1872,11 +1890,11 @@
       <div class="progress-card">
         <div class="progress-top">
           <div class="progress-title">5. Семёновы (г. Омск / Набережные Челны)</div>
-          <div class="progress-pct">60% · В работе</div>
+          <div class="progress-pct">В работе</div>
         </div>
         <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 60%;"></div></div>
         <div class="progress-details">
-          ✅ <b>Установлено:</b> Дед Анатолий Семёнов (ум. 2012, жил на ул. Бархатовой, работал в Омском автоцентре КАМАЗ), дядя Анатолий Анатольевич (КАМАЗ Набережные Челны), прадед Пётр Семёнов, брат Геннадий, сестра Вера (ум. 2013).<br>
+          <b>По семейным сведениям:</b> Дед Анатолий Семёнов (ум. 2012, жил на ул. Бархатовой, работал в Омском автоцентре КАМАЗ), дядя Анатолий Анатольевич (КАМАЗ Набережные Челны), прадед Пётр Семёнов, брат Геннадий, сестра Вера (ум. 2013).<br>
           ❓ <b>Белое пятно:</b> Отчество Петра Семёнова, место и дата его рождения.<br>
           📋 <b>Действие:</b> Запрос справки о смерти Анатолия Семёнова с иными сведениями в ЗАГС Омска.
         </div>
@@ -1886,7 +1904,7 @@
       <div class="progress-card">
         <div class="progress-top">
           <div class="progress-title">6. Женцовы (с. Медведиха, Тверская земля)</div>
-          <div class="progress-pct">45% · Найден кандидат и приход</div>
+          <div class="progress-pct">Найден кандидат и приход</div>
         </div>
         <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 45%;"></div></div>
         <div class="progress-details">
@@ -1900,7 +1918,7 @@
       <div class="progress-card">
         <div class="progress-top">
           <div class="progress-title">7. Токмаковы (Харьковская губерния)</div>
-          <div class="progress-pct">25% · Начальный этап</div>
+          <div class="progress-pct">Начальный этап</div>
         </div>
         <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 25%;"></div></div>
         <div class="progress-details">
@@ -2045,16 +2063,16 @@
           <div class="t-card">
             <div class="t-year">1899 год</div>
             <div class="t-title">Рождение Ольги Николаевны Шибаевой</div>
-            <div class="t-desc">По семейному свидетельству родилась в д. Курсаново Парфеньевского района. Прежняя привязка к Николо-Поломской волости сохраняется до проверки метрической записи.</div>
+            <div class="t-desc">По семейному свидетельству родилась в д. Курсаново Парфеньевского района. Название Курсаново / Крусаново и приход требуют проверки. Найденная семья Шибаевых из метрики 1902 пока не связана с Ольгой.</div>
           </div>
         </div>
 
         <div class="t-item">
           <div class="t-dot"></div>
           <div class="t-card">
-            <div class="t-year">1910 год</div>
+            <div class="t-year">1902 год · историческая семья, родство проверяется</div><div class="t-title">Александр — сын Николая Шибаева и Анны Васильевой</div><div class="t-desc">Родился 20 августа, крещён 25 августа в Казанской церкви Терийоки. Крусаново указано при отце. Братство с Ольгой не установлено. <button class="f-btn" onclick="showFinding('shibaev')">Документ и границы вывода</button></div></div></div><div class="t-item"><div class="t-dot"></div><div class="t-card"><div class="t-year">1910 год</div>
             <div class="t-title">Рождение Ивана Лукьяновича Виноградова</div>
-            <div class="t-desc">Официальный индекс и образ донесения ОБД указывают «Ивановская обл., Каверинский р-н, д. Галянина» и 1910 год; образ также называет жену Анастасию Демидовну и адрес Глебово. Современная геопривязка и акт рождения не установлены.</div>
+            <div class="t-desc">Индекс ОБД передаёт «Ивановская обл., Каверинский р-н, д. Галянина» и 1910 год. Почерк места рождения в просмотренном оригинале не даёт уверенной локализации; образ называет жену Анастасию Демидовну и адрес Глебово. Акт рождения не получен.</div>
           </div>
         </div>
 
@@ -2133,7 +2151,7 @@
         <div class="t-item">
           <div class="t-dot"></div>
           <div class="t-card">
-            <div class="t-year">1990 год (6 мая)</div>
+            <div class="t-year">1990 год</div>
             <div class="t-title">Рождение Дениса Семёнова в Омске</div>
             <div class="t-desc">Продолжатель родов Семёновых, Нечаевых, Виноградовых, Карпущенко и Мядиных.</div>
           </div>
@@ -2142,7 +2160,7 @@
         <div class="t-item">
           <div class="t-dot margo"></div>
           <div class="t-card">
-            <div class="t-year">1999 год (11 июля)</div>
+            <div class="t-year">1999 год</div>
             <div class="t-title">Рождение Маргариты Женцовой в Твери</div>
             <div class="t-desc">Продолжательница родов Женцовых (с. Медведиха), Рыжиковых, Ли-Вен-Си и Токмаковых.</div>
           </div>
@@ -2161,21 +2179,22 @@
     </div>
   </div>
 
+<footer class="site-footer"><span>Хроники двух родов · Семёновы и Женцовы</span><span>Сверка исследования: 27 октября 2026 · открытые вопросы сохранены</span></footer>
 </main>
 
 <!-- Modal Dossier -->
-<div class="modal-overlay" id="modal-overlay" onclick="closeDossier(event)">
-  <div class="modal-box" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeDossier()">✕</button>
+<div class="modal-overlay" id="modal-overlay" aria-hidden="true" onclick="closeDossier(event)">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="m-name" onclick="event.stopPropagation()">
+    <button class="modal-close" aria-label="Закрыть сведения о человеке" onclick="closeDossier()">✕</button>
     <div class="modal-header">
       <div class="badge b-gold" id="m-badge">Досье персоны</div>
       <div class="modal-name" id="m-name">Имя Фамилия</div>
-      <div class="modal-dates" id="m-dates">Даты жизни и места</div>
+      <div class="modal-dates" id="m-dates">Даты жизни и места</div><p class="dossier-path" id="m-path" hidden></p>
     </div>
 
     <!-- 1. Факты с бейджами -->
     <div class="modal-sec">
-      <div class="modal-sec-title">📋 Установленные факты и достоверность</div>
+      <div class="modal-sec-title">Сведения и их происхождение</div>
       <div class="modal-sec-body">
         <ul class="fact-list" id="m-facts"></ul>
       </div>
@@ -2189,6 +2208,7 @@
       </div>
     </div>
 
+    <section class="modal-sec" id="m-candidates-section" hidden><div class="modal-sec-title">Кандидаты этой линии · связь не доказана</div><p class="dossier-candidate-note">Эти люди существуют в исторических документах. Они ещё не присоединены к нашей семье.</p><div class="candidate-people" id="m-candidates"></div></section>
     <!-- 3. Первоисточники -->
     <div class="modal-sec">
       <div class="modal-sec-title">🔗 Документальные источники</div>
@@ -2207,10 +2227,10 @@
 const dossierData = {
   denis: {
     name: "Денис Семёнов",
-    dates: "род. 6 мая 1990 г., г. Омск",
+    dates: "род. 1990 г., г. Омск",
     badge: "Центральная персона",
     facts: [
-      { badge: "doc", text: "Родился 6 мая 1990 года в г. Омске (Свидетельство о рождении)" },
+      { badge: "doc", text: "Родился в 1990 году в г. Омске (Свидетельство о рождении)" },
       { badge: "doc", text: "Сын Александра Анатольевича Семёнова и Инги Ивановны Нечаевой" },
       { badge: "mem", text: "Точка соединения сибирской ветви (Омск) и костромской (Глебово, Нея, Ковернино)" }
     ],
@@ -2223,10 +2243,10 @@ const dossierData = {
   },
   margo: {
     name: "Женцова Маргарита Сергеевна",
-    dates: "род. 11 июля 1999 г., г. Тверь",
+    dates: "род. 1999 г., г. Тверь",
     badge: "Центральная персона",
     facts: [
-      { badge: "doc", text: "Родилась 11 июля 1999 года в г. Твери (Актовая запись ЗАГС)" },
+      { badge: "doc", text: "Родилась в 1999 году в г. Твери (Актовая запись ЗАГС)" },
       { badge: "doc", text: "Дочь Сергея Николаевича Женцова и Виктории Николаевны Рыжиковой" },
       { badge: "mem", text: "По семейной версии, отцовская линия связана с Медведихой; приходской каталог не доказывает родство с Женцовыми" },
       { badge: "mem", text: "По семейной/публикационной версии, материнская линия связана с Михаилом Ли-Вен-Си; актовая цепочка не приложена" }
@@ -2383,10 +2403,10 @@ const dossierData = {
   },
   inga_nech: {
     name: "Инга Ивановна Семёнова (Нечаева)",
-    dates: "род. 5 мая 1968 г., г. Омск · ОмГУ",
+    dates: "род. 1968 г., г. Омск · ОмГУ",
     badge: "Мать Дениса",
     facts: [
-      { badge: "doc", text: "Родилась 5 мая 1968 года в г. Омске" },
+      { badge: "doc", text: "Родилась в 1968 году в г. Омске" },
       { badge: "mem", text: "Дочь Ивана Васильевича Нечаева и Тамары Ивановны Виноградовой" },
       { badge: "pub", text: "Создатель родословного архива и страницы деда на «Бессмертном полку»" }
     ],
@@ -2606,7 +2626,7 @@ const dossierData = {
     ],
     sources: "Писцовые книги Бежецкого уезда, ГАТО.",
     family: [
-      { role: "Потомок", id: "nikolay_zhents", name: "Николай Женцов" }
+      { role: "Исследуемая семейная ветвь", id: "nikolay_zhents", name: "Николай Женцов" }
     ],
     questions: "Ревизские сказки 1782–1858 гг. в ГАТО."
   },
@@ -2767,8 +2787,9 @@ function openDossier(id) {
   const fl = document.getElementById('m-facts');
   fl.innerHTML = '';
   d.facts.forEach(f => {
-    let bClass = 'fb-doc', bText = '🟢 Документ';
-    if (f.badge === 'pub') { bClass = 'fb-pub'; bText = '🟡 Публикация'; }
+    let bClass = 'fb-hyp', bText = 'Происхождение не уточнено';
+    if (f.badge === 'doc') { bClass = 'fb-doc'; bText = 'Документ'; }
+    else if (f.badge === 'pub') { bClass = 'fb-pub'; bText = '🟡 Публикация'; }
     else if (f.badge === 'mem') { bClass = 'fb-mem'; bText = '🟠 Память'; }
     else if (f.badge === 'hyp') { bClass = 'fb-hyp'; bText = '🔴 Гипотеза'; }
     
@@ -2806,87 +2827,6 @@ function closeDossier(e) {
   document.getElementById('modal-overlay').classList.remove('active');
 }
 
-function switchTab(tabId) {
-  document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
-  const target = document.getElementById('tab-' + tabId);
-  if (target) target.classList.add('active');
-  event.currentTarget.classList.add('active');
-}
-
-function setViewMode(mode) {
-  document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-  const pedigree = document.getElementById('view-pedigree');
-  const hier = document.getElementById('view-hierarchical');
-  const gen = document.getElementById('view-generational');
-  if (pedigree) pedigree.style.display = mode === 'pedigree' ? 'block' : 'none';
-  if (hier) hier.style.display = mode === 'hier' ? 'block' : 'none';
-  if (gen) gen.style.display = mode === 'gen' ? 'block' : 'none';
-  const button = document.getElementById('btn-view-' + mode);
-  if (button) button.classList.add('active');
-}
-
-function switchPedigree(branch) {
-  const denis = document.getElementById('pedigree-denis');
-  const margo = document.getElementById('pedigree-margo');
-  const denisButton = document.getElementById('ped-btn-denis');
-  const margoButton = document.getElementById('ped-btn-margo');
-  if (!denis || !margo) return;
-  denis.hidden = branch !== 'denis';
-  margo.hidden = branch !== 'margo';
-  if (denisButton) denisButton.classList.toggle('active', branch === 'denis');
-  if (margoButton) margoButton.classList.toggle('active', branch === 'margo');
-}
-
-function filterTree(type) {
-  document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-  const dSec = document.getElementById('tree-sec-denis');
-  const mSec = document.getElementById('tree-sec-margo');
-  
-  if (type === 'all') {
-    if (dSec) dSec.style.display = 'block';
-    if (mSec) mSec.style.display = 'block';
-    document.querySelectorAll('.p-card').forEach(n => n.style.opacity = '1');
-  } else if (type === 'denis') {
-    switchPedigree('denis');
-    if (dSec) dSec.style.display = 'block';
-    if (mSec) mSec.style.display = 'none';
-    document.querySelectorAll('.p-card').forEach(n => n.style.opacity = '1');
-  } else if (type === 'margo') {
-    switchPedigree('margo');
-    if (dSec) dSec.style.display = 'none';
-    if (mSec) mSec.style.display = 'block';
-    document.querySelectorAll('.p-card').forEach(n => n.style.opacity = '1');
-  } else if (type === 'war') {
-    if (dSec) dSec.style.display = 'block';
-    if (mSec) mSec.style.display = 'block';
-    document.querySelectorAll('.p-card').forEach(n => {
-      n.style.opacity = n.classList.contains('war-status') ? '1' : '0.2';
-    });
-  } else if (type === 'living') {
-    if (dSec) dSec.style.display = 'block';
-    if (mSec) mSec.style.display = 'block';
-    document.querySelectorAll('.p-card').forEach(n => {
-      n.style.opacity = n.classList.contains('living-status') ? '1' : '0.2';
-    });
-  }
-}
-
-function searchNodes(query) {
-  const q = query.toLowerCase().trim();
-  document.querySelectorAll('.p-card').forEach(card => {
-    const text = card.innerText.toLowerCase();
-    if (!q || text.includes(q)) {
-      card.style.opacity = '1';
-      card.style.borderColor = q ? 'var(--gold)' : '';
-    } else {
-      card.style.opacity = '0.2';
-      card.style.borderColor = '';
-    }
-  });
-}
-
 function copyText(elemId) {
   const text = document.getElementById(elemId).innerText;
   navigator.clipboard.writeText(text).then(() => {
@@ -2895,5 +2835,6 @@ function copyText(elemId) {
 }
 </script>
 
+<script src="assets/site.js?v=20261027-1"></script>
 </body>
 </html>
